@@ -142,7 +142,8 @@ The first cross-person feature: Zoe notices the milk is out → adds it on the s
 
 - `worker.js` (repo root) adds an API to the existing static-assets Worker: `GET/POST/DELETE /api/list`, backed by **Workers KV** (binding `HOUSEHOLD`), one KV key per entry (`item:<ms>:<uuid>` — adds never race), value `{item, addedBy, addedAt}`.
 - Auth: an `x-household-key` header checked with a **timing-safe hash comparison** against the `HOUSEHOLD_KEY` Worker secret (set by Cody via `wrangler secret put`; never in source). Each device stores the key + a "who is this" name in localStorage after a one-time setup form. 503 if the secret is unconfigured, 401 on mismatch.
-- The site gains `#/list`: add box, entries shown with "item · who · when", tap an entry to clear it (bought). Home screen links to it. The service worker **bypasses `/api/*` entirely** (never cached).
+- The site gains `#/list`: add box **plus an optional note field** ("brownies" / "only from Whole Foods" — Zoe's brand/store instructions travel with the item), entries shown with "item · note · who · when", tap an entry to clear it (bought). Home screen links to it. The service worker **bypasses `/api/*` entirely** (never cached).
+- **Optimistic UI** (2026-08-08, after live testing): KV list() is eventually consistent, so the client never re-fetches to echo its own action — adds render immediately from the POST response, deletes remove the row locally, and a Refresh button (plus every screen entry) pulls cross-device changes. POST returns the full stored entry to make this possible.
 - This list is the household "we're out of X" list — distinct from meal mode's recipe-derived shopping list. (Future: a "send meal list to household list" bridge.)
 - Non-goal remains: no accounts. The household key is shared-secret auth, appropriate for groceries; Cloudflare Access is the documented upgrade path if ever needed.
 
