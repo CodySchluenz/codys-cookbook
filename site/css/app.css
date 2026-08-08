@@ -126,7 +126,19 @@ a { color: var(--accent); }
   margin: 8px 0; padding: 12px 14px;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
 }
-.note summary { font-weight: 600; cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+.note summary {
+  font-weight: 600; cursor: pointer; min-height: 44px;
+  display: flex; align-items: center; justify-content: space-between;
+  list-style: none;
+}
+.note summary::-webkit-details-marker { display: none; }
+.note summary::after {
+  content: "\25B8";
+  margin-left: 8px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+.note[open] summary::after { transform: rotate(90deg); }
 .note p { margin: 8px 0 0; }
 .error-card {
   margin-top: 48px; padding: 24px; text-align: center;
