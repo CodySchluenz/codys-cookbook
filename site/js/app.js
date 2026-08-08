@@ -8,7 +8,12 @@ const state = {
   activeTags: new Set(),
   factor: 1,            // serving scale factor for the open recipe
   ingView: 'groups',   // 'groups' | 'shopping'
-  meal: JSON.parse(localStorage.getItem('meal') ?? '[]'),
+  meal: (() => {
+    try {
+      const m = JSON.parse(localStorage.getItem('meal') ?? '[]');
+      return Array.isArray(m) ? m : [];
+    } catch { return []; }
+  })(),
   timers: new Map(),    // stepIndex -> { end, minutes, tick } (Task 5)
   timerRecipeId: null,  // timers belong to one recipe at a time
   wakeLock: null,
