@@ -44,6 +44,7 @@ export default {
         const key = `item:${Date.now()}:${crypto.randomUUID()}`;
         const entry = { item, note, addedBy, addedAt: new Date().toISOString() };
         await env.HOUSEHOLD.put(key, JSON.stringify(entry));
+        await env.HOUSEHOLD.put(`hist:${Date.now()}:${crypto.randomUUID()}`, JSON.stringify(entry));
         return json({ key, ...entry }, 201);
       }
 
@@ -53,6 +54,21 @@ export default {
         if (!key.startsWith('item:')) return json({ error: 'bad key' }, 400);
         await env.HOUSEHOLD.delete(key);
         return json({ ok: true });
+      }
+
+      if (url.pathname === '/api/history' && req.method === 'GET') {
+        const keys = [];
+        let cursor;
+        do {
+          const page = await env.HOUSEHOLD.list({ prefix: 'hist:', cursor });
+          keys.push(...page.keys);
+          cursor = page.list_complete ? undefined : page.cursor;
+        } while (cursor);
+        const entries = await Promise.all(keys.map(async (k) => {
+          const v = await env.HOUSEHOLD.get(k.name, 'json');
+          return v && { key: k.name, ...v };
+        }));
+        return json(entries.filter(Boolean));
       }
 
       return json({ error: 'not found' }, 404);
