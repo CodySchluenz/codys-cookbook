@@ -47,7 +47,7 @@ Each recipe is one JSON file: `recipes/<id>.json`. Structured data (not Markdown
     {
       "name": null,
       "items": [
-        { "qty": 450, "unit": "g", "item": "ribeye", "note": "about 1.5 in thick" },
+        { "qty": 1, "unit": "lb", "item": "ribeye", "note": "about 1.5 in thick" },
         { "qty": null, "unit": null, "item": "flaky salt", "note": "to finish" }
       ]
     }
@@ -67,7 +67,7 @@ Field rules:
 
 - `id`: kebab-case, matches filename, used in the URL hash.
 - `qty`: number or `null`. Numeric quantities scale with the serving scaler; `null` ("to taste") renders as-is and never scales.
-- `unit`: string (e.g., `"g"`, `"cup"`, `"tbsp"`) or `null` for count items — "2 eggs" is `{ "qty": 2, "unit": null, "item": "eggs" }`.
+- `unit`: string (e.g., `"oz"`, `"lb"`, `"cup"`, `"tbsp"`) or `null` for count items — "2 eggs" is `{ "qty": 2, "unit": null, "item": "eggs" }`. **Imperial units only** (oz, lb, cups, tbsp, tsp) and temperatures in °F — metric sources get converted on import, never stored.
 - `steps[].minutes`: number or absent. Present → that step renders a tap-to-start countdown timer.
 - `difficulty`: `"easy" | "medium" | "project"`.
 - `photo`: path under `photos/` or `null`.
@@ -214,3 +214,4 @@ Consequence: GitHub is not just deployment plumbing; it is the agent's home. All
 - Content import flows through Claude Code only; the site has no input surfaces.
 - Search + tag filters on home; no categories-only view; photos optional.
 - Live pantry inventory: rejected as unmaintainable; staples file + ask-about-fresh instead.
+- All recipes use imperial units and °F exclusively (Cody's preference, 2026-08-08); metric sources are converted at import time.
