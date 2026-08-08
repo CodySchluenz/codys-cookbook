@@ -136,6 +136,22 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 - Checklist/step state persists in `localStorage` per recipe so an accidental navigation or reload doesn't lose your place mid-cook; a "reset" control clears it.
 - **My notes**: a free-text box on every recipe page (bottom), autosaved to `localStorage` per recipe. This is where mid-cook observations AND open questions live ("used 5 tbsp", "halve the scallions next time?") — it doubles as the recipe's work-in-progress state, which is why there is no separate draft flag. A **Send to chef** button copies a formatted blob (`Cook notes for <id> ("Title"): …`) for pasting into any chef session; the chef integrates the changes into the recipe JSON, answers the questions, publishes, and Cody taps **Clear**. Notes are device-local by design (static site, no backend); the paste step is the bridge.
 
+### Meal mode (2026-08-08)
+
+- Recipe pages have a "+ Meal" toggle; chosen ids persist in `localStorage` (`meal`). When the basket is non-empty, a floating bottom bar ("🍽 Meal · N recipes →") appears on home and recipe screens, leading to `#/meal`.
+- The meal screen shows: the lineup (links + remove buttons), a **game plan** (recipes ordered by `totalMinutes`, "T−60 start Tomato Soup … T−0 everything lands"), and a **combined shopping list** — every ingredient across every chosen recipe, scaled by each recipe's remembered serving factor, merged by name and summed per unit, checkable (state in `meal-shop`).
+- Full step-interleaved scheduling stays the chef's conversational job; the game plan is start-time math only.
+
+### Techniques (2026-08-08)
+
+- Second content type: `site/techniques/<id>.json` (`{ id, title, description, steps: [{text, why?}], usedIn: [recipe ids] }`) with `site/techniques.json` index, validated like recipes (usedIn ids must exist). Rendered read-only at `#/technique/<id>` with a "Used in" links section; home screen lists techniques below the recipe cards. The chef promotes a `why` that keeps recurring across recipes into a technique page.
+
+### Cooking memory (2026-08-08)
+
+- **I made this**: a button on each recipe page appends a timestamp to `localStorage` (`made:<id>`); the page and home cards show "made N× · last date". Device-local by design.
+- **Scale memory**: the serving factor persists per recipe (`factor:<id>`) and is reused on next open — and by meal mode's combined shopping list.
+- **Print styles**: `@media print` strips chrome (nav, scaler, timers, notes box, meal bar) for a clean fridge-ready page.
+
 ### PWA / offline
 
 - Manifest with `display: standalone` so Add to Home Screen yields a full-screen app with an icon.
@@ -225,7 +241,7 @@ Consequence: GitHub is not just deployment plumbing; it is the agent's home. All
 
 - Ship with 2–3 sample recipes written in the schema (one with ingredient groups + timers + plating) so the UI is reviewable immediately; Cody then replaces/augments them by pasting real starred chats one at a time.
 - `CLAUDE.md` at repo root: one-paragraph project map pointing at this spec, the two skills, and the validator — enough for any fresh session to orient.
-- Keep `js/app.js` under ~500 lines; if it grows past that, split by screen.
+- Keep `js/app.js` under ~500 lines; if it grows past that, split by screen. (Amended 2026-08-08: the meal/techniques/memory feature batch pushes it to ~650 — accepted for now; a by-screen module split is queued as a refactor if it keeps growing.)
 
 ## Resolved decisions (from brainstorming)
 
