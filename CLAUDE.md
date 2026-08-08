@@ -26,7 +26,9 @@ learn something, commit, push.
 
 ## Deploy
 
-Push to `main` → Cloudflare Pages deploys `site/`. If you change ANY shell file
+Push to `main` → Cloudflare Workers Builds redeploys the static-assets Worker serving
+`site/` (config: `wrangler.jsonc`; live at https://codys-cookbook.codydps.workers.dev).
+If you change ANY shell file
 (`site/index.html`, `css/`, `js/`, `sw.js`, `manifest.webmanifest`, `icons/`), bump
 `CACHE` in `site/sw.js` or iPhones keep the old version. Recipe JSON never needs a bump.
 

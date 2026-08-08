@@ -77,7 +77,7 @@ Rules that trip people up:
    difficulty, photo, ingredients }` where `ingredients` is the flat array of every
    `item` string in order. Keep entries sorted by id.
 3. Run `node scripts/validate.mjs` — fix anything it reports before continuing.
-4. Commit and push. Cloudflare Pages deploys `site/` automatically from main.
+4. Commit and push. Cloudflare Workers Builds redeploys `site/` automatically from main.
 
 ## Updating an existing recipe
 

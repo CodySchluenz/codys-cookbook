@@ -164,6 +164,7 @@ Knowledge base layout:
     girlfriend-family.md   allergies, dislikes, headcount
   kitchen.md        appliances, cookware, tools
   pantry.md         staples always stocked (oils, acids, spices, aromatics...)
+  sourcing.md       specialty-ingredient → store map (e.g., the lime crema is Whole Foods-only)
 ```
 
 Seeding: during implementation, the chef interviews Cody to fill `people/`, `kitchen.md`, and `pantry.md` with real starting data.
@@ -186,16 +187,16 @@ It also handles updates to existing recipes ("here's a chat where we improved th
 
 ## 4. Deployment
 
-- Cloudflare Pages, git-connected to a GitHub repo (`codys-cookbook`), build command empty, **output directory `site`** — only the site deploys, never the knowledge base. Every push to `main` auto-deploys. One-time setup during implementation requires Cody to authorize GitHub and Cloudflare.
-- Fallback if git-connection is undesirable: `npx wrangler pages deploy site`.
-- Result: an HTTPS `*.pages.dev` URL (HTTPS is required for wake lock and service worker) that Cody adds to his iPhone home screen.
+- Cloudflare **Workers** (static-assets Worker), git-connected to `CodySchluenz/codys-cookbook` via Workers Builds. `wrangler.jsonc` at the repo root sets `assets.directory = ./site` — only the site deploys, never the knowledge base. Every push to `main` auto-deploys.
+- (History: the design originally targeted Cloudflare Pages; the dashboard's repo-import flow created a Worker instead, which is Cloudflare's current recommended path for static sites. Same behavior, different URL.)
+- Result: https://codys-cookbook.codydps.workers.dev (HTTPS, as required for wake lock and service worker) — Cody adds it to his iPhone home screen.
 
 ## 5. Access model — talking to the chef from anywhere
 
 The chef is not tied to Cody's PC. Everything that makes the agent *this* agent — the `chef` and `add-recipe` skills, people profiles, kitchen and pantry files, recipe schema — lives in the GitHub repo, so any Claude Code environment reconstitutes it:
 
 - **PC**: Claude Code CLI or desktop app in the local checkout (this session).
-- **iPhone, PC off**: Claude Code on the web (claude.ai/code in Safari) or the Claude iOS app's code sessions, pointed at the `codys-cookbook` GitHub repo. Sessions run in Anthropic's cloud sandbox: the repo is cloned there, skills load automatically, and pushes trigger the same Cloudflare Pages deploy. Talking to the chef from the couch or the grocery store works identically to talking to it here.
+- **iPhone, PC off**: Claude Code on the web (claude.ai/code in Safari) or the Claude iOS app's code sessions, pointed at the `codys-cookbook` GitHub repo. Sessions run in Anthropic's cloud sandbox: the repo is cloned there, skills load automatically, and pushes trigger the same auto-deploy. Talking to the chef from the couch or the grocery store works identically to talking to it here.
 
 Consequence: GitHub is not just deployment plumbing; it is the agent's home. All chef learning (behavior 6) must be committed and pushed promptly so every environment sees the same knowledge.
 
