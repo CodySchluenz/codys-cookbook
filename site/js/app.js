@@ -101,10 +101,131 @@ function errorCard(message, err) {
   </div>`;
 }
 
-// Replaced wholesale by Task 4.
+const cookKey = (id) => `cook:${id}`;
+
+function readCook(id) {
+  try { return JSON.parse(localStorage.getItem(cookKey(id))) ?? { ing: [], steps: [] }; }
+  catch { return { ing: [], steps: [] }; }
+}
+
+function writeCook(id, done) {
+  localStorage.setItem(cookKey(id), JSON.stringify(done));
+}
+
 async function renderRecipe(id) {
-  app.innerHTML = `<nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
-    <p class="empty">Recipe screen coming in Task 4 (${esc(id)}).</p>`;
+  if (state.timerRecipeId !== id) stopAllTimers();
+  state.timerRecipeId = id;
+  state.factor = 1;
+  document.title = 'Loading…';
+  let r;
+  try {
+    const res = await fetch(`recipes/${id}.json`);
+    if (res.status === 404) {
+      app.innerHTML = errorCard(`No recipe called "${id}".`, { message: 'Not found' });
+      return;
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    r = await res.json();
+  } catch (err) {
+    app.innerHTML = errorCard(navigator.onLine === false
+      ? "You're offline and this recipe isn't cached yet."
+      : 'Could not load this recipe.', err);
+    return;
+  }
+  try {
+    drawRecipe(r);
+    await acquireWakeLock();
+  } catch (err) {
+    app.innerHTML = errorCard("This recipe's data looks malformed.", err);
+  }
+}
+
+const servingsLabel = (s, f) => `Serves ${formatQty(scaleQty(s, f))}`;
+
+function drawRecipe(r) {
+  document.title = r.title;
+  const done = readCook(r.id);
+  const f = state.factor;
+  const ings = r.ingredientGroups.map((g, gi) => `
+    ${g.name ? `<h3 class="group-title">${esc(g.name)}</h3>` : ''}
+    ${g.items.map((it, ii) => {
+      const key = `${gi}:${ii}`;
+      const qty = formatQty(scaleQty(it.qty, f));
+      return `<button class="ing ${done.ing.includes(key) ? 'done' : ''}" data-key="${key}">
+        <span class="ing-qty">${qty}${it.unit ? ' ' + esc(it.unit) : ''}</span>
+        <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
+      </button>`;
+    }).join('')}`).join('');
+  const steps = r.steps.map((s, i) => `
+    <li class="step ${done.steps.includes(i) ? 'done' : ''}" data-step="${i}">
+      <button class="step-text">${esc(s.text)}</button>
+      ${s.minutes ? `<button class="step-timer" data-step="${i}" data-minutes="${s.minutes}">⏱ ${s.minutes} min</button>` : ''}
+    </li>`).join('');
+  app.innerHTML = `
+    <nav class="top-bar">
+      <a class="btn" href="#/">← Recipes</a>
+      <button id="reset" class="btn subtle">Reset</button>
+    </nav>
+    <header>
+      <h1>${esc(r.title)}</h1>
+      <p>${esc(r.description)}</p>
+      <p class="card-meta">${servingsLabel(r.servings, f)} · ${r.activeMinutes} min active · ${r.totalMinutes} min total · ${esc(r.difficulty)}</p>
+      <div class="scaler" id="scaler">
+        ${[0.5, 1, 2].map((v) => `<button data-f="${v}" class="${f === v ? 'on' : ''}">${v === 0.5 ? '½×' : v + '×'}</button>`).join('')}
+        <button data-f="minus">−</button>
+        <button data-f="plus">+</button>
+      </div>
+    </header>
+    <section><h2>Ingredients</h2>${ings}</section>
+    <section><h2>Steps</h2><ol class="steps">${steps}</ol></section>
+    ${r.plating ? `<section class="plate-card"><h2>Plating</h2><p>${esc(r.plating)}</p></section>` : ''}
+    ${(r.notes ?? []).length ? `<section><h2>Notes</h2>${r.notes.map((n) =>
+      `<details class="note"><summary>${esc(n.title)}</summary><p>${esc(n.body)}</p></details>`).join('')}</section>` : ''}
+    ${(r.variations ?? []).length ? `<section><h2>Variations</h2>${r.variations.map((v) =>
+      `<div class="note"><p>${esc(v)}</p></div>`).join('')}</section>` : ''}
+    ${r.source ? `<p class="card-meta">Source: ${esc(r.source)}</p>` : ''}`;
+  wireRecipe(r);
+  syncTimerButtons();
+}
+
+function wireRecipe(r) {
+  const done = readCook(r.id);
+  for (const el of app.querySelectorAll('.ing')) {
+    el.addEventListener('click', () => {
+      const key = el.dataset.key;
+      const i = done.ing.indexOf(key);
+      if (i >= 0) done.ing.splice(i, 1); else done.ing.push(key);
+      writeCook(r.id, done);
+      el.classList.toggle('done');
+    });
+  }
+  for (const el of app.querySelectorAll('.step-text')) {
+    el.addEventListener('click', () => {
+      const li = el.closest('.step');
+      const idx = Number(li.dataset.step);
+      const at = done.steps.indexOf(idx);
+      if (at >= 0) done.steps.splice(at, 1); else done.steps.push(idx);
+      writeCook(r.id, done);
+      li.classList.toggle('done');
+    });
+  }
+  document.getElementById('reset').addEventListener('click', () => {
+    localStorage.removeItem(cookKey(r.id));
+    stopAllTimers();
+    drawRecipe(r);
+  });
+  document.getElementById('scaler').addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    const v = b.dataset.f;
+    if (v === 'minus') state.factor = Math.max(0.5, state.factor - 0.5);
+    else if (v === 'plus') state.factor = Math.min(4, state.factor + 0.5);
+    else state.factor = Number(v);
+    drawRecipe(r); // re-render from original quantities — rounding never compounds
+  });
+  for (const el of app.querySelectorAll('.step-timer')) {
+    el.addEventListener('click', () => toggleTimer(Number(el.dataset.step), Number(el.dataset.minutes)));
+  }
 }
 
 // --- Cooking-session hooks: bodies land in Task 5; call sites exist from Task 4. ---
