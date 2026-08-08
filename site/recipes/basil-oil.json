@@ -10,6 +10,9 @@
   "photo": null,
   "source": "Cody's Claude chat, imported 2026-08-08",
   "equipment": ["blender", "fine-mesh sieve"],
+  "changelog": [
+    { "date": "2026-08-08", "note": "Extracted from the tomato soup as its own component recipe — it belongs on more than soup." }
+  ],
   "ingredientGroups": [
     {
       "name": null,

@@ -10,6 +10,10 @@
   "photo": null,
   "source": "Cody's Claude chat, imported 2026-08-08",
   "equipment": ["oven with broiler", "large skillet", "saucepan", "whisk", "baking sheet"],
+  "changelog": [
+    { "date": "2026-08-08", "note": "Imported from Cody's Claude chat, layering instructions intact." },
+    { "date": "2026-08-08", "note": "Cook note applied: Mornay must cover edge to edge — exposed bread burns under the broiler." }
+  ],
   "ingredientGroups": [
     {
       "name": "Mornay (cheese béchamel)",

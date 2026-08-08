@@ -160,6 +160,11 @@ a { color: var(--accent); }
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   font-weight: 600;
 }
+.log-entry { margin: 6px 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+.log-date {
+  color: var(--text); font-weight: 650; margin-right: 8px;
+  font-variant-numeric: tabular-nums;
+}
 .note {
   margin: 8px 0; padding: 12px 14px;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);

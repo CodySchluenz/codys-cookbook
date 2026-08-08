@@ -10,6 +10,10 @@
   "photo": null,
   "source": "Chef session, 2026-08-08",
   "equipment": ["stainless or cast-iron skillet"],
+  "changelog": [
+    { "date": "2026-08-08", "note": "Created in a phone chef session — first recipe born on the go." },
+    { "date": "2026-08-08", "note": "Cilantro now dressed per portion, never the pan — household rule." }
+  ],
   "ingredientGroups": [
     {
       "name": "The char",

@@ -94,6 +94,18 @@ Same validate → commit → push flow.
 Cook-note blobs ("Cook notes for <id>: …") are the most common update source — fold the
 observations into the existing file and never change the id.
 
+## Revision history
+
+Every recipe carries a `changelog`: `[{ "date": "YYYY-MM-DD", "note": "one line" }]`,
+appended in chronological order (the site renders newest first).
+
+- First publish → entry saying where it came from.
+- EVERY update → entry saying what changed and why, in cook terms ("Mornay
+  edge-to-edge — exposed bread burns"), never git terms.
+- Git is the full-fidelity layer: exact diffs and restores via
+  `git log --follow site/recipes/<id>.json` — offer it when Cody asks what changed
+  or wants an old version back.
+
 ## Photos
 
 - Files live at `site/photos/<recipe-id>.jpg` — JPEG, max ~1600px wide (aim under

@@ -10,6 +10,10 @@
   "photo": null,
   "source": "Cody's Claude chat, imported 2026-08-08",
   "equipment": ["immersion or countertop blender", "large pot"],
+  "changelog": [
+    { "date": "2026-08-08", "note": "Imported from Cody's Claude chat — replaced the placeholder sample." },
+    { "date": "2026-08-08", "note": "Precision pass: every step now restates exact amounts at the point of use." }
+  ],
   "ingredientGroups": [
     {
       "name": null,

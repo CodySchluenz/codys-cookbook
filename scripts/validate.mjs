@@ -56,6 +56,9 @@ function checkRecipe(file, r) {
     fail(file, 'pairsWith must be an array of recipe id strings');
   if (r.equipment !== undefined && (!Array.isArray(r.equipment) || !r.equipment.every(isStr)))
     fail(file, 'equipment must be a string array');
+  if (r.changelog !== undefined && (!Array.isArray(r.changelog) || !r.changelog.every((c) =>
+      isStr(c?.note) && isStr(c?.date) && /^\d{4}-\d{2}-\d{2}$/.test(c.date))))
+    fail(file, 'changelog must be [{date: "YYYY-MM-DD", note: string}]');
   const texts = [r.title, r.description, r.plating,
     ...(r.steps ?? []).flatMap((s) => [s?.text, s?.why]),
     ...(r.notes ?? []).flatMap((n) => [n?.title, n?.body]),

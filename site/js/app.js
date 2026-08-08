@@ -248,6 +248,8 @@ function drawRecipe(r) {
       `<details class="note"><summary>${esc(n.title)}</summary><p>${esc(n.body)}</p></details>`).join('')}</section>` : ''}
     ${(r.variations ?? []).length ? `<section><h2>Variations</h2>${r.variations.map((v) =>
       `<div class="note"><p>${esc(v)}</p></div>`).join('')}</section>` : ''}
+    ${(r.changelog ?? []).length ? `<section><h2>History</h2>${[...r.changelog].reverse().map((c) =>
+      `<p class="log-entry"><span class="log-date">${esc(c.date)}</span>${esc(c.note)}</p>`).join('')}</section>` : ''}
     <section>
       <h2>My notes</h2>
       <textarea id="cook-notes" class="cook-notes" rows="4"

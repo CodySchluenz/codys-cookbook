@@ -10,6 +10,9 @@
   "photo": null,
   "source": "Sample recipe — replace with the real version from a starred chat",
   "equipment": ["heavy skillet (cast iron or stainless)", "instant-read thermometer"],
+  "changelog": [
+    { "date": "2026-08-08", "note": "Sample recipe — awaiting Cody's real version from a starred chat." }
+  ],
   "ingredientGroups": [
     {
       "name": null,
