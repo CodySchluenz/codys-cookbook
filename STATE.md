@@ -5,7 +5,7 @@
 mid-task, the next one resumes from here. Git history is the fine-grained backup:
 `git log --oneline` tells the story; this file tells the headline.*
 
-**Last updated:** 2026-08-08 (PC session — the build day)
+**Last updated:** 2026-08-08, end of the build day (PC session; context cleared right after this commit — this file is the handoff)
 
 ## Current status: STABLE, nothing in flight
 
@@ -31,7 +31,7 @@ key set as Worker secret — value known to Cody, never written here).
   family's headcount+allergies, remaining kitchen gear, pantry staples.
 - Real ribeye recipe to replace the sample (`pan-seared-ribeye` still placeholder).
 - First photo (esquites suggested).
-- Phones onboard the household list (one-time key entry).
+- Zoe's phone onboards the household list (Cody's is done — his items are already on it; the list is in live use). Ask Cody for the key if needed; it is never written in this repo.
 
 ## Known punch list (accepted minors, fix opportunistically)
 
