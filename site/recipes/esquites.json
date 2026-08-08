@@ -29,7 +29,7 @@
         { "qty": 0.5, "unit": "cups", "item": "cotija", "note": "crumbled, plus a heavy snowfall for the top" },
         { "qty": 1, "unit": null, "item": "lime", "note": "half juiced in, half in wedges" },
         { "qty": null, "unit": null, "item": "Tajín", "note": "or chile powder" },
-        { "qty": null, "unit": null, "item": "cilantro", "note": "chopped" }
+        { "qty": null, "unit": null, "item": "cilantro", "note": "chopped — divides tables, so dress per portion, never the pan" }
       ]
     }
   ],
@@ -49,7 +49,7 @@
   "notes": [
     { "title": "Why cups, not cobs", "body": "Esquites is elote's off-the-cob sibling — dressed kernels served in a cup, eaten with a spoon. Same flavors, none of the dental commitment, and the dressing coats every kernel instead of the outside of a cob." }
   ],
-  "plating": "Warm, in small glasses or cups — never a bowl; this is street food, honor it. Heavy cotija snowfall on top, a hard dust of Tajín, cilantro, lime wedge riding the rim.",
+  "plating": "Warm, in small glasses or cups — never a bowl; this is street food, honor it. Heavy cotija snowfall on top, a hard dust of Tajín, cilantro only on the cilantro-lovers' cups, lime wedge riding the rim.",
   "elevations": [
     "Brown the butter before the corn goes in — 30 extra seconds and the whole cup tastes toasted.",
     "Char the jalapeño whole in the dry pan first, then mince — smoky heat instead of sharp heat.",
