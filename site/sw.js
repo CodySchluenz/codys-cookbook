@@ -1,6 +1,6 @@
 // Offline support. RULE: bump CACHE on ANY shell change (html/css/js/manifest/icons).
 // Recipe data is network-first, so content updates never require a bump.
-const CACHE = 'cookbook-v10';
+const CACHE = 'cookbook-v11';
 const SHELL = [
   './', './css/app.css', './js/app.js', './js/scale.js',
   './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
@@ -18,6 +18,7 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
+  if (url.pathname.startsWith('/api/')) return; // household API: network only, never cached
   if (url.origin !== location.origin || e.request.method !== 'GET') return;
   if (url.pathname.endsWith('.json')) e.respondWith(networkFirst(e.request));
   else e.respondWith(cacheFirst(e.request));

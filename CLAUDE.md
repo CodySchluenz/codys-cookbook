@@ -17,6 +17,9 @@ learn something, commit, push.
 - `site/recipes/*.json` + `site/index.json` — content. Schema: `.claude/skills/add-recipe/SKILL.md`.
 - `docs/superpowers/specs/2026-08-08-cookbook-design.md` — the design spec.
 - `scripts/` — no-dependency node tooling.
+- `worker.js` — the only backend: the household shopping-list API (`/api/list`, KV-backed,
+  `x-household-key` header auth against the `HOUSEHOLD_KEY` Worker secret). Everything
+  else on the site is static.
 
 ## Commands
 

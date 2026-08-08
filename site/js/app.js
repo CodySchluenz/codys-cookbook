@@ -31,6 +31,7 @@ route();
 async function route() {
   const hash = location.hash || '#/';
   if (hash === '#/meal') { await renderMeal(); return; }
+  if (hash === '#/list') { await renderList(); return; }
   const t = hash.match(/^#\/technique\/([a-z0-9-]+)$/);
   if (t) { await renderTechnique(t[1]); return; }
   const m = hash.match(/^#\/recipe\/([a-z0-9-]+)$/);
@@ -71,6 +72,9 @@ async function renderHome() {
       </div>
     </header>
     <main id="cards"></main>
+    <section><h2>Household</h2>
+      <a class="pair-link" href="#/list">🛒 Shopping list →</a>
+    </section>
     ${mealBarHtml()}`;
   document.getElementById('search').addEventListener('input', (e) => {
     state.search = e.target.value;
@@ -396,6 +400,105 @@ function wireRecipe(r) {
     localStorage.removeItem(notesKey(r.id));
     ta.value = '';
   });
+}
+
+const whenLabel = (iso) => {
+  try { return new Date(iso).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' }); }
+  catch { return ''; }
+};
+
+async function renderList() {
+  releaseWakeLock();
+  document.title = 'Household list';
+  if (!localStorage.getItem('hkey')) { drawListSetup(false); return; }
+  let items;
+  try {
+    const res = await fetch('/api/list', { headers: { 'x-household-key': localStorage.getItem('hkey') } });
+    if (res.status === 401) { localStorage.removeItem('hkey'); drawListSetup(true); return; }
+    if (res.status === 503) {
+      app.innerHTML = errorCard('The household key isn\'t set up on the server yet — ask the chef.', { message: 'Not configured' });
+      return;
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    items = await res.json();
+  } catch (err) {
+    app.innerHTML = errorCard(navigator.onLine === false
+      ? "You're offline — the household list needs a connection."
+      : 'Could not reach the household list.', err);
+    return;
+  }
+  drawList(items);
+}
+
+function drawListSetup(wasBad) {
+  app.innerHTML = `
+    <nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
+    <header><h1>Household list</h1>
+      <p>${wasBad ? 'That key wasn\'t right — try again.' : 'One-time setup for this phone.'}</p>
+    </header>
+    <section class="list-form">
+      <input id="hkey-in" class="search" type="password" placeholder="Household key" autocomplete="off">
+      <input id="hname-in" class="search" type="text" placeholder="Your name (shows on items you add)" autocomplete="off">
+      <button id="hkey-save" class="btn-solid">Join the household</button>
+    </section>`;
+  document.getElementById('hkey-save').addEventListener('click', () => {
+    const k = document.getElementById('hkey-in').value.trim();
+    const n = document.getElementById('hname-in').value.trim().slice(0, 40);
+    if (!k) return;
+    localStorage.setItem('hkey', k);
+    if (n) localStorage.setItem('hname', n);
+    renderList();
+  });
+}
+
+function drawList(items) {
+  app.innerHTML = `
+    <nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
+    <header><h1>Household list</h1>
+      <p class="card-meta">Tap an item when it's bought. Everyone in the household sees the same list.</p>
+    </header>
+    <section class="list-form">
+      <input id="list-add-in" class="search" type="text" placeholder="We're out of…" autocomplete="off">
+      <button id="list-add" class="btn-solid">Add</button>
+    </section>
+    <section>
+      ${items.length ? items.map((it) => `
+        <button class="ing" data-listkey="${esc(it.key)}">
+          <span class="ing-name">${esc(it.item)}</span>
+          <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(whenLabel(it.addedAt))}</span>
+        </button>`).join('')
+      : '<p class="empty">Nothing needed. Nice.</p>'}
+    </section>
+    ${mealBarHtml()}`;
+  const input = document.getElementById('list-add-in');
+  const add = async () => {
+    const item = input.value.trim();
+    if (!item) return;
+    input.value = '';
+    try {
+      await fetch('/api/list', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-household-key': localStorage.getItem('hkey') },
+        body: JSON.stringify({ item, addedBy: localStorage.getItem('hname') ?? '' }),
+      });
+    } catch { /* renderList surfaces the state either way */ }
+    renderList();
+  };
+  document.getElementById('list-add').addEventListener('click', add);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') add(); });
+  for (const el of app.querySelectorAll('.ing[data-listkey]')) {
+    el.addEventListener('click', async () => {
+      el.disabled = true;
+      try {
+        await fetch('/api/list', {
+          method: 'DELETE',
+          headers: { 'content-type': 'application/json', 'x-household-key': localStorage.getItem('hkey') },
+          body: JSON.stringify({ key: el.dataset.listkey }),
+        });
+      } catch { /* fall through to re-render */ }
+      renderList();
+    });
+  }
 }
 
 async function renderTechnique(id) {

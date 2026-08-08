@@ -1,5 +1,10 @@
 {
   "name": "codys-cookbook",
   "compatibility_date": "2026-08-08",
-  "assets": { "directory": "./site" }
+  "main": "worker.js",
+  "assets": { "directory": "./site" },
+  "observability": { "enabled": true },
+  "kv_namespaces": [
+    { "binding": "HOUSEHOLD", "id": "4df2dfc77cc748639c126a93d30e52b8" }
+  ]
 }
