@@ -65,8 +65,9 @@ Entries with malformed/missing `addedAt` sort last and are excluded from gap mat
 - Entry point: a "History" button in the household-list top bar (next to Refresh).
 - Screen layout:
   - Top bar: `← List` back link.
-  - **Trends** section: one row per group — name, `×count`, relative last-added
-    label (reuse `whenLabel`), and `~every N days` when `gapDays` is present.
+  - **Trends** section: one row per group — name, `×count`, a short date label
+    (new `dateLabel` helper, e.g. "Aug 5" — `whenLabel` shows only weekday+time,
+    ambiguous for months-old entries), and `~every N days` when `gapDays` ≥ 1.
   - **Recent** section: last 20 raw adds — item, note, who, when — newest first.
 - Empty state: "History starts today — trends grow as you add."
 - Error handling mirrors `renderList()` exactly: 401 clears the stored key and shows
