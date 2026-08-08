@@ -1,0 +1,61 @@
+{
+  "id": "esquites",
+  "title": "Esquites",
+  "description": "Charred street-corn cups — creamy, sweet, hot, sour, in that order.",
+  "tags": ["mexican", "corn", "stovetop", "snack", "side", "vegetarian", "weeknight"],
+  "servings": 2,
+  "activeMinutes": 25,
+  "totalMinutes": 25,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Chef session, 2026-08-08",
+  "ingredientGroups": [
+    {
+      "name": "The char",
+      "items": [
+        { "qty": 4, "unit": null, "item": "ears fresh corn", "note": "kernels cut off — about 3 cups" },
+        { "qty": 1, "unit": "tbsp", "item": "neutral oil" },
+        { "qty": 1, "unit": "tbsp", "item": "butter" },
+        { "qty": 1, "unit": null, "item": "jalapeño", "note": "minced — seeds out for mild, in for real" },
+        { "qty": 2, "unit": null, "item": "garlic cloves", "note": "minced" },
+        { "qty": null, "unit": null, "item": "salt" }
+      ]
+    },
+    {
+      "name": "The dressing and finish",
+      "items": [
+        { "qty": 0.25, "unit": "cups", "item": "Sir Kensington's lime crema", "note": "Whole Foods — the only place that carries it" },
+        { "qty": 2, "unit": "tbsp", "item": "mayonnaise" },
+        { "qty": 0.5, "unit": "cups", "item": "cotija", "note": "crumbled, plus a heavy snowfall for the top" },
+        { "qty": 1, "unit": null, "item": "lime", "note": "half juiced in, half in wedges" },
+        { "qty": null, "unit": null, "item": "Tajín", "note": "or chile powder" },
+        { "qty": null, "unit": null, "item": "cilantro", "note": "chopped" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Heat the oil in a stainless skillet over medium-high until it shimmers hard, then add the butter, then the corn in as close to a single layer as you can manage.",
+      "why": "Corn is full of sugar; real contact with hot steel is what gets blackened, nutty spots instead of steamed kernels. The oil raises the butter's smoke point so it browns instead of burns." },
+    { "text": "Leave it completely alone for 3-4 minutes. Kernels will pop and jump — that's the sign the char is happening.", "minutes": 4,
+      "why": "Every stir resets the browning. Char needs uninterrupted contact." },
+    { "text": "Stir once, salt now, and char another 3 minutes.", "minutes": 3 },
+    { "text": "Add the jalapeño and garlic and cook 60 seconds, just until fragrant.",
+      "why": "Garlic added earlier burns bitter at char temperatures. It only needs a minute to sweeten." },
+    { "text": "Off the heat, rest 2 minutes before dressing.", "minutes": 2,
+      "why": "Dressing a screaming-hot pan breaks the crema and mayo to grease. Two minutes is enough." },
+    { "text": "Fold in the lime crema, mayonnaise, cotija, and the juice of half the lime." },
+    { "text": "Taste. It should hit creamy, then sweet, then hot, then sour — in that order. Adjust lime and salt until it does." }
+  ],
+  "notes": [
+    { "title": "Why cups, not cobs", "body": "Esquites is elote's off-the-cob sibling — dressed kernels served in a cup, eaten with a spoon. Same flavors, none of the dental commitment, and the dressing coats every kernel instead of the outside of a cob." }
+  ],
+  "plating": "Warm, in small glasses or cups — never a bowl; this is street food, honor it. Heavy cotija snowfall on top, a hard dust of Tajín, cilantro, lime wedge riding the rim.",
+  "elevations": [
+    "Brown the butter before the corn goes in — 30 extra seconds and the whole cup tastes toasted.",
+    "Char the jalapeño whole in the dry pan first, then mince — smoky heat instead of sharp heat.",
+    "Tajín rim on the cups, michelada-style: wet the rim with a lime wedge, roll it in Tajín."
+  ],
+  "pairings": ["Anything off the grill", "A cold michelada or Mexican lager"],
+  "pairsWith": ["pan-seared-ribeye"],
+  "variations": ["No fresh corn? Frozen fire-roasted corn works — thaw, pat completely dry, and expect a little less sweetness."]
+}

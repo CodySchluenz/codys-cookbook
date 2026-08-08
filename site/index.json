@@ -20,6 +20,16 @@
     "ingredients": ["butter", "all-purpose flour", "whole milk", "Gruyère", "Parmesan", "nutmeg", "salt and white pepper", "pain de mie or good white bread", "butter", "ham", "Gruyère", "Dijon mustard"]
   },
   {
+    "id": "esquites",
+    "title": "Esquites",
+    "description": "Charred street-corn cups — creamy, sweet, hot, sour, in that order.",
+    "tags": ["mexican", "corn", "stovetop", "snack", "side", "vegetarian", "weeknight"],
+    "totalMinutes": 25,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": ["ears fresh corn", "neutral oil", "butter", "jalapeño", "garlic cloves", "salt", "Sir Kensington's lime crema", "mayonnaise", "cotija", "lime", "Tajín", "cilantro"]
+  },
+  {
     "id": "pan-seared-ribeye",
     "title": "Pan-Seared Ribeye",
     "description": "Butter-basted, dry-brined the night before, rested properly.",
