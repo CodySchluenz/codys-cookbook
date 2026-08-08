@@ -173,7 +173,16 @@ It also handles updates to existing recipes ("here's a chat where we improved th
 - Fallback if git-connection is undesirable: `wrangler pages deploy` from the repo root.
 - Result: an HTTPS `*.pages.dev` URL (HTTPS is required for wake lock and service worker) that Cody adds to his iPhone home screen.
 
-## 5. Error handling
+## 5. Access model — talking to the chef from anywhere
+
+The chef is not tied to Cody's PC. Everything that makes the agent *this* agent — the `chef` and `add-recipe` skills, people profiles, kitchen and pantry files, recipe schema — lives in the GitHub repo, so any Claude Code environment reconstitutes it:
+
+- **PC**: Claude Code CLI or desktop app in the local checkout (this session).
+- **iPhone, PC off**: Claude Code on the web (claude.ai/code in Safari) or the Claude iOS app's code sessions, pointed at the `codys-cookbook` GitHub repo. Sessions run in Anthropic's cloud sandbox: the repo is cloned there, skills load automatically, and pushes trigger the same Cloudflare Pages deploy. Talking to the chef from the couch or the grocery store works identically to talking to it here.
+
+Consequence: GitHub is not just deployment plumbing; it is the agent's home. All chef learning (behavior 6) must be committed and pushed promptly so every environment sees the same knowledge.
+
+## 6. Error handling
 
 - **Bad recipe JSON**: `validate.mjs` blocks it before deploy. If one slips through, the app catches the parse/render error and shows a friendly error card for that recipe only; home screen and other recipes unaffected.
 - **Missing recipe id in URL**: friendly "not found" card with a link home.
@@ -181,13 +190,13 @@ It also handles updates to existing recipes ("here's a chat where we improved th
 - **Offline with uncached recipe**: clear "you're offline and this recipe isn't cached yet" message.
 - **Scaler edge cases**: `null` quantities never scale; display rounding never mutates the underlying value (re-scaling is always computed from the original).
 
-## 6. Testing & verification
+## 7. Testing & verification
 
 - `scripts/validate.mjs` — validates every recipe against the schema and `index.json` consistency (every recipe indexed, no orphan index entries, ids match filenames). Run by `add-recipe` before every deploy.
 - `scripts/scale.test.mjs` — `node:test` unit tests for scaling and fraction formatting (the only nontrivial pure logic).
 - Manual verification: serve locally, drive both screens in a browser at iPhone viewport — search, filters, scaler, checklists, a real timer countdown — before first deploy and after significant UI changes.
 
-## 7. Implementation notes
+## 8. Implementation notes
 
 - Ship with 2–3 sample recipes written in the schema (one with ingredient groups + timers + plating) so the UI is reviewable immediately; Cody then replaces/augments them by pasting real starred chats one at a time.
 - `CLAUDE.md` at repo root: one-paragraph project map pointing at this spec, the two skills, and the validator — enough for any fresh session to orient.
