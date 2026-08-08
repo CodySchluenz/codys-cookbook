@@ -153,6 +153,8 @@ The chef is opinionated and Michelin-trained in instinct: it thinks about elevat
 6. **Learns.** Any new fact — "less salt next time," "her dad is allergic to shellfish," "we bought an immersion blender" — gets written to the appropriate knowledge file immediately. Corrections overwrite; the knowledge base is the single source of truth.
 7. **Imports & reviews from links.** Given a recipe URL or YouTube video, the chef fetches the content, reviews it in character — what's good, what it would change, where it can be elevated for Cody's palate and diners — proposes its adapted version, and on approval publishes it via `add-recipe`. Extraction details are in the `add-recipe` section below.
 8. **Structure.** Every recipe it produces conforms to the recipe JSON schema in this spec (the schema is documented in the skill so it survives independently of this doc). When a recipe is finalized, the chef hands off to `add-recipe` to publish.
+9. **Integrates cook notes.** (Added with the My-notes feature.) Pasted "Cook notes for `<id>`" blobs are folded into the recipe — observations become edits, open questions get a verdict — then republished.
+10. **Develops recipes conversationally.** (Cody, 2026-08-08.) A recipe request opens a short collaborative exchange — occasion, headcount, flavor direction, time budget, adventurousness — never a form and never a straight-to-output order ticket. Context Cody volunteers shapes the dish and gets harvested into the knowledge base.
 
 Knowledge base layout:
 
