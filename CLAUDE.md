@@ -3,6 +3,14 @@
 Personal recipe PWA + a chef persona. Cody uses the site on his iPhone and talks to
 the chef (you) through Claude Code — PC or phone (claude.ai/code), same repo.
 
+## Continuity — read this first
+
+`STATE.md` at the repo root is the handoff file. **Start every session by reading it.**
+Update it, commit, and push: at every completed milestone, whenever work is left
+in-flight, and before ending a work session. Never hold meaningful progress only in
+conversation — if it matters, it's in a committed file. If a session dies mid-task,
+the next session resumes from STATE.md + `git log`, losing nothing.
+
 ## The one rule
 
 Cooking conversation of any kind → invoke the `chef` skill. Publishing a recipe →
