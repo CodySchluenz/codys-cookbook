@@ -1,0 +1,63 @@
+{
+  "id": "tomato-soup",
+  "title": "Tomato Soup",
+  "description": "San Marzano tomato soup with bloomed spices and a monter au beurre finish.",
+  "tags": ["soup", "stovetop", "weeknight"],
+  "servings": 6,
+  "activeMinutes": 35,
+  "totalMinutes": 60,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Cody's Claude chat, imported 2026-08-08",
+  "ingredientGroups": [
+    {
+      "name": null,
+      "items": [
+        { "qty": 3, "unit": "tbsp", "item": "butter" },
+        { "qty": 2, "unit": "tbsp", "item": "butter", "note": "cold, cubed — for finishing" },
+        { "qty": 1, "unit": null, "item": "yellow onion", "note": "large, diced" },
+        { "qty": 3, "unit": null, "item": "garlic cloves", "note": "minced" },
+        { "qty": 3, "unit": "tbsp", "item": "tomato paste" },
+        { "qty": 1, "unit": "tsp", "item": "dried basil" },
+        { "qty": 1, "unit": "tsp", "item": "dried oregano" },
+        { "qty": 0.5, "unit": "tsp", "item": "smoked paprika" },
+        { "qty": 2, "unit": "cans", "item": "San Marzano whole peeled tomatoes", "note": "28 oz each, with their juice" },
+        { "qty": 2, "unit": "cups", "item": "chicken broth" },
+        { "qty": 1, "unit": "cups", "item": "heavy cream" },
+        { "qty": 1, "unit": "tbsp", "item": "sugar", "note": "adjust to taste" },
+        { "qty": null, "unit": null, "item": "salt and black pepper", "note": "to taste" },
+        { "qty": null, "unit": null, "item": "red pepper flakes", "note": "optional, a pinch" },
+        { "qty": null, "unit": null, "item": "basil oil", "note": "her signature — it's its own recipe here" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Melt 3 tbsp butter in a large pot over medium heat. Add the diced onion and cook until soft and translucent, 8-10 minutes.", "minutes": 10,
+      "why": "Sweating — not browning — breaks the onion down sweet and mellow. Browned edges would muddy the tomato's brightness." },
+    { "text": "Add the garlic and cook 1 minute until fragrant." },
+    { "text": "Add the tomato paste and cook, stirring constantly, 3-4 minutes until it darkens to brick red. It should smell sweet and caramelized, not raw.", "minutes": 4,
+      "why": "Raw paste tastes tinny. Toasting caramelizes its sugars and browns it into the deep savory-sweet backbone of the whole pot." },
+    { "text": "Add the dried basil, oregano, and smoked paprika straight into the paste. Stir 30-60 seconds until fragrant.",
+      "why": "Dried-herb flavors are fat-soluble. Blooming them in hot fat releases what a watery simmer never would." },
+    { "text": "Add the tomatoes with their juice, breaking them up with a spoon, then the broth, sugar, and pepper flakes if using. Boil, then drop to a simmer for 20-25 minutes.", "minutes": 25,
+      "why": "The simmer melds and concentrates everything. Taste before all the sugar goes in — San Marzanos are naturally sweet." },
+    { "text": "Puree completely smooth with an immersion blender, or in batches in a regular blender with the lid vented.",
+      "why": "Hot liquid in a sealed blender builds steam pressure and erupts. Venting lets it escape." },
+    { "text": "Reduce the heat to low, stir in the cream, and simmer gently 5 minutes. Do not let it boil again.", "minutes": 5,
+      "why": "A boil curdles dairy — the proteins clump past a bare simmer. Low and slow keeps it silky." },
+    { "text": "Off the heat: whisk in the 2 tbsp of cold butter one cube at a time until the soup turns glossy (monter au beurre).",
+      "why": "Cold butter whisked in off-heat emulsifies instead of melting out — suspended fat is what gives the velvet texture and professional sheen. Too much heat and it breaks to grease." },
+    { "text": "Season generously with salt and pepper — it wants more salt than you think." }
+  ],
+  "notes": [
+    { "title": "Make ahead", "body": "The soup holds 3 days refrigerated — but do the cold-butter finish fresh each time you reheat, or the gloss is gone." }
+  ],
+  "plating": "Wide bowls. Spiral of basil oil, one crack of black pepper. Croque monsieur alongside when it's that kind of night.",
+  "elevations": [
+    "Drop a parmesan rind in for the simmer, out before blending — quiet umami depth.",
+    "A few drops of sherry vinegar at the very end sharpens the whole bowl."
+  ],
+  "pairings": ["Grilled cheese with sharp cheddar"],
+  "pairsWith": ["basil-oil", "croque-monsieur"],
+  "variations": ["Vegetable broth for a meat-free version."]
+}

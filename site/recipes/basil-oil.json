@@ -1,0 +1,39 @@
+{
+  "id": "basil-oil",
+  "title": "Basil Oil",
+  "description": "Her signature — jewel-green finishing oil for tomato soup, eggs, burrata, anything.",
+  "tags": ["component", "vegetarian"],
+  "servings": 6,
+  "activeMinutes": 10,
+  "totalMinutes": 10,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Cody's Claude chat, imported 2026-08-08",
+  "ingredientGroups": [
+    {
+      "name": null,
+      "items": [
+        { "qty": 1, "unit": "cup", "item": "basil leaves", "note": "packed" },
+        { "qty": 0.5, "unit": "cup", "item": "neutral oil" },
+        { "qty": null, "unit": null, "item": "fine salt", "note": "a pinch" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Blanch the basil in boiling water for 10 seconds, shock in ice water, then squeeze bone dry.",
+      "why": "Ten seconds of heat kills the enzymes that would turn the oil muddy brown, and the ice shock locks the chlorophyll bright green." },
+    { "text": "Blend the basil with the oil and a pinch of salt until vivid green, about 45 seconds." },
+    { "text": "Strain through a fine sieve without pressing the solids.",
+      "why": "Pressing forces fine particles through and clouds the oil. Let gravity work and you get a jewel-clear green." }
+  ],
+  "notes": [
+    { "title": "Storage", "body": "Stays vividly green about 2 days in the fridge. Bring to room temperature before drizzling — cold oil sits in blobs." }
+  ],
+  "plating": "Always last, always off the heat — drizzle in a spiral so it pools in emerald islands instead of blending in.",
+  "elevations": [
+    "Swap a third of the basil for parsley — steadier green, softer flavor."
+  ],
+  "pairings": [],
+  "pairsWith": ["tomato-soup"],
+  "variations": []
+}

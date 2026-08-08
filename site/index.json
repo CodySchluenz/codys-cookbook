@@ -1,5 +1,15 @@
 [
   {
+    "id": "basil-oil",
+    "title": "Basil Oil",
+    "description": "Her signature — jewel-green finishing oil for tomato soup, eggs, burrata, anything.",
+    "tags": ["component", "vegetarian"],
+    "totalMinutes": 10,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": ["basil leaves", "neutral oil", "fine salt"]
+  },
+  {
     "id": "cacio-e-pepe",
     "title": "Cacio e Pepe",
     "description": "Three ingredients, one emulsion. The technique recipe.",
@@ -8,6 +18,16 @@
     "difficulty": "medium",
     "photo": null,
     "ingredients": ["spaghetti or tonnarelli", "Pecorino Romano", "black peppercorns", "salt"]
+  },
+  {
+    "id": "croque-monsieur",
+    "title": "Croque Monsieur",
+    "description": "Mornay-crowned, pan-crisped, broiler-finished — the proper one, with the layering that matters.",
+    "tags": ["sandwich", "stovetop", "oven"],
+    "totalMinutes": 50,
+    "difficulty": "medium",
+    "photo": null,
+    "ingredients": ["butter", "all-purpose flour", "whole milk", "Gruyère", "Parmesan", "nutmeg", "salt and white pepper", "pain de mie or good white bread", "butter", "ham", "Gruyère", "Dijon mustard"]
   },
   {
     "id": "pan-seared-ribeye",
@@ -20,13 +40,13 @@
     "ingredients": ["ribeye", "neutral oil", "butter", "thyme sprigs", "garlic cloves", "kosher salt", "flaky salt"]
   },
   {
-    "id": "tomato-soup-basil-oil",
-    "title": "Tomato Soup with Basil Oil",
-    "description": "Silky roasted-tomato soup finished with bright green basil oil.",
-    "tags": ["soup", "vegetarian", "weeknight"],
-    "totalMinutes": 50,
+    "id": "tomato-soup",
+    "title": "Tomato Soup",
+    "description": "San Marzano tomato soup with bloomed spices and a monter au beurre finish.",
+    "tags": ["soup", "stovetop", "weeknight"],
+    "totalMinutes": 60,
     "difficulty": "easy",
     "photo": null,
-    "ingredients": ["ripe tomatoes", "yellow onion", "garlic cloves", "olive oil", "vegetable stock", "heavy cream", "salt and black pepper", "basil leaves", "neutral oil", "fine salt"]
+    "ingredients": ["butter", "butter", "yellow onion", "garlic cloves", "tomato paste", "dried basil", "dried oregano", "smoked paprika", "San Marzano whole peeled tomatoes", "chicken broth", "heavy cream", "sugar", "salt and black pepper", "red pepper flakes", "basil oil"]
   }
 ]

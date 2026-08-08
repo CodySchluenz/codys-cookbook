@@ -1,0 +1,70 @@
+{
+  "id": "croque-monsieur",
+  "title": "Croque Monsieur",
+  "description": "Mornay-crowned, pan-crisped, broiler-finished — the proper one, with the layering that matters.",
+  "tags": ["sandwich", "stovetop", "oven"],
+  "servings": 6,
+  "activeMinutes": 45,
+  "totalMinutes": 50,
+  "difficulty": "medium",
+  "photo": null,
+  "source": "Cody's Claude chat, imported 2026-08-08",
+  "ingredientGroups": [
+    {
+      "name": "Mornay (cheese béchamel)",
+      "items": [
+        { "qty": 6, "unit": "tbsp", "item": "butter" },
+        { "qty": 6, "unit": "tbsp", "item": "all-purpose flour" },
+        { "qty": 3, "unit": "cups", "item": "whole milk", "note": "warmed" },
+        { "qty": 1.5, "unit": "cups", "item": "Gruyère", "note": "grated" },
+        { "qty": 6, "unit": "tbsp", "item": "Parmesan", "note": "grated" },
+        { "qty": null, "unit": null, "item": "nutmeg", "note": "a pinch" },
+        { "qty": null, "unit": null, "item": "salt and white pepper", "note": "to taste" }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        { "qty": 12, "unit": "slices", "item": "pain de mie or good white bread" },
+        { "qty": 6, "unit": "tbsp", "item": "butter", "note": "softened, for the outsides" },
+        { "qty": 12, "unit": "slices", "item": "ham", "note": "quality Paris or Black Forest — up to 18 slices" },
+        { "qty": 3, "unit": "cups", "item": "Gruyère", "note": "grated, divided" },
+        { "qty": 6, "unit": "tsp", "item": "Dijon mustard", "note": "optional but recommended" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Melt 6 tbsp butter in a saucepan over medium heat. Add the flour and whisk constantly 1-2 minutes without letting it color.", "minutes": 2,
+      "why": "This cooks off the raw flour taste while keeping the roux blond — a browned roux tastes great but loses thickening power and stains the sauce." },
+    { "text": "Add the warm milk gradually, whisking the whole time to keep it lump-free." ,
+      "why": "Warm milk added slowly to a hot roux disperses smoothly. Cold milk dumped in shocks the starch into clumps you can never fully whisk out." },
+    { "text": "Cook, stirring frequently, until it coats the back of a spoon, 6-8 minutes.", "minutes": 8,
+      "why": "The starch needs a gentle simmer to fully burst and thicken. Coat-the-spoon (nappe) is the checkpoint — it must be thick enough to sit on top of a sandwich." },
+    { "text": "Off the heat: stir in 1½ cups Gruyère and the Parmesan until melted. Season with nutmeg, salt, and white pepper. Set aside.",
+      "why": "Off the heat, the cheese melts creamy. On the heat, its proteins seize and the sauce turns oily and stringy." },
+    { "text": "Heat the oven to 400°F. Butter one side of every bread slice — these are the OUTSIDES." },
+    { "text": "Build each sandwich on an unbuttered face: Dijon, a thin swipe of Mornay if you like, a generous handful of Gruyère, 2-3 folded ham slices, another handful of Gruyère. Cap with the second slice, buttered side facing out.",
+      "why": "Cheese on both sides of the ham glues the sandwich shut and shields the bread from the ham's moisture. Butter on the outside is what fries." },
+    { "text": "Heat a large skillet over medium. In batches — never crowded — cook buttered-side down until golden, 3-4 minutes.", "minutes": 4,
+      "why": "Crowding drops the pan temperature and the bread steams soft instead of frying crisp." },
+    { "text": "Flip carefully and brown the second side, 3-4 minutes, then move the sandwiches to a baking sheet.", "minutes": 4 },
+    { "text": "Spread a generous layer of Mornay across the entire top of each sandwich and shower with the remaining Gruyère.",
+      "why": "Most of the sauce belongs on top — it's what broils into the signature bubbly golden crust." },
+    { "text": "Bake 5 minutes.", "minutes": 5 },
+    { "text": "Broil 2-3 minutes until bubbly and golden. Do not walk away.", "minutes": 3,
+      "why": "Under a broiler, milk sugars and cheese go from golden to burnt in seconds." },
+    { "text": "Rest 1-2 minutes before cutting.",
+      "why": "A short rest lets the cheese set slightly so the middle doesn't pour out at the first cut." }
+  ],
+  "notes": [
+    { "title": "Mornay ahead", "body": "The sauce holds 2 days refrigerated. Rewarm gently and loosen with a splash of milk until spreadable again." }
+  ],
+  "plating": "Cut on the diagonal, stack the halves slightly offset, sharp green salad or a bowl of tomato soup alongside.",
+  "elevations": [
+    "Swap half the Gruyère for Comté — nuttier, deeper.",
+    "A fried egg on top: instant croque madame."
+  ],
+  "pairings": ["Bitter-greens salad with a sharp vinaigrette"],
+  "pairsWith": ["tomato-soup"],
+  "variations": []
+}
