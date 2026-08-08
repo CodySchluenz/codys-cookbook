@@ -120,6 +120,7 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 
 - Header: title, description, meta row (servings, active/total time, difficulty, tags).
 - **Serving scaler**: ½× / 1× / 2× buttons plus a custom stepper. Scales all numeric quantities; display uses kitchen-friendly fractions (0.75 → "¾", 1.5 → "1½"). Non-numeric quantities untouched.
+- **Photo**: when `photo` is set, the recipe page shows it as a hero image under the top bar (home cards already thumbnail it). Photo workflow (2026-08-08): files live at `site/photos/<recipe-id>.jpg`, JPEG, max ~1600px wide / ~300KB — `scripts/prep-photo.ps1` (PowerShell + .NET, no npm deps) resizes on the PC. From the phone, photos are uploaded via GitHub (app or web: `site/photos/` → Add file) and the chef wires the recipe field afterward. Because non-JSON assets are cache-first in the SW, a *replacement* photo must get a new filename (`<id>-2.jpg`); documented in add-recipe.
 - **You'll need**: the `equipment` list as a compact line above the ingredients — visible before any commitment is made.
 - **Ingredients**: two views behind a segmented toggle, both tappable checklists with independently persisted check state:
   - **By component** (default): grouped by `ingredientGroups`, for cooking.
