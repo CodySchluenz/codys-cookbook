@@ -1,0 +1,48 @@
+{
+  "id": "tomato-soup-basil-oil",
+  "title": "Tomato Soup with Basil Oil",
+  "description": "Silky roasted-tomato soup finished with bright green basil oil.",
+  "tags": ["soup", "vegetarian", "weeknight"],
+  "servings": 2,
+  "activeMinutes": 25,
+  "totalMinutes": 50,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Sample recipe — replace with the real version from a starred chat",
+  "ingredientGroups": [
+    {
+      "name": "Soup",
+      "items": [
+        { "qty": 2, "unit": "lb", "item": "ripe tomatoes", "note": "halved" },
+        { "qty": 1, "unit": null, "item": "yellow onion", "note": "quartered" },
+        { "qty": 4, "unit": null, "item": "garlic cloves", "note": "peeled, whole" },
+        { "qty": 3, "unit": "tbsp", "item": "olive oil" },
+        { "qty": 1, "unit": "cup", "item": "vegetable stock" },
+        { "qty": 2, "unit": "tbsp", "item": "heavy cream", "note": "optional" },
+        { "qty": null, "unit": null, "item": "salt and black pepper", "note": "to taste" }
+      ]
+    },
+    {
+      "name": "Basil oil",
+      "items": [
+        { "qty": 1, "unit": "cup", "item": "basil leaves", "note": "packed" },
+        { "qty": 0.5, "unit": "cup", "item": "neutral oil" },
+        { "qty": null, "unit": null, "item": "fine salt", "note": "a pinch" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Heat the oven to 425°F. Toss tomatoes, onion, and garlic with olive oil and a big pinch of salt on a sheet pan, cut sides up.", "minutes": 5 },
+    { "text": "Roast until the edges char and the tomatoes collapse, about 30 minutes.", "minutes": 30 },
+    { "text": "Meanwhile, make the basil oil: blanch basil in boiling water for 10 seconds, shock in ice water, squeeze bone dry.", "minutes": 3 },
+    { "text": "Blend the basil with the neutral oil and a pinch of salt until vivid green, about 45 seconds. Strain through a fine sieve without pressing." },
+    { "text": "Blend the roasted vegetables with the stock until completely smooth. Work in batches and leave the blender lid vented — hot liquids erupt." },
+    { "text": "Return to the pot, warm gently, and stir in the cream if using. Season — it usually wants more salt than you think and a crack of pepper.", "minutes": 5 }
+  ],
+  "notes": [
+    { "title": "Why blanch the basil", "body": "Ten seconds of boiling water kills the enzymes that turn basil oil army-green and muddy. The ice shock locks the chlorophyll. Skip it and the oil tastes fine but looks dull by tomorrow." },
+    { "title": "Straining without pressing", "body": "Pressing the solids pushes fine particles through and clouds the oil. Let gravity work for ten minutes — the payoff is a jewel-clear green." }
+  ],
+  "plating": "Wide shallow bowls. Pour the soup, then spoon basil oil in a broken ring — it should pool in emerald islands, not blend in. One basil leaf dead center.",
+  "variations": ["Add a parmesan rind while the soup warms for extra depth (remove before serving)."]
+}

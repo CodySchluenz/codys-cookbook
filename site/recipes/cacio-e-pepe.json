@@ -1,0 +1,35 @@
+{
+  "id": "cacio-e-pepe",
+  "title": "Cacio e Pepe",
+  "description": "Three ingredients, one emulsion. The technique recipe.",
+  "tags": ["pasta", "vegetarian", "stovetop", "weeknight"],
+  "servings": 2,
+  "activeMinutes": 20,
+  "totalMinutes": 20,
+  "difficulty": "medium",
+  "photo": null,
+  "source": "Sample recipe — replace with the real version from a starred chat",
+  "ingredientGroups": [
+    {
+      "name": null,
+      "items": [
+        { "qty": 8, "unit": "oz", "item": "spaghetti or tonnarelli" },
+        { "qty": 4, "unit": "oz", "item": "Pecorino Romano", "note": "finely grated, room temp" },
+        { "qty": 2, "unit": "tsp", "item": "black peppercorns", "note": "coarsely cracked" },
+        { "qty": null, "unit": null, "item": "salt", "note": "for the pasta water — go light, the cheese is salty" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Toast the cracked pepper in a dry pan over medium heat until fragrant, about 1 minute.", "minutes": 1 },
+    { "text": "Boil the pasta in shallow, lightly salted water — you want it starchy. Pull it 2 minutes shy of the package time.", "minutes": 8 },
+    { "text": "While it boils: mash the pecorino with a ladle of cooled pasta water into a thick paste. This is the emulsion base — no clumps." },
+    { "text": "Transfer pasta to the pepper pan with a splash of pasta water and finish cooking over low heat, tossing.", "minutes": 2 },
+    { "text": "Kill the heat. Wait 30 seconds — above 150°F the cheese seizes. Add the pecorino paste and toss hard until glossy, loosening with pasta water a spoon at a time." }
+  ],
+  "notes": [
+    { "title": "Why the water temperature matters", "body": "Pecorino proteins clump above ~150°F. The pause off heat plus the starchy water is the whole trick — starch coats the cheese proteins so they emulsify instead of seizing into strings." }
+  ],
+  "plating": "Twirl into a tight nest with tongs, pour any pan sauce over, dust with pecorino and one more crack of pepper.",
+  "variations": ["Add 1 tbsp butter with the cheese paste for training wheels — more stable emulsion, slightly less sharp."]
+}

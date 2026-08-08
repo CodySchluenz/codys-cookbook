@@ -1,0 +1,40 @@
+{
+  "id": "pan-seared-ribeye",
+  "title": "Pan-Seared Ribeye",
+  "description": "Butter-basted, dry-brined the night before, rested properly.",
+  "tags": ["beef", "stovetop", "weeknight"],
+  "servings": 2,
+  "activeMinutes": 20,
+  "totalMinutes": 45,
+  "difficulty": "medium",
+  "photo": null,
+  "source": "Sample recipe — replace with the real version from a starred chat",
+  "ingredientGroups": [
+    {
+      "name": null,
+      "items": [
+        { "qty": 1, "unit": "lb", "item": "ribeye", "note": "one thick steak, about 1½ in" },
+        { "qty": 2, "unit": "tbsp", "item": "neutral oil", "note": "high smoke point" },
+        { "qty": 3, "unit": "tbsp", "item": "butter" },
+        { "qty": 3, "unit": null, "item": "thyme sprigs" },
+        { "qty": 2, "unit": null, "item": "garlic cloves", "note": "smashed, skin on" },
+        { "qty": null, "unit": null, "item": "kosher salt", "note": "the night before" },
+        { "qty": null, "unit": null, "item": "flaky salt", "note": "to finish" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "The night before: salt the steak generously on all sides and refrigerate uncovered on a rack." },
+    { "text": "Pull the steak 45 minutes before cooking so it loses the fridge chill.", "minutes": 45 },
+    { "text": "Heat oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.", "minutes": 3 },
+    { "text": "Flip. Sear the second side 3 minutes, then flip every minute for even crust.", "minutes": 3 },
+    { "text": "Drop to medium. Add butter, thyme, and garlic; tilt the pan and baste continuously until 125°F internal for medium-rare.", "minutes": 4 },
+    { "text": "Rest on a warm plate, loosely tented, 8 minutes — the carryover finishes it.", "minutes": 8 }
+  ],
+  "notes": [
+    { "title": "Why dry brine overnight", "body": "Salt pulls moisture out, dissolves, and gets reabsorbed, seasoning deep instead of just the surface. The dry surface is also what makes the crust possible — wet steak steams." },
+    { "title": "Flip often after the first sear", "body": "Once each face has crust, frequent flipping cooks the interior more evenly than one long sear per side — the gradient stays shallow, so less gray band." }
+  ],
+  "plating": "Slice against the grain, fan on a warm plate, spoon over the thyme-garlic butter, finish with flaky salt.",
+  "variations": []
+}

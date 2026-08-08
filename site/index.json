@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cacio-e-pepe",
+    "title": "Cacio e Pepe",
+    "description": "Three ingredients, one emulsion. The technique recipe.",
+    "tags": ["pasta", "vegetarian", "stovetop", "weeknight"],
+    "totalMinutes": 20,
+    "difficulty": "medium",
+    "photo": null,
+    "ingredients": ["spaghetti or tonnarelli", "Pecorino Romano", "black peppercorns", "salt"]
+  },
+  {
+    "id": "pan-seared-ribeye",
+    "title": "Pan-Seared Ribeye",
+    "description": "Butter-basted, dry-brined the night before, rested properly.",
+    "tags": ["beef", "stovetop", "weeknight"],
+    "totalMinutes": 45,
+    "difficulty": "medium",
+    "photo": null,
+    "ingredients": ["ribeye", "neutral oil", "butter", "thyme sprigs", "garlic cloves", "kosher salt", "flaky salt"]
+  },
+  {
+    "id": "tomato-soup-basil-oil",
+    "title": "Tomato Soup with Basil Oil",
+    "description": "Silky roasted-tomato soup finished with bright green basil oil.",
+    "tags": ["soup", "vegetarian", "weeknight"],
+    "totalMinutes": 50,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": ["ripe tomatoes", "yellow onion", "garlic cloves", "olive oil", "vegetable stock", "heavy cream", "salt and black pepper", "basil leaves", "neutral oil", "fine salt"]
+  }
+]
