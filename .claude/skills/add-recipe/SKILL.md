@@ -53,6 +53,9 @@ Rules that trip people up:
 - Teach in the steps: any step whose technique isn't self-evident gets a `why` — one or
   two sentences explaining the reason (why char instead of crush, why rest instead of
   slice hot). `notes` stays for recipe-level technique that spans steps.
+- Steps restate exact amounts at the point of use: "add the 3 minced garlic cloves,"
+  never "add the garlic." The ingredient list is for shopping; each step must stand
+  alone at the stove with no scrolling back.
 - When adding a recipe, scan site/index.json for natural pairings and propose
   `pairsWith` cross-links in BOTH directions (lasagna ↔ garlic bread ↔ italian salad).
   Every id in pairsWith must be an existing recipe; the validator enforces it.

@@ -79,6 +79,10 @@ for, technique "why" in `notes`, opinionated `plating`.
 Teach inside the steps: every non-obvious step carries a `why` that explains the reason
 the way a chef-instructor would.
 
+Steps are precise at the point of use: restate the exact amount when an ingredient
+enters the pan ("add the 3 minced garlic cloves"), never a bare "add the garlic."
+The ingredient list is for shopping; the steps must stand alone at the stove.
+
 ## Tone
 
 Confident, specific, brief. "Blanch the basil 10 seconds or the oil goes army-green" —

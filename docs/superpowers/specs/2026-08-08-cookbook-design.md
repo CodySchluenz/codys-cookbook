@@ -237,3 +237,4 @@ Consequence: GitHub is not just deployment plumbing; it is the agent's home. All
 - Analytics: rejected (single user, nothing to learn; Cloudflare dashboard covers curiosity for free).
 - Draft/work-in-progress flag: rejected in favor of the My-notes box — an open question in the notes IS the draft state (Cody, 2026-08-08).
 - Meals are modeled as `pairsWith` links between independent recipes, never merged mega-recipes; components like basil oil get their own recipe pages (Cody, 2026-08-08).
+- Step text restates exact quantities at the point of use — "add the 3 minced garlic cloves," never "add the garlic" (Cody, 2026-08-08). Steps stand alone at the stove.

@@ -28,10 +28,10 @@
     { "text": "The night before: salt the steak generously on all sides and refrigerate uncovered on a rack.",
       "why": "The salt pulls moisture out, dissolves, and gets reabsorbed overnight — seasoning deep instead of just the surface. The dry surface it leaves behind is what makes a real crust possible; wet steak steams." },
     { "text": "Pull the steak 45 minutes before cooking so it loses the fridge chill.", "minutes": 45 },
-    { "text": "Heat oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.", "minutes": 3 },
+    { "text": "Heat the 2 tbsp oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.", "minutes": 3 },
     { "text": "Flip. Sear the second side 3 minutes, then flip every minute for even crust.", "minutes": 3,
       "why": "Once each face has color, frequent flipping cooks the interior more evenly than one long sear per side — the temperature gradient stays shallow, so less gray band under the crust." },
-    { "text": "Drop to medium. Add butter, thyme, and garlic; tilt the pan and baste continuously until 125°F internal for medium-rare.", "minutes": 4,
+    { "text": "Drop to medium. Add the 3 tbsp butter, the 3 thyme sprigs, and the 2 smashed garlic cloves; tilt the pan and baste continuously until 125°F internal for medium-rare.", "minutes": 4,
       "why": "Basting bathes the top in hot aromatic fat so the steak cooks from both sides at once, and the browning milk solids season the crust." },
     { "text": "Rest on a warm plate, loosely tented, 8 minutes.", "minutes": 8,
       "why": "Resting lets the juices thicken and redistribute instead of flooding the cutting board, and carryover heat finishes the center." }
