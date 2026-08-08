@@ -53,12 +53,16 @@ Each recipe is one JSON file: `recipes/<id>.json`. Structured data (not Markdown
     }
   ],
   "steps": [
-    { "text": "Sear undisturbed until deeply browned, 3 minutes per side.", "minutes": 6 }
+    { "text": "Sear undisturbed until deeply browned, 3 minutes per side.", "minutes": 6,
+      "why": "A hard, undisturbed sear builds the crust; moving the steak early tears it off." }
   ],
   "notes": [
     { "title": "Why dry brine", "body": "Salt overnight pulls moisture out, then back in..." }
   ],
   "plating": "Slice against the grain, fan on a warm plate, spoon over butter, finish with flaky salt.",
+  "elevations": ["Scrape fresh horseradish over the resting butter."],
+  "pairings": ["Charred broccolini", "A big Zinfandel"],
+  "pairsWith": ["garlic-bread"],
   "variations": []
 }
 ```
@@ -69,9 +73,13 @@ Field rules:
 - `qty`: number or `null`. Numeric quantities scale with the serving scaler; `null` ("to taste") renders as-is and never scales.
 - `unit`: string (e.g., `"oz"`, `"lb"`, `"cup"`, `"tbsp"`) or `null` for count items — "2 eggs" is `{ "qty": 2, "unit": null, "item": "eggs" }`. **Imperial units only** (oz, lb, cups, tbsp, tsp) and temperatures in °F — metric sources get converted on import, never stored.
 - `steps[].minutes`: number or absent. Present → that step renders a tap-to-start countdown timer.
+- `steps[].why`: string or absent. The teaching layer — any step whose technique isn't self-evident explains its reason in one or two sentences (why char instead of crush, why rest instead of slice). Rendered as a highlighted callout inside the step card. Deeper cross-step technique still lives in `notes`.
 - `difficulty`: `"easy" | "medium" | "project"`.
 - `photo`: path under `photos/` or `null`.
 - `plating`, `variations`, `source`, `notes`: optional; `ingredientGroups[].name` is `null` for ungrouped recipes.
+- `elevations` (string array, optional): stored upgrade ideas — the chef's "extras" made permanent on the page.
+- `pairings` (string array, optional): free-text accompaniments (sides, wine).
+- `pairsWith` (string array of recipe ids, optional): cross-links to other recipes on the site that make a meal together (lasagna ↔ garlic bread ↔ italian salad). Validated: every id must exist, no self-reference. Rendered as tappable link cards. When adding a recipe, the librarian scans the index for natural pairings and proposes links in both directions.
 
 `index.json` is the home-screen index: an array of `{ id, title, description, tags, totalMinutes, difficulty, photo, ingredients }`, where `ingredients` is a flat array of item-name strings so home-screen search can match on them ("what can I make with leeks"). It is maintained by the `add-recipe` skill, always in sync with `recipes/`.
 
@@ -111,11 +119,15 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 
 - Header: title, description, meta row (servings, active/total time, difficulty, tags).
 - **Serving scaler**: ½× / 1× / 2× buttons plus a custom stepper. Scales all numeric quantities; display uses kitchen-friendly fractions (0.75 → "¾", 1.5 → "1½"). Non-numeric quantities untouched.
-- **Ingredients**: tappable checklist, grouped by `ingredientGroups`. Checked items dim.
+- **Ingredients**: two views behind a segmented toggle, both tappable checklists with independently persisted check state:
+  - **By component** (default): grouped by `ingredientGroups`, for cooking.
+  - **Shopping list**: one row per distinct ingredient (case-insensitive name match) with quantities summed across groups — same-unit amounts add together ("4 + 2 garlic cloves" → "6"); different units join with "+" ("1 cup + 2 tbsp"); to-taste items show without amounts. Scales with the serving scaler. This is the grocery-store view.
 - **Steps**: large numbered cards, tap to mark done (dims and collapses slightly). Current position always obvious.
 - **Step timers**: steps with `minutes` show a timer button with the duration. Tap → inline countdown. Completion → audible beep + visual flash + vibration (where supported). Timers compute remaining time from wall-clock timestamps so backgrounding the app doesn't drift them. Timer state is in-memory only; a page reload clears it (accepted).
 - **Plating**: if present, rendered as a distinct final card after the steps.
-- **Notes**: technique notes rendered as collapsible cards below plating.
+- **Elevate it**: `elevations` rendered as cards after plating.
+- **Pairs well with**: `pairsWith` recipe links (tappable, navigate in-app) followed by free-text `pairings` cards.
+- **Notes**: technique notes rendered as collapsible cards below.
 - **Wake lock**: requested via the Screen Wake Lock API whenever a recipe screen is open (iOS Safari 16.4+); released on navigation back; re-acquired on `visibilitychange` when returning to the app. If unavailable, everything else works normally.
 - Checklist/step state persists in `localStorage` per recipe so an accidental navigation or reload doesn't lose your place mid-cook; a "reset" control clears it.
 
