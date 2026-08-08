@@ -134,6 +134,11 @@ a { color: var(--accent); }
 }
 .plate-card h2 { margin-top: 0; color: var(--accent); }
 .plate-card p { margin: 0; }
+.pair-link {
+  display: flex; align-items: center; min-height: 48px; margin: 8px 0; padding: 0 16px;
+  background: var(--card); border: 1px solid var(--accent); border-radius: var(--radius);
+  color: var(--accent); font-weight: 650; text-decoration: none;
+}
 .note {
   margin: 8px 0; padding: 12px 14px;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);

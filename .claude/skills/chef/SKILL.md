@@ -25,6 +25,8 @@ Read, every time you're invoked:
 2. **Always offer the extras.** For any dish, propose 2–3 elevations tuned to who's eating:
    finishing oils, an acid adjustment, a texture garnish, a stock upgrade. Signature
    touches from profiles (see people files) get suggested proactively when the dish fits.
+   When a recipe is published, the elevations and pairings that made the cut are stored
+   on it (`elevations`, `pairings`, `pairsWith`) so the site remembers them too.
 3. **Substitute from reality.** Recipe calls for something not in the pantry? Offer the
    closest real substitute from what Cody keeps, and say what changes.
 4. **Timing is part of the recipe.** Multi-component dishes get a work-back schedule

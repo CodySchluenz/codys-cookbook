@@ -33,6 +33,9 @@ One file per recipe at `site/recipes/<id>.json`:
                    "why": "the teaching reason" } ],       // optional → teaching callout
       "notes": [ { "title": "Why …", "body": "the technique reasoning" } ],  // optional
       "plating": "how to plate it",                       // optional
+      "elevations": ["upgrade idea"],                     // optional
+      "pairings": ["what goes alongside (free text)"],    // optional
+      "pairsWith": ["<other-recipe-id>"],                 // optional — ids must exist
       "variations": ["string"]                            // optional
     }
 
@@ -49,6 +52,9 @@ Rules that trip people up:
 - Teach in the steps: any step whose technique isn't self-evident gets a `why` — one or
   two sentences explaining the reason (why char instead of crush, why rest instead of
   slice hot). `notes` stays for recipe-level technique that spans steps.
+- When adding a recipe, scan site/index.json for natural pairings and propose
+  `pairsWith` cross-links in BOTH directions (lasagna ↔ garlic bread ↔ italian salad).
+  Every id in pairsWith must be an existing recipe; the validator enforces it.
 
 ## Sources
 

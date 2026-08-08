@@ -136,6 +136,7 @@ async function renderRecipe(id) {
       : 'Could not load this recipe.', err);
     return;
   }
+  try { await loadIndex(); } catch { /* pairs links degrade to nothing offline */ }
   try {
     drawRecipe(r);
     await acquireWakeLock();
@@ -145,6 +146,18 @@ async function renderRecipe(id) {
 }
 
 const servingsLabel = (s, f) => `Serves ${formatQty(scaleQty(s, f))}`;
+
+function pairsHtml(r) {
+  const linked = (r.pairsWith ?? [])
+    .map((id) => (state.index ?? []).find((e) => e.id === id))
+    .filter(Boolean);
+  const texts = r.pairings ?? [];
+  if (!linked.length && !texts.length) return '';
+  return `<section><h2>Pairs well with</h2>
+    ${linked.map((e) => `<a class="pair-link" href="#/recipe/${esc(e.id)}">${esc(e.title)} →</a>`).join('')}
+    ${texts.map((t) => `<div class="note"><p>${esc(t)}</p></div>`).join('')}
+  </section>`;
+}
 
 function groupsHtml(r, done, f) {
   return r.ingredientGroups.map((g, gi) => `
@@ -208,6 +221,9 @@ function drawRecipe(r) {
     </section>
     <section><h2>Steps</h2><ol class="steps">${steps}</ol></section>
     ${r.plating ? `<section class="plate-card"><h2>Plating</h2><p>${esc(r.plating)}</p></section>` : ''}
+    ${(r.elevations ?? []).length ? `<section><h2>Elevate it</h2>${r.elevations.map((e) =>
+      `<div class="note"><p>${esc(e)}</p></div>`).join('')}</section>` : ''}
+    ${pairsHtml(r)}
     ${(r.notes ?? []).length ? `<section><h2>Notes</h2>${r.notes.map((n) =>
       `<details class="note"><summary>${esc(n.title)}</summary><p>${esc(n.body)}</p></details>`).join('')}</section>` : ''}
     ${(r.variations ?? []).length ? `<section><h2>Variations</h2>${r.variations.map((v) =>

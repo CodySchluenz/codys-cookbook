@@ -41,6 +41,12 @@ function checkRecipe(file, r) {
   if (r.plating !== undefined && r.plating !== null && !isStr(r.plating)) fail(file, 'plating must be a string');
   if (r.variations !== undefined && (!Array.isArray(r.variations) || !r.variations.every(isStr)))
     fail(file, 'variations must be a string array');
+  if (r.elevations !== undefined && (!Array.isArray(r.elevations) || !r.elevations.every(isStr)))
+    fail(file, 'elevations must be a string array');
+  if (r.pairings !== undefined && (!Array.isArray(r.pairings) || !r.pairings.every(isStr)))
+    fail(file, 'pairings must be a string array');
+  if (r.pairsWith !== undefined && (!Array.isArray(r.pairsWith) || !r.pairsWith.every(isStr)))
+    fail(file, 'pairsWith must be an array of recipe id strings');
 }
 
 const files = (await readdir('site/recipes')).filter((f) => f.endsWith('.json')).sort();
@@ -51,6 +57,13 @@ for (const file of files) {
   catch (e) { fail(file, `not valid JSON: ${e.message}`); continue; }
   checkRecipe(file, r);
   recipes.set(r.id, r);
+}
+
+for (const [id, r] of recipes) {
+  for (const pid of r.pairsWith ?? []) {
+    if (pid === id) fail(`${id}.json`, 'pairsWith must not reference itself');
+    else if (!recipes.has(pid)) fail(`${id}.json`, `pairsWith references unknown recipe "${pid}"`);
+  }
 }
 
 try {

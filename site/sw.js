@@ -1,6 +1,6 @@
 // Offline support. RULE: bump CACHE on ANY shell change (html/css/js/manifest/icons).
 // Recipe data is network-first, so content updates never require a bump.
-const CACHE = 'cookbook-v1';
+const CACHE = 'cookbook-v2';
 const SHELL = [
   './', './css/app.css', './js/app.js', './js/scale.js',
   './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
