@@ -77,6 +77,7 @@ Field rules:
 - `difficulty`: `"easy" | "medium" | "project"`.
 - `photo`: path under `photos/` or `null`.
 - `plating`, `variations`, `source`, `notes`: optional; `ingredientGroups[].name` is `null` for ungrouped recipes.
+- `changelog` (optional): `[{ "date": "YYYY-MM-DD", "note": "one human line" }]` — the recipe's revision history in cook terms, appended by the librarian on every publish/update, rendered newest-first as a History section. Git remains the full-fidelity layer (exact diffs, restores) — the chef surfaces it on request.
 - `equipment` (string array, optional): gear whose absence would stop the cook — "blender", "instant-read thermometer", "oven with broiler" — never universal utensils like knives and bowls. Cody cooks in different kitchens and wants no mid-recipe surprises (2026-08-08). Rendered as a "You'll need" line before the ingredients.
 - `elevations` (string array, optional): stored upgrade ideas — the chef's "extras" made permanent on the page.
 - `pairings` (string array, optional): free-text accompaniments (sides, wine).
@@ -235,6 +236,7 @@ Consequence: GitHub is not just deployment plumbing; it is the agent's home. All
 - Live pantry inventory: rejected as unmaintainable; staples file + ask-about-fresh instead.
 - All recipes use imperial units and °F exclusively (Cody's preference, 2026-08-08); metric sources are converted at import time.
 - Analytics: rejected (single user, nothing to learn; Cloudflare dashboard covers curiosity for free).
+- In-site photo upload: deferred (2026-08-08) — needs backend + auth; bundled with the potential in-site chef chat so one backend serves both. Phone path is GitHub upload.
 - Draft/work-in-progress flag: rejected in favor of the My-notes box — an open question in the notes IS the draft state (Cody, 2026-08-08).
 - Meals are modeled as `pairsWith` links between independent recipes, never merged mega-recipes; components like basil oil get their own recipe pages (Cody, 2026-08-08).
 - Step text restates exact quantities at the point of use — "add the 3 minced garlic cloves," never "add the garlic" (Cody, 2026-08-08). Steps stand alone at the stove.
