@@ -77,6 +77,7 @@ Field rules:
 - `difficulty`: `"easy" | "medium" | "project"`.
 - `photo`: path under `photos/` or `null`.
 - `plating`, `variations`, `source`, `notes`: optional; `ingredientGroups[].name` is `null` for ungrouped recipes.
+- `equipment` (string array, optional): gear whose absence would stop the cook — "blender", "instant-read thermometer", "oven with broiler" — never universal utensils like knives and bowls. Cody cooks in different kitchens and wants no mid-recipe surprises (2026-08-08). Rendered as a "You'll need" line before the ingredients.
 - `elevations` (string array, optional): stored upgrade ideas — the chef's "extras" made permanent on the page.
 - `pairings` (string array, optional): free-text accompaniments (sides, wine).
 - `pairsWith` (string array of recipe ids, optional): cross-links to other recipes on the site that make a meal together (lasagna ↔ garlic bread ↔ italian salad). Validated: every id must exist, no self-reference. Rendered as tappable link cards. When adding a recipe, the librarian scans the index for natural pairings and proposes links in both directions.
@@ -119,6 +120,7 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 
 - Header: title, description, meta row (servings, active/total time, difficulty, tags).
 - **Serving scaler**: ½× / 1× / 2× buttons plus a custom stepper. Scales all numeric quantities; display uses kitchen-friendly fractions (0.75 → "¾", 1.5 → "1½"). Non-numeric quantities untouched.
+- **You'll need**: the `equipment` list as a compact line above the ingredients — visible before any commitment is made.
 - **Ingredients**: two views behind a segmented toggle, both tappable checklists with independently persisted check state:
   - **By component** (default): grouped by `ingredientGroups`, for cooking.
   - **Shopping list**: one row per distinct ingredient (case-insensitive name match) with quantities summed across groups — same-unit amounts add together ("4 + 2 garlic cloves" → "6"); different units join with "+" ("1 cup + 2 tbsp"); to-taste items show without amounts. Scales with the serving scaler. This is the grocery-store view.
