@@ -324,3 +324,5 @@ document.addEventListener('visibilitychange', () => {
     acquireWakeLock();
   }
 });
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
