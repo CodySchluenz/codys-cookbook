@@ -453,52 +453,70 @@ function drawListSetup(wasBad) {
 
 function drawList(items) {
   app.innerHTML = `
-    <nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
+    <nav class="top-bar">
+      <a class="btn" href="#/">← Recipes</a>
+      <button id="list-refresh" class="btn subtle">Refresh</button>
+    </nav>
     <header><h1>Household list</h1>
       <p class="card-meta">Tap an item when it's bought. Everyone in the household sees the same list.</p>
     </header>
     <section class="list-form">
       <input id="list-add-in" class="search" type="text" placeholder="We're out of…" autocomplete="off">
+      <input id="list-note-in" class="search" type="text" placeholder="Note (optional) — brand, store, size…" autocomplete="off">
       <button id="list-add" class="btn-solid">Add</button>
     </section>
-    <section>
-      ${items.length ? items.map((it) => `
-        <button class="ing" data-listkey="${esc(it.key)}">
-          <span class="ing-name">${esc(it.item)}</span>
-          <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(whenLabel(it.addedAt))}</span>
-        </button>`).join('')
-      : '<p class="empty">Nothing needed. Nice.</p>'}
+    <section id="list-rows">
+      ${items.length ? items.map(listRowHtml).join('') : '<p class="empty">Nothing needed. Nice.</p>'}
     </section>
     ${mealBarHtml()}`;
+  document.getElementById('list-refresh').addEventListener('click', () => renderList());
   const input = document.getElementById('list-add-in');
+  const noteIn = document.getElementById('list-note-in');
   const add = async () => {
     const item = input.value.trim();
+    const note = noteIn.value.trim();
     if (!item) return;
     input.value = '';
+    noteIn.value = '';
     try {
-      await fetch('/api/list', {
+      const res = await fetch('/api/list', {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'x-household-key': localStorage.getItem('hkey') },
-        body: JSON.stringify({ item, addedBy: localStorage.getItem('hname') ?? '' }),
+        body: JSON.stringify({ item, note, addedBy: localStorage.getItem('hname') ?? '' }),
       });
-    } catch { /* renderList surfaces the state either way */ }
-    renderList();
+      if (!res.ok) { renderList(); return; }
+      const entry = await res.json();
+      items.push(entry);          // optimistic: trust the confirmed write, skip the laggy re-list
+      drawList(items);
+    } catch { renderList(); }
   };
   document.getElementById('list-add').addEventListener('click', add);
+  noteIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') add(); });
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') add(); });
   for (const el of app.querySelectorAll('.ing[data-listkey]')) {
     el.addEventListener('click', async () => {
       el.disabled = true;
+      const key = el.dataset.listkey;
+      const idx = items.findIndex((it) => it.key === key);
+      if (idx >= 0) items.splice(idx, 1);   // optimistic removal
+      drawList(items);
       try {
-        await fetch('/api/list', {
+        const res = await fetch('/api/list', {
           method: 'DELETE',
           headers: { 'content-type': 'application/json', 'x-household-key': localStorage.getItem('hkey') },
-          body: JSON.stringify({ key: el.dataset.listkey }),
+          body: JSON.stringify({ key }),
         });
-      } catch { /* fall through to re-render */ }
-      renderList();
+        if (!res.ok) renderList();
+      } catch { renderList(); }
     });
   }
+}
+
+function listRowHtml(it) {
+  return `<button class="ing" data-listkey="${esc(it.key)}">
+    <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
+    <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(whenLabel(it.addedAt))}</span>
+  </button>`;
 }
 
 async function renderTechnique(id) {

@@ -38,13 +38,13 @@ export default {
       if (url.pathname === '/api/list' && req.method === 'POST') {
         const body = await req.json().catch(() => null);
         const item = (body?.item ?? '').toString().trim().slice(0, 120);
+        const note = (body?.note ?? '').toString().trim().slice(0, 200);
         const addedBy = (body?.addedBy ?? '').toString().trim().slice(0, 40);
         if (!item) return json({ error: 'item required' }, 400);
         const key = `item:${Date.now()}:${crypto.randomUUID()}`;
-        await env.HOUSEHOLD.put(key, JSON.stringify({
-          item, addedBy, addedAt: new Date().toISOString(),
-        }));
-        return json({ key }, 201);
+        const entry = { item, note, addedBy, addedAt: new Date().toISOString() };
+        await env.HOUSEHOLD.put(key, JSON.stringify(entry));
+        return json({ key, ...entry }, 201);
       }
 
       if (url.pathname === '/api/list' && req.method === 'DELETE') {
