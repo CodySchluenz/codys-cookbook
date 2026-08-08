@@ -1,6 +1,7 @@
 // Cody's Cookbook — hash router + rendering. No framework, no build.
 // Screens: home (#/) and recipe (#/recipe/<id> — full version in Task 4).
 import { scaleQty, formatQty, shoppingList, combinedShopping } from './scale.js';
+import { groupHistory, recentAdds } from './history.js';
 
 const state = {
   index: null,          // parsed index.json, cached for the session
@@ -31,6 +32,7 @@ route();
 async function route() {
   const hash = location.hash || '#/';
   if (hash === '#/meal') { await renderMeal(); return; }
+  if (hash === '#/list/history') { await renderListHistory(); return; }
   if (hash === '#/list') { await renderList(); return; }
   const t = hash.match(/^#\/technique\/([a-z0-9-]+)$/);
   if (t) { await renderTechnique(t[1]); return; }
@@ -455,6 +457,7 @@ function drawList(items) {
   app.innerHTML = `
     <nav class="top-bar">
       <a class="btn" href="#/">← Recipes</a>
+      <a class="btn subtle" href="#/list/history">History</a>
       <button id="list-refresh" class="btn subtle">Refresh</button>
     </nav>
     <header><h1>Household list</h1>
@@ -517,6 +520,69 @@ function listRowHtml(it) {
     <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
     <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(whenLabel(it.addedAt))}</span>
   </button>`;
+}
+
+const dateLabel = (iso) => {
+  const t = Date.parse(iso ?? '');
+  return Number.isNaN(t) ? '' : new Date(t).toLocaleDateString([], { month: 'short', day: 'numeric' });
+};
+
+async function renderListHistory() {
+  releaseWakeLock();
+  document.title = 'List history';
+  if (!localStorage.getItem('hkey')) { drawListSetup(false); return; }
+  let entries;
+  try {
+    const res = await fetch('/api/history', { headers: { 'x-household-key': localStorage.getItem('hkey') } });
+    if (res.status === 401) { localStorage.removeItem('hkey'); drawListSetup(true); return; }
+    if (res.status === 503) {
+      app.innerHTML = errorCard('The household key isn\'t set up on the server yet — ask the chef.', { message: 'Not configured' });
+      return;
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    entries = await res.json();
+  } catch (err) {
+    app.innerHTML = errorCard(navigator.onLine === false
+      ? "You're offline — list history needs a connection."
+      : 'Could not reach the list history.', err);
+    return;
+  }
+  drawListHistory(entries);
+}
+
+function drawListHistory(entries) {
+  const trends = groupHistory(entries);
+  const recent = recentAdds(entries, 20);
+  app.innerHTML = `
+    <nav class="top-bar"><a class="btn" href="#/list">← List</a></nav>
+    <header><h1>List history</h1>
+      <p class="card-meta">Everything ever added, and how often it comes back.</p>
+    </header>
+    ${entries.length ? `
+    <section>
+      <h2>Trends</h2>
+      ${trends.map(trendRowHtml).join('')}
+    </section>
+    <section>
+      <h2>Recent</h2>
+      ${recent.map(recentRowHtml).join('')}
+    </section>` : '<p class="empty">History starts today — trends grow as you add.</p>'}
+    ${mealBarHtml()}`;
+}
+
+function trendRowHtml(g) {
+  // gapDays of 0 (several same-day adds) is truthy-false on purpose: "~every 0 days" is noise
+  return `<div class="ing">
+    <span class="ing-name">${esc(g.name)}</span>
+    <span class="ing-qty">×${g.count}${g.lastAt ? ` · ${esc(dateLabel(g.lastAt))}` : ''}${g.gapDays ? ` · ~every ${g.gapDays} day${g.gapDays === 1 ? '' : 's'}` : ''}</span>
+  </div>`;
+}
+
+function recentRowHtml(it) {
+  return `<div class="ing">
+    <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
+    <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(dateLabel(it.addedAt))}</span>
+  </div>`;
 }
 
 async function renderTechnique(id) {
