@@ -24,7 +24,7 @@ Two halves:
 ## Non-goals
 
 - No authentication or user accounts.
-- No web backend or Claude API integration. Recipe generation happens in Claude Code sessions, not on the website. (This deliberately replaces the original "prompt box on the website" stretch goal.)
+- No web backend or Claude API integration. Recipe generation happens in Claude Code sessions, not on the website. (This deliberately replaces the original "prompt box on the website" stretch goal.) *Amended 2026-08-08: the household shopping list added the first minimal API (see its section) — cross-person shared state genuinely requires it. Recipe content and the chef remain backend-free.*
 - No live pantry inventory tracking (staples only; the chef asks about perishables).
 
 ## 1. Recipe data model
@@ -135,6 +135,16 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 - **Wake lock**: requested via the Screen Wake Lock API whenever a recipe screen is open (iOS Safari 16.4+); released on navigation back; re-acquired on `visibilitychange` when returning to the app. If unavailable, everything else works normally.
 - Checklist/step state persists in `localStorage` per recipe so an accidental navigation or reload doesn't lose your place mid-cook; a "reset" control clears it.
 - **My notes**: a free-text box on every recipe page (bottom), autosaved to `localStorage` per recipe. This is where mid-cook observations AND open questions live ("used 5 tbsp", "halve the scallions next time?") — it doubles as the recipe's work-in-progress state, which is why there is no separate draft flag. A **Send to chef** button copies a formatted blob (`Cook notes for <id> ("Title"): …`) for pasting into any chef session; the chef integrates the changes into the recipe JSON, answers the questions, publishes, and Cody taps **Clear**. Notes are device-local by design (static site, no backend); the paste step is the bridge.
+
+### Household shopping list (2026-08-08) — the first backend feature
+
+The first cross-person feature: Zoe notices the milk is out → adds it on the site → it appears on Cody's phone, timestamped and attributed. Device-local storage cannot do this, so the "no backend" rule is amended — deliberately and minimally:
+
+- `worker.js` (repo root) adds an API to the existing static-assets Worker: `GET/POST/DELETE /api/list`, backed by **Workers KV** (binding `HOUSEHOLD`), one KV key per entry (`item:<ms>:<uuid>` — adds never race), value `{item, addedBy, addedAt}`.
+- Auth: an `x-household-key` header checked with a **timing-safe hash comparison** against the `HOUSEHOLD_KEY` Worker secret (set by Cody via `wrangler secret put`; never in source). Each device stores the key + a "who is this" name in localStorage after a one-time setup form. 503 if the secret is unconfigured, 401 on mismatch.
+- The site gains `#/list`: add box, entries shown with "item · who · when", tap an entry to clear it (bought). Home screen links to it. The service worker **bypasses `/api/*` entirely** (never cached).
+- This list is the household "we're out of X" list — distinct from meal mode's recipe-derived shopping list. (Future: a "send meal list to household list" bridge.)
+- Non-goal remains: no accounts. The household key is shared-secret auth, appropriate for groceries; Cloudflare Access is the documented upgrade path if ever needed.
 
 ### Meal mode (2026-08-08)
 
