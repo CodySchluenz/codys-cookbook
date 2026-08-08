@@ -197,3 +197,13 @@ a { color: var(--accent); }
   margin-top: 48px; padding: 24px; text-align: center;
   background: var(--card); border: 1px solid var(--accent); border-radius: var(--radius);
 }
+
+@media print {
+  body { background: #fff; color: #000; padding: 0; }
+  .top-bar, .scaler, .ing-toggle, .step-timer, .notes-actions, .cook-notes,
+  .meal-bar, .search, .chips, #made-btn { display: none !important; }
+  .card, .step, .note, .plate-card, .equipment { border: none; background: none; }
+  .step { padding-left: 40px; }
+  a { color: #000; text-decoration: none; }
+  .pair-link { border: none; padding: 0; min-height: 0; }
+}

@@ -116,7 +116,7 @@ function cardHtml(e) {
     <div class="card-body">
       <h2>${esc(e.title)}</h2>
       <p>${esc(e.description)}</p>
-      <p class="card-meta">${e.totalMinutes} min · ${esc(e.difficulty)}</p>
+      <p class="card-meta">${e.totalMinutes} min · ${esc(e.difficulty)}${readMade(e.id).length ? ` · made ${readMade(e.id).length}×` : ''}</p>
     </div>
   </a>`;
 }
@@ -152,6 +152,11 @@ const readFactor = (id) => {
   const f = Number(localStorage.getItem('factor:' + id));
   return f >= 0.5 && f <= 4 ? f : 1;
 };
+const readMade = (id) => {
+  try { return JSON.parse(localStorage.getItem('made:' + id)) ?? []; } catch { return []; }
+};
+const madeLabel = (made) => made.length
+  ? `Made ${made.length}× · last ${made[made.length - 1].slice(0, 10)}` : '';
 const readMealShop = () => {
   try { return JSON.parse(localStorage.getItem('meal-shop')) ?? []; } catch { return []; }
 };
@@ -177,7 +182,7 @@ function flashButton(id, msg) {
 async function renderRecipe(id) {
   if (state.timerRecipeId !== id) stopAllTimers();
   state.timerRecipeId = id;
-  state.factor = 1;
+  state.factor = readFactor(id);
   state.ingView = 'groups';
   document.title = 'Loading…';
   let r;
@@ -293,6 +298,11 @@ function drawRecipe(r) {
     ${(r.changelog ?? []).length ? `<section><h2>History</h2>${[...r.changelog].reverse().map((c) =>
       `<p class="log-entry"><span class="log-date">${esc(c.date)}</span>${esc(c.note)}</p>`).join('')}</section>` : ''}
     <section>
+      <h2>Cooked it?</h2>
+      ${readMade(r.id).length ? `<p class="card-meta">${esc(madeLabel(readMade(r.id)))}</p>` : ''}
+      <button id="made-btn" class="btn-solid">I made this</button>
+    </section>
+    <section>
       <h2>My notes</h2>
       <textarea id="cook-notes" class="cook-notes" rows="4"
         placeholder="Jot anything — amounts to tweak, open questions, what you'd change…">${esc(readNotes(r.id))}</textarea>
@@ -340,6 +350,12 @@ function wireRecipe(r) {
     writeMeal();
     drawRecipe(r);
   });
+  document.getElementById('made-btn').addEventListener('click', () => {
+    const made = readMade(r.id);
+    made.push(new Date().toISOString());
+    localStorage.setItem('made:' + r.id, JSON.stringify(made));
+    drawRecipe(r);
+  });
   document.getElementById('scaler').addEventListener('click', (e) => {
     const b = e.target.closest('button');
     if (!b) return;
@@ -347,6 +363,7 @@ function wireRecipe(r) {
     if (v === 'minus') state.factor = Math.max(0.5, state.factor - 0.5);
     else if (v === 'plus') state.factor = Math.min(4, state.factor + 0.5);
     else state.factor = Number(v);
+    localStorage.setItem('factor:' + r.id, String(state.factor));
     drawRecipe(r); // re-render from original quantities — rounding never compounds
   });
   document.getElementById('ing-toggle').addEventListener('click', (e) => {
