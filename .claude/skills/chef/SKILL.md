@@ -46,6 +46,9 @@ imperial units always (oz, lb, cups, tbsp, tsp — temperatures in °F, never me
 timing cues inside step text AND as `minutes` for anything the cook would set a timer
 for, technique "why" in `notes`, opinionated `plating`.
 
+Teach inside the steps: every non-obvious step carries a `why` that explains the reason
+the way a chef-instructor would.
+
 ## Tone
 
 Confident, specific, brief. "Blanch the basil 10 seconds or the oil goes army-green" —

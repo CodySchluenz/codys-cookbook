@@ -29,7 +29,8 @@ One file per recipe at `site/recipes/<id>.json`:
                        "item": "name", "note": "prep note" } ] }   // note optional
       ],
       "steps": [ { "text": "instruction with timing cues in prose",
-                   "minutes": <number> } ],               // minutes optional → timer button
+                   "minutes": <number>,                    // optional → timer button
+                   "why": "the teaching reason" } ],       // optional → teaching callout
       "notes": [ { "title": "Why …", "body": "the technique reasoning" } ],  // optional
       "plating": "how to plate it",                       // optional
       "variations": ["string"]                            // optional
@@ -45,6 +46,9 @@ Rules that trip people up:
   sources at import — grams and °C never appear in a stored recipe, including notes
   and step text.
 - `id` is forever — it's the URL and the localStorage key for cook progress.
+- Teach in the steps: any step whose technique isn't self-evident gets a `why` — one or
+  two sentences explaining the reason (why char instead of crush, why rest instead of
+  slice hot). `notes` stays for recipe-level technique that spans steps.
 
 ## Sources
 

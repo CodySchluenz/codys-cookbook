@@ -34,6 +34,7 @@ function checkRecipe(file, r) {
   else for (const [i, s] of r.steps.entries()) {
     if (!isStr(s.text)) fail(file, `step ${i}: missing text`);
     if (s.minutes !== undefined && (!isNum(s.minutes) || s.minutes <= 0)) fail(file, `step ${i}: minutes must be a positive number`);
+    if (s.why !== undefined && !isStr(s.why)) fail(file, `step ${i}: why must be a string`);
   }
   if (r.notes !== undefined && (!Array.isArray(r.notes) || !r.notes.every((n) => isStr(n?.title) && isStr(n?.body))))
     fail(file, 'notes must be an array of {title, body}');

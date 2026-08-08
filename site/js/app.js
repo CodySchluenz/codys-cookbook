@@ -159,6 +159,7 @@ function drawRecipe(r) {
   const steps = r.steps.map((s, i) => `
     <li class="step ${done.steps.includes(i) ? 'done' : ''}" data-step="${i}">
       <button class="step-text">${esc(s.text)}</button>
+      ${s.why ? `<p class="step-why">${esc(s.why)}</p>` : ''}
       ${s.minutes ? `<button class="step-timer" data-step="${i}" data-minutes="${s.minutes}">⏱ ${s.minutes} min</button>` : ''}
     </li>`).join('');
   app.innerHTML = `

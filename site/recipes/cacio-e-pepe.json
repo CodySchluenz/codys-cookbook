@@ -21,14 +21,14 @@
     }
   ],
   "steps": [
-    { "text": "Toast the cracked pepper in a dry pan over medium heat until fragrant, about 1 minute.", "minutes": 1 },
-    { "text": "Boil the pasta in shallow, lightly salted water — you want it starchy. Pull it 2 minutes shy of the package time.", "minutes": 8 },
+    { "text": "Toast the cracked pepper in a dry pan over medium heat until fragrant, about 1 minute.", "minutes": 1,
+      "why": "Heat blooms the pepper's fat-soluble aromatics so they infuse the sauce instead of sitting on top of it." },
+    { "text": "Boil the pasta in shallow, lightly salted water — you want it starchy. Pull it 2 minutes shy of the package time.", "minutes": 8,
+      "why": "Shallow water concentrates the starch the pasta sheds, and that starchy water is the backbone of the emulsion — it IS the sauce." },
     { "text": "While it boils: mash the pecorino with a ladle of cooled pasta water into a thick paste. This is the emulsion base — no clumps." },
     { "text": "Transfer pasta to the pepper pan with a splash of pasta water and finish cooking over low heat, tossing.", "minutes": 2 },
-    { "text": "Kill the heat. Wait 30 seconds — above 150°F the cheese seizes. Add the pecorino paste and toss hard until glossy, loosening with pasta water a spoon at a time." }
-  ],
-  "notes": [
-    { "title": "Why the water temperature matters", "body": "Pecorino proteins clump above ~150°F. The pause off heat plus the starchy water is the whole trick — starch coats the cheese proteins so they emulsify instead of seizing into strings." }
+    { "text": "Kill the heat. Wait 30 seconds. Add the pecorino paste and toss hard until glossy, loosening with pasta water a spoon at a time.",
+      "why": "Above about 150°F pecorino's proteins seize into strings. The pause plus the starch coating lets the cheese melt into an emulsion instead of clumping." }
   ],
   "plating": "Twirl into a tight nest with tongs, pour any pan sauce over, dust with pecorino and one more crack of pepper.",
   "variations": ["Add 1 tbsp butter with the cheese paste for training wheels — more stable emulsion, slightly less sharp."]

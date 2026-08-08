@@ -33,15 +33,18 @@
   ],
   "steps": [
     { "text": "Heat the oven to 425°F. Toss tomatoes, onion, and garlic with olive oil and a big pinch of salt on a sheet pan, cut sides up.", "minutes": 5 },
-    { "text": "Roast until the edges char and the tomatoes collapse, about 30 minutes.", "minutes": 30 },
-    { "text": "Meanwhile, make the basil oil: blanch basil in boiling water for 10 seconds, shock in ice water, squeeze bone dry.", "minutes": 3 },
-    { "text": "Blend the basil with the neutral oil and a pinch of salt until vivid green, about 45 seconds. Strain through a fine sieve without pressing." },
-    { "text": "Blend the roasted vegetables with the stock until completely smooth. Work in batches and leave the blender lid vented — hot liquids erupt." },
+    { "text": "Roast until the edges char and the tomatoes collapse, about 30 minutes.", "minutes": 30,
+      "why": "Charring isn't burning — it's caramelization and Maillard browning driving off water and building deep roasted sweetness. Crushing raw tomatoes into a pot gives you acid with none of that roundness." },
+    { "text": "Meanwhile, make the basil oil: blanch basil in boiling water for 10 seconds, shock in ice water, squeeze bone dry.", "minutes": 3,
+      "why": "Ten seconds of heat kills the enzymes that would turn the oil muddy brown, and the ice shock locks the chlorophyll bright green." },
+    { "text": "Blend the basil with the neutral oil and a pinch of salt until vivid green, about 45 seconds. Strain through a fine sieve without pressing.",
+      "why": "Pressing the solids forces fine particles through and clouds the oil — let gravity work and you get a jewel-clear green." },
+    { "text": "Blend the roasted vegetables with the stock until completely smooth. Work in batches and leave the blender lid vented.",
+      "why": "Hot liquid in a sealed blender builds steam pressure and erupts. Venting lets it escape." },
     { "text": "Return to the pot, warm gently, and stir in the cream if using. Season — it usually wants more salt than you think and a crack of pepper.", "minutes": 5 }
   ],
   "notes": [
-    { "title": "Why blanch the basil", "body": "Ten seconds of boiling water kills the enzymes that turn basil oil army-green and muddy. The ice shock locks the chlorophyll. Skip it and the oil tastes fine but looks dull by tomorrow." },
-    { "title": "Straining without pressing", "body": "Pressing the solids pushes fine particles through and clouds the oil. Let gravity work for ten minutes — the payoff is a jewel-clear green." }
+    { "title": "Make ahead", "body": "The soup holds 3 days refrigerated. The basil oil stays vividly green about 2 days — store them separately and rewarm gently." }
   ],
   "plating": "Wide shallow bowls. Pour the soup, then spoon basil oil in a broken ring — it should pool in emerald islands, not blend in. One basil leaf dead center.",
   "variations": ["Add a parmesan rind while the soup warms for extra depth (remove before serving)."]
