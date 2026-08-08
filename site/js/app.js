@@ -1,6 +1,6 @@
 // Cody's Cookbook — hash router + rendering. No framework, no build.
 // Screens: home (#/) and recipe (#/recipe/<id> — full version in Task 4).
-import { scaleQty, formatQty, shoppingList } from './scale.js';
+import { scaleQty, formatQty, shoppingList, combinedShopping } from './scale.js';
 
 const state = {
   index: null,          // parsed index.json, cached for the session
@@ -8,6 +8,7 @@ const state = {
   activeTags: new Set(),
   factor: 1,            // serving scale factor for the open recipe
   ingView: 'groups',   // 'groups' | 'shopping'
+  meal: JSON.parse(localStorage.getItem('meal') ?? '[]'),
   timers: new Map(),    // stepIndex -> { end, minutes, tick } (Task 5)
   timerRecipeId: null,  // timers belong to one recipe at a time
   wakeLock: null,
@@ -23,6 +24,7 @@ route();
 
 async function route() {
   const hash = location.hash || '#/';
+  if (hash === '#/meal') { await renderMeal(); return; }
   const m = hash.match(/^#\/recipe\/([a-z0-9-]+)$/);
   if (m) await renderRecipe(m[1]);
   else await renderHome();
@@ -52,7 +54,8 @@ async function renderHome() {
         `<button class="chip ${state.activeTags.has(t) ? 'on' : ''}" data-tag="${esc(t)}">${esc(t)}</button>`).join('')}
       </div>
     </header>
-    <main id="cards"></main>`;
+    <main id="cards"></main>
+    ${mealBarHtml()}`;
   document.getElementById('search').addEventListener('input', (e) => {
     state.search = e.target.value;
     renderCards();
@@ -118,6 +121,19 @@ function readCook(id) {
 function writeCook(id, done) {
   localStorage.setItem(cookKey(id), JSON.stringify(done));
 }
+
+const writeMeal = () => localStorage.setItem('meal', JSON.stringify(state.meal));
+const readFactor = (id) => {
+  const f = Number(localStorage.getItem('factor:' + id));
+  return f >= 0.5 && f <= 4 ? f : 1;
+};
+const readMealShop = () => {
+  try { return JSON.parse(localStorage.getItem('meal-shop')) ?? []; } catch { return []; }
+};
+const writeMealShop = (list) => localStorage.setItem('meal-shop', JSON.stringify(list));
+const mealBarHtml = () => state.meal.length
+  ? `<a class="meal-bar" href="#/meal">🍽 Meal · ${state.meal.length} recipe${state.meal.length > 1 ? 's' : ''} →</a>`
+  : '';
 
 const notesKey = (id) => `notes:${id}`;
 const readNotes = (id) => localStorage.getItem(notesKey(id)) ?? '';
@@ -217,6 +233,7 @@ function drawRecipe(r) {
   app.innerHTML = `
     <nav class="top-bar">
       <a class="btn" href="#/">← Recipes</a>
+      <button id="meal-toggle" class="btn subtle">${state.meal.includes(r.id) ? '✓ In meal' : '+ Meal'}</button>
       <button id="reset" class="btn subtle">Reset</button>
     </nav>
     ${r.photo ? `<img class="recipe-photo" src="${esc(r.photo)}" alt="">` : ''}
@@ -259,7 +276,8 @@ function drawRecipe(r) {
         <button id="notes-clear" class="btn subtle">Clear</button>
       </div>
     </section>
-    ${r.source ? `<p class="card-meta">Source: ${esc(r.source)}</p>` : ''}`;
+    ${r.source ? `<p class="card-meta">Source: ${esc(r.source)}</p>` : ''}
+    ${mealBarHtml()}`;
   wireRecipe(r);
   syncTimerButtons();
 }
@@ -289,6 +307,12 @@ function wireRecipe(r) {
   document.getElementById('reset').addEventListener('click', () => {
     localStorage.removeItem(cookKey(r.id));
     stopAllTimers();
+    drawRecipe(r);
+  });
+  document.getElementById('meal-toggle').addEventListener('click', () => {
+    const i = state.meal.indexOf(r.id);
+    if (i >= 0) state.meal.splice(i, 1); else state.meal.push(r.id);
+    writeMeal();
     drawRecipe(r);
   });
   document.getElementById('scaler').addEventListener('click', (e) => {
@@ -330,6 +354,100 @@ function wireRecipe(r) {
     localStorage.removeItem(notesKey(r.id));
     ta.value = '';
   });
+}
+
+async function renderMeal() {
+  releaseWakeLock();
+  document.title = "Tonight's meal";
+  let index;
+  try { index = await loadIndex(); }
+  catch (err) { app.innerHTML = errorCard('Could not load the recipe index.', err); return; }
+  const ids = state.meal.filter((id) => index.some((e) => e.id === id));
+  if (!ids.length) {
+    app.innerHTML = `<nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
+      <p class="empty">No recipes in the meal yet. Open a recipe and tap "+ Meal".</p>`;
+    return;
+  }
+  let recipes;
+  try {
+    recipes = await Promise.all(ids.map(async (id) => {
+      const res = await fetch(`recipes/${id}.json`);
+      if (!res.ok) throw new Error(`${id}: HTTP ${res.status}`);
+      return res.json();
+    }));
+  } catch (err) {
+    app.innerHTML = errorCard(navigator.onLine === false
+      ? "You're offline and a meal recipe isn't cached yet."
+      : 'Could not load a meal recipe.', err);
+    return;
+  }
+  drawMeal(recipes);
+}
+
+function drawMeal(recipes) {
+  const shop = combinedShopping(recipes.map((r) => ({ groups: r.ingredientGroups, factor: readFactor(r.id) })));
+  const done = readMealShop();
+  const maxT = Math.max(...recipes.map((r) => r.totalMinutes));
+  const timeline = [...recipes]
+    .sort((a, b) => b.totalMinutes - a.totalMinutes)
+    .map((r) => `<p class="log-entry"><span class="log-date">T−${r.totalMinutes}</span>start ${esc(r.title)}${readFactor(r.id) !== 1 ? ` (${readFactor(r.id)}×)` : ''}</p>`)
+    .join('');
+  app.innerHTML = `
+    <nav class="top-bar">
+      <a class="btn" href="#/">← Recipes</a>
+      <button id="meal-clear" class="btn subtle">Clear meal</button>
+    </nav>
+    <header>
+      <h1>Tonight's meal</h1>
+      <p class="card-meta">${recipes.length} recipe${recipes.length > 1 ? 's' : ''} · longest runs ${maxT} min · quantities use each recipe's saved scale</p>
+    </header>
+    <section><h2>The lineup</h2>
+      ${recipes.map((r) => `<div class="meal-row">
+        <a class="pair-link" href="#/recipe/${esc(r.id)}">${esc(r.title)}${readFactor(r.id) !== 1 ? ` · ${readFactor(r.id)}×` : ''} →</a>
+        <button class="btn subtle meal-remove" data-id="${esc(r.id)}">Remove</button>
+      </div>`).join('')}
+    </section>
+    <section><h2>Game plan</h2>
+      ${timeline}
+      <p class="log-entry"><span class="log-date">T−0</span>everything lands together</p>
+    </section>
+    <section><h2>Shopping list — everything, summed</h2>
+      ${shop.map((row) => {
+        const key = row.item.trim().toLowerCase();
+        const qty = row.parts.map((p) => `${formatQty(p.qty)}${p.unit ? ' ' + esc(p.unit) : ''}`).join(' + ');
+        return `<button class="ing ${done.includes(key) ? 'done' : ''}" data-mealshop="${esc(key)}">
+          <span class="ing-qty">${qty}</span>
+          <span class="ing-name">${esc(row.item)}${row.toTaste && !row.parts.length ? ' <em>· to taste</em>' : ''}</span>
+        </button>`;
+      }).join('')}
+    </section>`;
+  wireMeal(recipes);
+}
+
+function wireMeal(recipes) {
+  document.getElementById('meal-clear').addEventListener('click', () => {
+    state.meal = [];
+    writeMeal();
+    localStorage.removeItem('meal-shop');
+    renderMeal();
+  });
+  for (const el of app.querySelectorAll('.meal-remove')) {
+    el.addEventListener('click', () => {
+      state.meal = state.meal.filter((id) => id !== el.dataset.id);
+      writeMeal();
+      renderMeal();
+    });
+  }
+  const done = readMealShop();
+  for (const el of app.querySelectorAll('.ing[data-mealshop]')) {
+    el.addEventListener('click', () => {
+      const key = el.dataset.mealshop;
+      const i = done.indexOf(key);
+      if (i >= 0) done.splice(i, 1); else done.push(key);
+      writeMealShop(done);
+      el.classList.toggle('done');
+    });
+  }
 }
 
 // --- Timers: wall-clock based; each tick re-queries the DOM so re-renders

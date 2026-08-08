@@ -28,6 +28,18 @@ export function formatQty(qty) {
   return String(Math.round(rounded * 100) / 100);
 }
 
+function foldEntries(item, entries) {
+  const byUnit = new Map();
+  let toTaste = false;
+  for (const e of entries) {
+    if (e.qty === null) { toTaste = true; continue; }
+    const u = e.unit ?? '';
+    byUnit.set(u, (byUnit.get(u) ?? 0) + e.qty);
+  }
+  const parts = [...byUnit.entries()].map(([unit, qty]) => ({ qty, unit: unit || null }));
+  return { item, parts, toTaste };
+}
+
 export function shoppingList(groups) {
   const map = new Map();
   for (const g of groups) {
@@ -37,15 +49,22 @@ export function shoppingList(groups) {
       map.get(key).entries.push({ qty: it.qty ?? null, unit: it.unit ?? null });
     }
   }
-  return [...map.values()].map(({ item, entries }) => {
-    const byUnit = new Map();
-    let toTaste = false;
-    for (const e of entries) {
-      if (e.qty === null) { toTaste = true; continue; }
-      const u = e.unit ?? '';
-      byUnit.set(u, (byUnit.get(u) ?? 0) + e.qty);
+  return [...map.values()].map(({ item, entries }) => foldEntries(item, entries));
+}
+
+export function combinedShopping(recipeEntries) {
+  const map = new Map();
+  for (const { groups, factor } of recipeEntries) {
+    for (const g of groups) {
+      for (const it of g.items) {
+        const key = it.item.trim().toLowerCase();
+        if (!map.has(key)) map.set(key, { item: it.item, entries: [] });
+        map.get(key).entries.push({
+          qty: it.qty === null || it.qty === undefined ? null : it.qty * factor,
+          unit: it.unit ?? null,
+        });
+      }
     }
-    const parts = [...byUnit.entries()].map(([unit, qty]) => ({ qty, unit: unit || null }));
-    return { item, parts, toTaste };
-  });
+  }
+  return [...map.values()].map(({ item, entries }) => foldEntries(item, entries));
 }

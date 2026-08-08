@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { scaleQty, formatQty, shoppingList } from '../site/js/scale.js';
+import { scaleQty, formatQty, shoppingList, combinedShopping } from '../site/js/scale.js';
 
 test('scaleQty multiplies numeric quantities', () => {
   assert.equal(scaleQty(450, 2), 900);
@@ -51,4 +51,21 @@ test('shoppingList sums same item + unit across groups, case-insensitive', () =>
 test('shoppingList marks to-taste items and keeps first-seen casing', () => {
   const list = shoppingList([{ name: null, items: [{ qty: null, unit: null, item: 'Flaky salt' }] }]);
   assert.deepEqual(list, [{ item: 'Flaky salt', parts: [], toTaste: true }]);
+});
+
+test('combinedShopping applies each recipe factor before merging', () => {
+  const soup = [{ name: null, items: [{ qty: 5, unit: 'tbsp', item: 'butter' }] }];
+  const croque = [{ name: null, items: [{ qty: 12, unit: 'tbsp', item: 'Butter' }] }];
+  const list = combinedShopping([
+    { groups: soup, factor: 2 },
+    { groups: croque, factor: 1 },
+  ]);
+  assert.deepEqual(list, [{ item: 'butter', parts: [{ qty: 22, unit: 'tbsp' }], toTaste: false }]);
+});
+
+test('combinedShopping keeps to-taste items unscaled and unsummed', () => {
+  const list = combinedShopping([
+    { groups: [{ name: null, items: [{ qty: null, unit: null, item: 'salt' }] }], factor: 3 },
+  ]);
+  assert.deepEqual(list, [{ item: 'salt', parts: [], toTaste: true }]);
 });
