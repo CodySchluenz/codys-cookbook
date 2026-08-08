@@ -80,19 +80,24 @@ Field rules:
 Plain HTML/CSS/JS. No framework, no build step, no dependencies.
 
 ```
-index.html            app shell (both screens live here)
-css/app.css           styles, dark mode via prefers-color-scheme
-js/app.js             hash router + rendering + interactions
-js/scale.js           pure functions: quantity scaling, fraction display
-sw.js                 service worker (offline)
-manifest.webmanifest  PWA manifest (standalone display, icons)
-icons/                app icons
-index.json            recipe index
-recipes/*.json        one file per recipe
-photos/               optional recipe photos
-scripts/validate.mjs  schema + index-consistency validator (node, no deps)
-scripts/scale.test.mjs  node:test unit tests for scale.js
+site/                     ← the only directory that deploys to the web
+  index.html              app shell (both screens live here)
+  css/app.css             styles, dark mode via prefers-color-scheme
+  js/app.js               hash router + rendering + interactions
+  js/scale.js             pure functions: quantity scaling, fraction display
+  sw.js                   service worker (offline)
+  manifest.webmanifest    PWA manifest (standalone display, icons)
+  icons/                  app icons
+  index.json              recipe index
+  recipes/*.json          one file per recipe
+  photos/                 optional recipe photos
+scripts/validate.mjs      schema + index-consistency validator (node, no deps)
+scripts/scale.test.mjs    node:test unit tests for scale.js
+scripts/serve.mjs         local static server for testing (node, no deps)
+scripts/make-icons.mjs    one-time PWA icon generator (node, no deps)
 ```
+
+The site lives under `site/` (not the repo root) so that the chef's knowledge base, specs, and skills are never served on the public URL — `people/*.md` contains third parties' personal details (allergies, preferences) and must not be web-accessible even on an obscure URL.
 
 Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zero configuration.
 
@@ -169,8 +174,8 @@ It also handles updates to existing recipes ("here's a chat where we improved th
 
 ## 4. Deployment
 
-- Cloudflare Pages, git-connected to a GitHub repo (`codys-cookbook`). Every push to `main` auto-deploys. One-time setup during implementation requires Cody to authorize GitHub and Cloudflare.
-- Fallback if git-connection is undesirable: `wrangler pages deploy` from the repo root.
+- Cloudflare Pages, git-connected to a GitHub repo (`codys-cookbook`), build command empty, **output directory `site`** — only the site deploys, never the knowledge base. Every push to `main` auto-deploys. One-time setup during implementation requires Cody to authorize GitHub and Cloudflare.
+- Fallback if git-connection is undesirable: `npx wrangler pages deploy site`.
 - Result: an HTTPS `*.pages.dev` URL (HTTPS is required for wake lock and service worker) that Cody adds to his iPhone home screen.
 
 ## 5. Access model — talking to the chef from anywhere
