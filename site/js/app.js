@@ -119,6 +119,20 @@ function writeCook(id, done) {
   localStorage.setItem(cookKey(id), JSON.stringify(done));
 }
 
+const notesKey = (id) => `notes:${id}`;
+const readNotes = (id) => localStorage.getItem(notesKey(id)) ?? '';
+
+function flashButton(id, msg) {
+  const b = document.getElementById(id);
+  if (!b) return;
+  const old = b.textContent;
+  b.textContent = msg;
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = old;
+  }, 2000);
+}
+
 async function renderRecipe(id) {
   if (state.timerRecipeId !== id) stopAllTimers();
   state.timerRecipeId = id;
@@ -232,6 +246,15 @@ function drawRecipe(r) {
       `<details class="note"><summary>${esc(n.title)}</summary><p>${esc(n.body)}</p></details>`).join('')}</section>` : ''}
     ${(r.variations ?? []).length ? `<section><h2>Variations</h2>${r.variations.map((v) =>
       `<div class="note"><p>${esc(v)}</p></div>`).join('')}</section>` : ''}
+    <section>
+      <h2>My notes</h2>
+      <textarea id="cook-notes" class="cook-notes" rows="4"
+        placeholder="Jot anything — amounts to tweak, open questions, what you'd change…">${esc(readNotes(r.id))}</textarea>
+      <div class="notes-actions">
+        <button id="notes-send" class="btn-solid">Send to chef</button>
+        <button id="notes-clear" class="btn subtle">Clear</button>
+      </div>
+    </section>
     ${r.source ? `<p class="card-meta">Source: ${esc(r.source)}</p>` : ''}`;
   wireRecipe(r);
   syncTimerButtons();
@@ -282,6 +305,27 @@ function wireRecipe(r) {
   for (const el of app.querySelectorAll('.step-timer')) {
     el.addEventListener('click', () => toggleTimer(Number(el.dataset.step), Number(el.dataset.minutes)));
   }
+  const ta = document.getElementById('cook-notes');
+  ta.addEventListener('input', () => {
+    if (ta.value.trim()) localStorage.setItem(notesKey(r.id), ta.value);
+    else localStorage.removeItem(notesKey(r.id));
+  });
+  document.getElementById('notes-send').addEventListener('click', async () => {
+    const body = ta.value.trim();
+    if (!body) { flashButton('notes-send', 'Nothing to send yet'); return; }
+    const text = `Cook notes for ${r.id} ("${r.title}"):\n${body}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      flashButton('notes-send', 'Copied — paste it to the chef');
+    } catch {
+      ta.select();
+      flashButton('notes-send', 'Copy blocked — text selected, copy manually');
+    }
+  });
+  document.getElementById('notes-clear').addEventListener('click', () => {
+    localStorage.removeItem(notesKey(r.id));
+    ta.value = '';
+  });
 }
 
 // --- Timers: wall-clock based; each tick re-queries the DOM so re-renders

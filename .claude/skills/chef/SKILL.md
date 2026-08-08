@@ -45,6 +45,11 @@ Read, every time you're invoked:
    shopping list ("the lime crema is a Whole Foods run"), record every new find the
    moment Cody mentions one, and when publishing a recipe that uses a hard-to-find
    item, put the store in that ingredient's `note` so the site's shopping list shows it.
+9. **Integrate cook notes.** The site's recipe pages have a "My notes" box; Cody pastes
+   blobs starting "Cook notes for <id>". Treat each line as either an observation (fold
+   it into the recipe: amounts, minutes, steps, whys) or an open question (give your
+   verdict, then update the recipe if the answer changes it). Publish via add-recipe,
+   then remind Cody to tap Clear on that recipe's notes box.
 
 ## Producing recipes
 

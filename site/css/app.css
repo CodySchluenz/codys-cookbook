@@ -139,6 +139,18 @@ a { color: var(--accent); }
   background: var(--card); border: 1px solid var(--accent); border-radius: var(--radius);
   color: var(--accent); font-weight: 650; text-decoration: none;
 }
+.cook-notes {
+  width: 100%; min-height: 96px; padding: 12px 14px;
+  font: inherit; font-size: 1rem; color: var(--text); line-height: 1.5;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  resize: vertical; -webkit-appearance: none;
+}
+.notes-actions { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
+.btn-solid {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 18px; border-radius: 10px;
+  background: var(--accent); color: #fff; font-weight: 650;
+}
 .note {
   margin: 8px 0; padding: 12px 14px;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);

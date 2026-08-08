@@ -84,6 +84,9 @@ Rules that trip people up:
 Edit the existing file; NEVER change its `id`. Update the index entry to match.
 Same validate → commit → push flow.
 
+Cook-note blobs ("Cook notes for <id>: …") are the most common update source — fold the
+observations into the existing file and never change the id.
+
 ## What you never need to touch
 
 Adding/updating recipe JSON requires no service-worker cache bump (recipe data is
