@@ -82,6 +82,12 @@ a { color: var(--accent); }
   background: var(--card); border: 1px solid var(--line); font-weight: 600;
 }
 .scaler button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.ing-toggle { display: flex; gap: 6px; margin: 4px 0 8px; }
+.ing-toggle button {
+  flex: 1; min-height: 44px; border-radius: 10px;
+  background: var(--card); border: 1px solid var(--line); font-weight: 600;
+}
+.ing-toggle button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .group-title { margin: 14px 0 0; font-size: 0.95rem; color: var(--muted); font-weight: 600; }
 .ing {
   display: flex; gap: 12px; align-items: baseline; width: 100%; text-align: left;

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { scaleQty, formatQty } from '../site/js/scale.js';
+import { scaleQty, formatQty, shoppingList } from '../site/js/scale.js';
 
 test('scaleQty multiplies numeric quantities', () => {
   assert.equal(scaleQty(450, 2), 900);
@@ -35,4 +35,20 @@ test('formatQty falls back to trimmed decimals for odd values', () => {
 test('formatQty handles null and zero', () => {
   assert.equal(formatQty(null), '');
   assert.equal(formatQty(0), '0');
+});
+
+test('shoppingList sums same item + unit across groups, case-insensitive', () => {
+  const groups = [
+    { name: 'A', items: [{ qty: 4, unit: null, item: 'garlic cloves' }, { qty: 1, unit: 'cup', item: 'olive oil' }] },
+    { name: 'B', items: [{ qty: 2, unit: null, item: 'Garlic Cloves' }, { qty: 2, unit: 'tbsp', item: 'olive oil' }] },
+  ];
+  const list = shoppingList(groups);
+  assert.deepEqual(list.find((x) => x.item === 'garlic cloves').parts, [{ qty: 6, unit: null }]);
+  assert.deepEqual(list.find((x) => x.item === 'olive oil').parts,
+    [{ qty: 1, unit: 'cup' }, { qty: 2, unit: 'tbsp' }]);
+});
+
+test('shoppingList marks to-taste items and keeps first-seen casing', () => {
+  const list = shoppingList([{ name: null, items: [{ qty: null, unit: null, item: 'Flaky salt' }] }]);
+  assert.deepEqual(list, [{ item: 'Flaky salt', parts: [], toTaste: true }]);
 });

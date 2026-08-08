@@ -27,3 +27,25 @@ export function formatQty(qty) {
   if (best) return whole === 0 ? best.glyph : `${whole}${best.glyph}`;
   return String(Math.round(rounded * 100) / 100);
 }
+
+export function shoppingList(groups) {
+  const map = new Map();
+  for (const g of groups) {
+    for (const it of g.items) {
+      const key = it.item.trim().toLowerCase();
+      if (!map.has(key)) map.set(key, { item: it.item, entries: [] });
+      map.get(key).entries.push({ qty: it.qty ?? null, unit: it.unit ?? null });
+    }
+  }
+  return [...map.values()].map(({ item, entries }) => {
+    const byUnit = new Map();
+    let toTaste = false;
+    for (const e of entries) {
+      if (e.qty === null) { toTaste = true; continue; }
+      const u = e.unit ?? '';
+      byUnit.set(u, (byUnit.get(u) ?? 0) + e.qty);
+    }
+    const parts = [...byUnit.entries()].map(([unit, qty]) => ({ qty, unit: unit || null }));
+    return { item, parts, toTaste };
+  });
+}

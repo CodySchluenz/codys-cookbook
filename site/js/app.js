@@ -1,12 +1,13 @@
 // Cody's Cookbook — hash router + rendering. No framework, no build.
 // Screens: home (#/) and recipe (#/recipe/<id> — full version in Task 4).
-import { scaleQty, formatQty } from './scale.js';
+import { scaleQty, formatQty, shoppingList } from './scale.js';
 
 const state = {
   index: null,          // parsed index.json, cached for the session
   search: '',
   activeTags: new Set(),
   factor: 1,            // serving scale factor for the open recipe
+  ingView: 'groups',   // 'groups' | 'shopping'
   timers: new Map(),    // stepIndex -> { end, minutes, tick } (Task 5)
   timerRecipeId: null,  // timers belong to one recipe at a time
   wakeLock: null,
@@ -104,8 +105,10 @@ function errorCard(message, err) {
 const cookKey = (id) => `cook:${id}`;
 
 function readCook(id) {
-  try { return JSON.parse(localStorage.getItem(cookKey(id))) ?? { ing: [], steps: [] }; }
-  catch { return { ing: [], steps: [] }; }
+  try {
+    const d = JSON.parse(localStorage.getItem(cookKey(id))) ?? {};
+    return { ing: d.ing ?? [], steps: d.steps ?? [], shop: d.shop ?? [] };
+  } catch { return { ing: [], steps: [], shop: [] }; }
 }
 
 function writeCook(id, done) {
@@ -116,6 +119,7 @@ async function renderRecipe(id) {
   if (state.timerRecipeId !== id) stopAllTimers();
   state.timerRecipeId = id;
   state.factor = 1;
+  state.ingView = 'groups';
   document.title = 'Loading…';
   let r;
   try {
@@ -142,11 +146,8 @@ async function renderRecipe(id) {
 
 const servingsLabel = (s, f) => `Serves ${formatQty(scaleQty(s, f))}`;
 
-function drawRecipe(r) {
-  document.title = r.title;
-  const done = readCook(r.id);
-  const f = state.factor;
-  const ings = r.ingredientGroups.map((g, gi) => `
+function groupsHtml(r, done, f) {
+  return r.ingredientGroups.map((g, gi) => `
     ${g.name ? `<h3 class="group-title">${esc(g.name)}</h3>` : ''}
     ${g.items.map((it, ii) => {
       const key = `${gi}:${ii}`;
@@ -156,6 +157,26 @@ function drawRecipe(r) {
         <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
       </button>`;
     }).join('')}`).join('');
+}
+
+function shoppingHtml(r, done, f) {
+  return shoppingList(r.ingredientGroups).map((row) => {
+    const key = row.item.trim().toLowerCase();
+    const qty = row.parts
+      .map((p) => `${formatQty(scaleQty(p.qty, f))}${p.unit ? ' ' + esc(p.unit) : ''}`)
+      .join(' + ');
+    return `<button class="ing ${done.shop.includes(key) ? 'done' : ''}" data-shop="${esc(key)}">
+      <span class="ing-qty">${qty}</span>
+      <span class="ing-name">${esc(row.item)}${row.toTaste && !row.parts.length ? ' <em>· to taste</em>' : ''}</span>
+    </button>`;
+  }).join('');
+}
+
+function drawRecipe(r) {
+  document.title = r.title;
+  const done = readCook(r.id);
+  const f = state.factor;
+  const ings = state.ingView === 'shopping' ? shoppingHtml(r, done, f) : groupsHtml(r, done, f);
   const steps = r.steps.map((s, i) => `
     <li class="step ${done.steps.includes(i) ? 'done' : ''}" data-step="${i}">
       <button class="step-text">${esc(s.text)}</button>
@@ -177,7 +198,14 @@ function drawRecipe(r) {
         <button data-f="plus">+</button>
       </div>
     </header>
-    <section><h2>Ingredients</h2>${ings}</section>
+    <section>
+      <h2>Ingredients</h2>
+      <div class="ing-toggle" id="ing-toggle">
+        <button data-view="groups" class="${state.ingView === 'groups' ? 'on' : ''}">By component</button>
+        <button data-view="shopping" class="${state.ingView === 'shopping' ? 'on' : ''}">Shopping list</button>
+      </div>
+      ${ings}
+    </section>
     <section><h2>Steps</h2><ol class="steps">${steps}</ol></section>
     ${r.plating ? `<section class="plate-card"><h2>Plating</h2><p>${esc(r.plating)}</p></section>` : ''}
     ${(r.notes ?? []).length ? `<section><h2>Notes</h2>${r.notes.map((n) =>
@@ -193,9 +221,10 @@ function wireRecipe(r) {
   const done = readCook(r.id);
   for (const el of app.querySelectorAll('.ing')) {
     el.addEventListener('click', () => {
-      const key = el.dataset.key;
-      const i = done.ing.indexOf(key);
-      if (i >= 0) done.ing.splice(i, 1); else done.ing.push(key);
+      const list = el.dataset.shop !== undefined ? done.shop : done.ing;
+      const key = el.dataset.shop ?? el.dataset.key;
+      const i = list.indexOf(key);
+      if (i >= 0) list.splice(i, 1); else list.push(key);
       writeCook(r.id, done);
       el.classList.toggle('done');
     });
@@ -223,6 +252,12 @@ function wireRecipe(r) {
     else if (v === 'plus') state.factor = Math.min(4, state.factor + 0.5);
     else state.factor = Number(v);
     drawRecipe(r); // re-render from original quantities — rounding never compounds
+  });
+  document.getElementById('ing-toggle').addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b || b.dataset.view === state.ingView) return;
+    state.ingView = b.dataset.view;
+    drawRecipe(r);
   });
   for (const el of app.querySelectorAll('.step-timer')) {
     el.addEventListener('click', () => toggleTimer(Number(el.dataset.step), Number(el.dataset.minutes)));
