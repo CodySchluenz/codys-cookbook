@@ -219,6 +219,7 @@ function drawRecipe(r) {
       <a class="btn" href="#/">← Recipes</a>
       <button id="reset" class="btn subtle">Reset</button>
     </nav>
+    ${r.photo ? `<img class="recipe-photo" src="${esc(r.photo)}" alt="">` : ''}
     <header>
       <h1>${esc(r.title)}</h1>
       <p>${esc(r.description)}</p>

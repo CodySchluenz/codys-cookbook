@@ -91,6 +91,19 @@ Same validate → commit → push flow.
 Cook-note blobs ("Cook notes for <id>: …") are the most common update source — fold the
 observations into the existing file and never change the id.
 
+## Photos
+
+- Files live at `site/photos/<recipe-id>.jpg` — JPEG, max ~1600px wide (aim under
+  ~300KB). On the PC, `powershell -File scripts/prep-photo.ps1 -Source <path>
+  -RecipeId <id>` does the resize (HEIC not supported — have the phone share as JPEG).
+- From the phone: upload via GitHub (app or github.com → site/photos → Add file),
+  then tell the chef to wire it up.
+- Wiring: set the recipe's `photo` field AND its index.json entry to
+  `photos/<recipe-id>.jpg`. The validator checks the prefix.
+- REPLACING a photo needs a NEW filename (`photos/<id>-2.jpg`, update both
+  references): non-JSON assets are cache-first in the service worker, so a same-name
+  replacement never refreshes on installed phones.
+
 ## What you never need to touch
 
 Adding/updating recipe JSON requires no service-worker cache bump (recipe data is
