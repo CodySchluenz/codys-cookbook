@@ -228,9 +228,99 @@ function wireRecipe(r) {
   }
 }
 
-// --- Cooking-session hooks: bodies land in Task 5; call sites exist from Task 4. ---
-function stopAllTimers() {}
-function toggleTimer(stepIdx, minutes) {}
-function syncTimerButtons() {}
-async function acquireWakeLock() {}
-function releaseWakeLock() {}
+// --- Timers: wall-clock based; each tick re-queries the DOM so re-renders
+// and navigation can't orphan a countdown. State is in-memory by design. ---
+
+function toggleTimer(stepIdx, minutes) {
+  const existing = state.timers.get(stepIdx);
+  if (existing) {                    // tapping a running timer cancels it
+    clearInterval(existing.tick);
+    state.timers.delete(stepIdx);
+    syncTimerButtons();
+    return;
+  }
+  ensureAudio();                     // must be created inside a user gesture
+  const end = Date.now() + minutes * 60_000;
+  const tick = setInterval(() => {
+    if (Date.now() >= end) {
+      clearInterval(tick);
+      state.timers.delete(stepIdx);
+      timerDone(stepIdx);
+    }
+    syncTimerButtons();
+  }, 250);
+  state.timers.set(stepIdx, { end, minutes, tick });
+  syncTimerButtons();
+}
+
+function stopAllTimers() {
+  for (const { tick } of state.timers.values()) clearInterval(tick);
+  state.timers.clear();
+}
+
+function syncTimerButtons() {
+  for (const btn of app.querySelectorAll('.step-timer')) {
+    const t = state.timers.get(Number(btn.dataset.step));
+    if (t) {
+      const left = Math.max(0, t.end - Date.now());
+      const m = Math.floor(left / 60_000);
+      const s = String(Math.floor((left % 60_000) / 1000)).padStart(2, '0');
+      btn.textContent = `${m}:${s}`;
+      btn.classList.add('running');
+    } else {
+      btn.textContent = `⏱ ${btn.dataset.minutes} min`;
+      btn.classList.remove('running');
+    }
+  }
+}
+
+function timerDone(stepIdx) {
+  beep();
+  navigator.vibrate?.([200, 100, 200, 100, 400]);
+  const step = app.querySelector(`.step[data-step="${stepIdx}"]`);
+  step?.classList.add('flash');
+  setTimeout(() => step?.classList.remove('flash'), 4000);
+}
+
+let audioCtx = null;
+function ensureAudio() {
+  audioCtx ??= new (window.AudioContext ?? window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function beep() {
+  if (!audioCtx) return;
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  for (let i = 0; i < 3; i++) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.frequency.value = 880;
+    const t0 = audioCtx.currentTime + i * 0.45;
+    gain.gain.setValueAtTime(0.0001, t0);
+    gain.gain.exponentialRampToValueAtTime(0.4, t0 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.35);
+    osc.start(t0);
+    osc.stop(t0 + 0.4);
+  }
+}
+
+// --- Wake lock: screen stays on while a recipe is open. Silently absent
+// where unsupported; re-acquired when the app returns to the foreground. ---
+
+async function acquireWakeLock() {
+  if (!('wakeLock' in navigator)) return;
+  try { state.wakeLock = await navigator.wakeLock.request('screen'); }
+  catch { /* denied or low battery — the app works without it */ }
+}
+
+function releaseWakeLock() {
+  state.wakeLock?.release().catch(() => {});
+  state.wakeLock = null;
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && location.hash.startsWith('#/recipe/')) {
+    acquireWakeLock();
+  }
+});
