@@ -130,6 +130,7 @@ Routing is hash-based (`#/` home, `#/recipe/<id>`) so Cloudflare Pages needs zer
 - **Notes**: technique notes rendered as collapsible cards below.
 - **Wake lock**: requested via the Screen Wake Lock API whenever a recipe screen is open (iOS Safari 16.4+); released on navigation back; re-acquired on `visibilitychange` when returning to the app. If unavailable, everything else works normally.
 - Checklist/step state persists in `localStorage` per recipe so an accidental navigation or reload doesn't lose your place mid-cook; a "reset" control clears it.
+- **My notes**: a free-text box on every recipe page (bottom), autosaved to `localStorage` per recipe. This is where mid-cook observations AND open questions live ("used 5 tbsp", "halve the scallions next time?") — it doubles as the recipe's work-in-progress state, which is why there is no separate draft flag. A **Send to chef** button copies a formatted blob (`Cook notes for <id> ("Title"): …`) for pasting into any chef session; the chef integrates the changes into the recipe JSON, answers the questions, publishes, and Cody taps **Clear**. Notes are device-local by design (static site, no backend); the paste step is the bridge.
 
 ### PWA / offline
 
@@ -228,3 +229,6 @@ Consequence: GitHub is not just deployment plumbing; it is the agent's home. All
 - Search + tag filters on home; no categories-only view; photos optional.
 - Live pantry inventory: rejected as unmaintainable; staples file + ask-about-fresh instead.
 - All recipes use imperial units and °F exclusively (Cody's preference, 2026-08-08); metric sources are converted at import time.
+- Analytics: rejected (single user, nothing to learn; Cloudflare dashboard covers curiosity for free).
+- Draft/work-in-progress flag: rejected in favor of the My-notes box — an open question in the notes IS the draft state (Cody, 2026-08-08).
+- Meals are modeled as `pairsWith` links between independent recipes, never merged mega-recipes; components like basil oil get their own recipe pages (Cody, 2026-08-08).
