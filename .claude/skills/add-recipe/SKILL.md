@@ -1,0 +1,78 @@
+---
+name: add-recipe
+description: Use when a finished recipe needs to go on the cookbook site — from the chef's handoff, a pasted Claude chat, a recipe URL, a YouTube video, or "add this recipe". Converts to the site's JSON schema, validates, and deploys.
+---
+
+# Add Recipe (the librarian)
+
+Converts a finished recipe into `site/recipes/<id>.json`, keeps `site/index.json` in
+sync, validates, and ships. The chef skill handles taste; this skill handles correctness.
+
+## The schema (canonical copy)
+
+One file per recipe at `site/recipes/<id>.json`:
+
+    {
+      "id": "kebab-case, must match filename",
+      "title": "string",
+      "description": "one sentence",
+      "tags": ["lowercase", "strings"],
+      "servings": <number>,
+      "activeMinutes": <number>,
+      "totalMinutes": <number>,
+      "difficulty": "easy" | "medium" | "project",
+      "photo": "photos/<file>" | null,
+      "source": "where this came from (chat, URL)",     // optional
+      "ingredientGroups": [
+        { "name": "Group name" | null,
+          "items": [ { "qty": <number>|null, "unit": "g"|"cup"|...|null,
+                       "item": "name", "note": "prep note" } ] }   // note optional
+      ],
+      "steps": [ { "text": "instruction with timing cues in prose",
+                   "minutes": <number> } ],               // minutes optional → timer button
+      "notes": [ { "title": "Why …", "body": "the technique reasoning" } ],  // optional
+      "plating": "how to plate it",                       // optional
+      "variations": ["string"]                            // optional
+    }
+
+Rules that trip people up:
+
+- `qty: null` means "to taste" — it renders as-is and never scales. Count items are
+  `qty: 2, unit: null`.
+- `steps[].minutes` only where a cook would actually set a timer (sears, simmers,
+  rests) — not for "chop the onion".
+- Imperial units ONLY: oz, lb, cups, tbsp, tsp; temperatures in °F. Convert metric
+  sources at import — grams and °C never appear in a stored recipe, including notes
+  and step text.
+- `id` is forever — it's the URL and the localStorage key for cook progress.
+
+## Sources
+
+- **Claude chat transcript:** extract the FINAL agreed version, not early drafts. If the
+  chat contains several recipes, list them and confirm with Cody before writing files.
+- **Recipe website URL:** WebFetch the page. Prefer the schema.org/Recipe JSON-LD block
+  (most recipe sites embed one) over scraping prose.
+- **YouTube URL:** WebFetch the watch page — title + description often contain the whole
+  recipe. If you need the transcript and can't retrieve it, ask Cody to paste it
+  (Share → Show Transcript → copy). Never invent quantities the source doesn't state.
+- Record where it came from in `source`.
+
+## Steps
+
+1. Write `site/recipes/<id>.json`.
+2. Update `site/index.json`: entry is `{ id, title, description, tags, totalMinutes,
+   difficulty, photo, ingredients }` where `ingredients` is the flat array of every
+   `item` string in order. Keep entries sorted by id.
+3. Run `node scripts/validate.mjs` — fix anything it reports before continuing.
+4. Commit and push. Cloudflare Pages deploys `site/` automatically from main.
+
+## Updating an existing recipe
+
+Edit the existing file; NEVER change its `id`. Update the index entry to match.
+Same validate → commit → push flow.
+
+## What you never need to touch
+
+Adding/updating recipe JSON requires no service-worker cache bump (recipe data is
+network-first). Only shell changes (html/css/js/manifest/icons) need the `CACHE`
+version in `site/sw.js` bumped — see CLAUDE.md.
