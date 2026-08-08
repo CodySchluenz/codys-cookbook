@@ -9,6 +9,7 @@
   "difficulty": "medium",
   "photo": null,
   "source": "Cody's Claude chat, imported 2026-08-08",
+  "equipment": ["oven with broiler", "large skillet", "saucepan", "whisk", "baking sheet"],
   "ingredientGroups": [
     {
       "name": "Mornay (cheese béchamel)",

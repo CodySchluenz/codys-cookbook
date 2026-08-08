@@ -23,6 +23,7 @@ One file per recipe at `site/recipes/<id>.json`:
       "difficulty": "easy" | "medium" | "project",
       "photo": "photos/<file>" | null,
       "source": "where this came from (chat, URL)",     // optional
+      "equipment": ["blender", "oven with broiler"],   // optional — gear whose absence stops the cook
       "ingredientGroups": [
         { "name": "Group name" | null,
           "items": [ { "qty": <number>|null, "unit": "oz"|"lb"|"cup"|"tbsp"|"tsp"|null,
@@ -55,6 +56,9 @@ Rules that trip people up:
 - When adding a recipe, scan site/index.json for natural pairings and propose
   `pairsWith` cross-links in BOTH directions (lasagna ↔ garlic bread ↔ italian salad).
   Every id in pairsWith must be an existing recipe; the validator enforces it.
+- `equipment` lists only gear whose absence would STOP the cook mid-recipe (blender,
+  broiler, thermometer, stand mixer) — never universal utensils (knives, bowls,
+  spoons). Cody cooks in unfamiliar kitchens; the list is his no-surprises check.
 - The validator enforces an imperial unit allowlist (UNITS in scripts/validate.mjs) and
   scans all text for metric leftovers. If a genuinely new imperial unit appears, extend
   UNITS deliberately — don't work around it.

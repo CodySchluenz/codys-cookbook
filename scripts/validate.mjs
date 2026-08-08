@@ -54,6 +54,8 @@ function checkRecipe(file, r) {
     fail(file, 'pairings must be a string array');
   if (r.pairsWith !== undefined && (!Array.isArray(r.pairsWith) || !r.pairsWith.every(isStr)))
     fail(file, 'pairsWith must be an array of recipe id strings');
+  if (r.equipment !== undefined && (!Array.isArray(r.equipment) || !r.equipment.every(isStr)))
+    fail(file, 'equipment must be a string array');
   const texts = [r.title, r.description, r.plating,
     ...(r.steps ?? []).flatMap((s) => [s?.text, s?.why]),
     ...(r.notes ?? []).flatMap((n) => [n?.title, n?.body]),

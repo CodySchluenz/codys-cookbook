@@ -151,6 +151,11 @@ a { color: var(--accent); }
   min-height: 44px; padding: 0 18px; border-radius: 10px;
   background: var(--accent); color: #fff; font-weight: 650;
 }
+.equipment {
+  margin: 0; padding: 12px 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  font-weight: 600;
+}
 .note {
   margin: 8px 0; padding: 12px 14px;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);

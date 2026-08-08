@@ -9,6 +9,7 @@
   "difficulty": "medium",
   "photo": null,
   "source": "Sample recipe — replace with the real version from a starred chat",
+  "equipment": ["heavy skillet (cast iron or stainless)", "instant-read thermometer"],
   "ingredientGroups": [
     {
       "name": null,

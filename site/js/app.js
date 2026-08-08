@@ -229,6 +229,7 @@ function drawRecipe(r) {
         <button data-f="plus">+</button>
       </div>
     </header>
+    ${(r.equipment ?? []).length ? `<section><h2>You'll need</h2><p class="equipment">${r.equipment.map((e) => esc(e)).join(' · ')}</p></section>` : ''}
     <section>
       <h2>Ingredients</h2>
       <div class="ing-toggle" id="ing-toggle">
