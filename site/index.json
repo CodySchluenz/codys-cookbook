@@ -10,16 +10,6 @@
     "ingredients": ["basil leaves", "neutral oil", "fine salt"]
   },
   {
-    "id": "cacio-e-pepe",
-    "title": "Cacio e Pepe",
-    "description": "Three ingredients, one emulsion. The technique recipe.",
-    "tags": ["pasta", "vegetarian", "stovetop", "weeknight"],
-    "totalMinutes": 20,
-    "difficulty": "medium",
-    "photo": null,
-    "ingredients": ["spaghetti or tonnarelli", "Pecorino Romano", "black peppercorns", "salt"]
-  },
-  {
     "id": "croque-monsieur",
     "title": "Croque Monsieur",
     "description": "Mornay-crowned, pan-crisped, broiler-finished — the proper one, with the layering that matters.",
