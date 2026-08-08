@@ -25,7 +25,7 @@ One file per recipe at `site/recipes/<id>.json`:
       "source": "where this came from (chat, URL)",     // optional
       "ingredientGroups": [
         { "name": "Group name" | null,
-          "items": [ { "qty": <number>|null, "unit": "g"|"cup"|...|null,
+          "items": [ { "qty": <number>|null, "unit": "oz"|"lb"|"cup"|"tbsp"|"tsp"|null,
                        "item": "name", "note": "prep note" } ] }   // note optional
       ],
       "steps": [ { "text": "instruction with timing cues in prose",
@@ -55,6 +55,9 @@ Rules that trip people up:
 - When adding a recipe, scan site/index.json for natural pairings and propose
   `pairsWith` cross-links in BOTH directions (lasagna ↔ garlic bread ↔ italian salad).
   Every id in pairsWith must be an existing recipe; the validator enforces it.
+- The validator enforces an imperial unit allowlist (UNITS in scripts/validate.mjs) and
+  scans all text for metric leftovers. If a genuinely new imperial unit appears, extend
+  UNITS deliberately — don't work around it.
 
 ## Sources
 

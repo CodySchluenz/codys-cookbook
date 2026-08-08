@@ -107,7 +107,11 @@ const cookKey = (id) => `cook:${id}`;
 function readCook(id) {
   try {
     const d = JSON.parse(localStorage.getItem(cookKey(id))) ?? {};
-    return { ing: d.ing ?? [], steps: d.steps ?? [], shop: d.shop ?? [] };
+    return {
+      ing: Array.isArray(d.ing) ? d.ing : [],
+      steps: Array.isArray(d.steps) ? d.steps : [],
+      shop: Array.isArray(d.shop) ? d.shop : [],
+    };
   } catch { return { ing: [], steps: [], shop: [] }; }
 }
 
@@ -204,7 +208,7 @@ function drawRecipe(r) {
     <header>
       <h1>${esc(r.title)}</h1>
       <p>${esc(r.description)}</p>
-      <p class="card-meta">${servingsLabel(r.servings, f)} · ${r.activeMinutes} min active · ${r.totalMinutes} min total · ${esc(r.difficulty)}</p>
+      <p class="card-meta">${servingsLabel(r.servings, f)} · ${r.activeMinutes} min active · ${r.totalMinutes} min total · ${esc(r.difficulty)}${r.tags?.length ? ' · ' + r.tags.map((t) => esc(t)).join(', ') : ''}</p>
       <div class="scaler" id="scaler">
         ${[0.5, 1, 2].map((v) => `<button data-f="${v}" class="${f === v ? 'on' : ''}">${v === 0.5 ? '½×' : v + '×'}</button>`).join('')}
         <button data-f="minus">−</button>

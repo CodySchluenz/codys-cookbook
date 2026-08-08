@@ -4,6 +4,9 @@
 import { readdir, readFile } from 'node:fs/promises';
 
 const DIFFICULTIES = new Set(['easy', 'medium', 'project']);
+const UNITS = new Set(['oz', 'lb', 'cup', 'cups', 'tbsp', 'tsp', 'pinch', 'clove', 'cloves',
+  'sprig', 'sprigs', 'stick', 'sticks', 'can', 'cans', 'quart', 'pint', 'gallon', 'slice', 'slices']);
+const METRIC = /\b\d+(\.\d+)?\s*(g|kg|ml|l)\b|°C/i;
 const problems = [];
 const fail = (file, msg) => problems.push(`${file}: ${msg}`);
 const isStr = (v) => typeof v === 'string' && v.length > 0;
@@ -19,7 +22,9 @@ function checkRecipe(file, r) {
   if (!Array.isArray(r.tags) || r.tags.length === 0 || !r.tags.every(isStr)) fail(file, 'tags must be a non-empty string array');
   for (const k of ['servings', 'activeMinutes', 'totalMinutes']) if (!isNum(r[k]) || r[k] <= 0) fail(file, `missing/invalid ${k}`);
   if (!DIFFICULTIES.has(r.difficulty)) fail(file, 'difficulty must be easy|medium|project');
+  if (r.source !== undefined && r.source !== null && !isStr(r.source)) fail(file, 'source must be a string');
   if (r.photo !== null && r.photo !== undefined && !isStr(r.photo)) fail(file, 'photo must be a path string or null');
+  if (isStr(r.photo) && !r.photo.startsWith('photos/')) fail(file, 'photo must live under photos/');
   if (!Array.isArray(r.ingredientGroups) || r.ingredientGroups.length === 0) fail(file, 'ingredientGroups required');
   else for (const [gi, g] of r.ingredientGroups.entries()) {
     if (g.name !== null && !isStr(g.name)) fail(file, `group ${gi}: name must be a string or null`);
@@ -27,6 +32,8 @@ function checkRecipe(file, r) {
     for (const [ii, it] of g.items.entries()) {
       if (it.qty !== null && !isNum(it.qty)) fail(file, `item ${gi}:${ii}: qty must be a number or null`);
       if (it.unit !== null && it.unit !== undefined && !isStr(it.unit)) fail(file, `item ${gi}:${ii}: unit must be a string or null`);
+      if (isStr(it.unit) && !UNITS.has(it.unit)) fail(file, `item ${gi}:${ii}: unit "${it.unit}" not in imperial allowlist (extend UNITS in scripts/validate.mjs if legit)`);
+      if (it.note !== undefined && !isStr(it.note)) fail(file, `item ${gi}:${ii}: note must be a string`);
       if (!isStr(it.item)) fail(file, `item ${gi}:${ii}: missing item name`);
     }
   }
@@ -47,6 +54,13 @@ function checkRecipe(file, r) {
     fail(file, 'pairings must be a string array');
   if (r.pairsWith !== undefined && (!Array.isArray(r.pairsWith) || !r.pairsWith.every(isStr)))
     fail(file, 'pairsWith must be an array of recipe id strings');
+  const texts = [r.title, r.description, r.plating,
+    ...(r.steps ?? []).flatMap((s) => [s?.text, s?.why]),
+    ...(r.notes ?? []).flatMap((n) => [n?.title, n?.body]),
+    ...(r.variations ?? []), ...(r.elevations ?? []), ...(r.pairings ?? [])];
+  for (const t of texts) {
+    if (isStr(t) && METRIC.test(t)) fail(file, `metric units found in text: "${t.match(METRIC)[0]}" — imperial only`);
+  }
 }
 
 const files = (await readdir('site/recipes')).filter((f) => f.endsWith('.json')).sort();

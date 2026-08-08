@@ -1,6 +1,6 @@
 // Offline support. RULE: bump CACHE on ANY shell change (html/css/js/manifest/icons).
 // Recipe data is network-first, so content updates never require a bump.
-const CACHE = 'cookbook-v2';
+const CACHE = 'cookbook-v3';
 const SHELL = [
   './', './css/app.css', './js/app.js', './js/scale.js',
   './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
@@ -26,7 +26,7 @@ self.addEventListener('fetch', (e) => {
 async function networkFirst(req) {
   try {
     const fresh = await fetch(req);
-    (await caches.open(CACHE)).put(req, fresh.clone());
+    if (fresh.ok) (await caches.open(CACHE)).put(req, fresh.clone()).catch(() => {});
     return fresh;
   } catch {
     const hit = await caches.match(req);
@@ -40,6 +40,6 @@ async function cacheFirst(req) {
   const hit = await caches.match(req);
   if (hit) return hit;
   const fresh = await fetch(req);
-  (await caches.open(CACHE)).put(req, fresh.clone());
+  if (fresh.ok) (await caches.open(CACHE)).put(req, fresh.clone()).catch(() => {});
   return fresh;
 }

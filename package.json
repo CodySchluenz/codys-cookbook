@@ -1,5 +1,6 @@
 {
   "name": "codys-cookbook",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "engines": { "node": ">=18" }
 }
