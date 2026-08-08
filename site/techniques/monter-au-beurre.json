@@ -1,0 +1,14 @@
+{
+  "id": "monter-au-beurre",
+  "title": "Monter au Beurre",
+  "description": "Finishing a sauce or soup by whisking in cold butter, off the heat — the restaurant gloss move.",
+  "steps": [
+    { "text": "Have the butter COLD and cut into small cubes before you need it. Cold is not optional." ,
+      "why": "Cold butter melts slowly enough for its water and fat to emulsify into the liquid. Soft butter just melts into a grease slick." },
+    { "text": "Pull the pot off the heat. Whisk in one cube at a time, letting each disappear before the next.",
+      "why": "Off-heat, the temperature falls through the emulsion sweet spot. Rushing the cubes overwhelms the emulsion and it breaks." },
+    { "text": "Serve immediately — a monté sauce does not hold or reheat.",
+      "why": "Reheating melts the emulsion apart; the gloss and body are gone and no amount of whisking brings them back." }
+  ],
+  "usedIn": ["tomato-soup"]
+}

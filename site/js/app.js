@@ -4,6 +4,7 @@ import { scaleQty, formatQty, shoppingList, combinedShopping } from './scale.js'
 
 const state = {
   index: null,          // parsed index.json, cached for the session
+  techniques: null,     // parsed techniques.json, cached for the session
   search: '',
   activeTags: new Set(),
   factor: 1,            // serving scale factor for the open recipe
@@ -30,6 +31,8 @@ route();
 async function route() {
   const hash = location.hash || '#/';
   if (hash === '#/meal') { await renderMeal(); return; }
+  const t = hash.match(/^#\/technique\/([a-z0-9-]+)$/);
+  if (t) { await renderTechnique(t[1]); return; }
   const m = hash.match(/^#\/recipe\/([a-z0-9-]+)$/);
   if (m) await renderRecipe(m[1]);
   else await renderHome();
@@ -41,6 +44,14 @@ async function loadIndex() {
   if (!res.ok) throw new Error(`index.json: HTTP ${res.status}`);
   state.index = await res.json();
   return state.index;
+}
+
+async function loadTechniques() {
+  if (state.techniques) return state.techniques;
+  const res = await fetch('techniques.json');
+  if (!res.ok) throw new Error(`techniques.json: HTTP ${res.status}`);
+  state.techniques = await res.json();
+  return state.techniques;
 }
 
 async function renderHome() {
@@ -75,6 +86,15 @@ async function renderHome() {
     });
   }
   renderCards();
+  try {
+    const techniques = await loadTechniques();
+    if (techniques.length) {
+      document.getElementById('cards').insertAdjacentHTML('afterend', `
+        <section><h2>Techniques</h2>
+          ${techniques.map((t) => `<a class="pair-link" href="#/technique/${esc(t.id)}">${esc(t.title)} →</a>`).join('')}
+        </section>`);
+    }
+  } catch { /* techniques strip degrades to nothing offline */ }
 }
 
 function renderCards() {
@@ -359,6 +379,49 @@ function wireRecipe(r) {
     localStorage.removeItem(notesKey(r.id));
     ta.value = '';
   });
+}
+
+async function renderTechnique(id) {
+  releaseWakeLock();
+  document.title = 'Technique';
+  let t;
+  try {
+    const res = await fetch(`techniques/${id}.json`);
+    if (res.status === 404) {
+      app.innerHTML = errorCard(`No technique called "${id}".`, { message: 'Not found' });
+      return;
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    t = await res.json();
+  } catch (err) {
+    app.innerHTML = errorCard(navigator.onLine === false
+      ? "You're offline and this technique isn't cached yet."
+      : 'Could not load this technique.', err);
+    return;
+  }
+  try { await loadIndex(); } catch { /* usedIn links degrade */ }
+  document.title = t.title;
+  const used = (t.usedIn ?? [])
+    .map((rid) => (state.index ?? []).find((e) => e.id === rid))
+    .filter(Boolean);
+  app.innerHTML = `
+    <nav class="top-bar"><a class="btn" href="#/">← Recipes</a></nav>
+    <header>
+      <h1>${esc(t.title)}</h1>
+      <p>${esc(t.description)}</p>
+    </header>
+    <section><h2>How it works</h2>
+      <ol class="steps">${t.steps.map((s) => `
+        <li class="step">
+          <div class="step-text">${esc(s.text)}</div>
+          ${s.why ? `<p class="step-why">${esc(s.why)}</p>` : ''}
+        </li>`).join('')}
+      </ol>
+    </section>
+    ${used.length ? `<section><h2>Used in</h2>
+      ${used.map((e) => `<a class="pair-link" href="#/recipe/${esc(e.id)}">${esc(e.title)} →</a>`).join('')}
+    </section>` : ''}
+    ${mealBarHtml()}`;
 }
 
 async function renderMeal() {

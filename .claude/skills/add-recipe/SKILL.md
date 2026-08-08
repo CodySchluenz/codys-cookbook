@@ -106,6 +106,18 @@ appended in chronological order (the site renders newest first).
   `git log --follow site/recipes/<id>.json` — offer it when Cody asks what changed
   or wants an old version back.
 
+## Techniques
+
+Second content type: `site/techniques/<id>.json` —
+`{ "id", "title", "description", "steps": [{ "text", "why" }], "usedIn": ["recipe-id"] }`
+with `site/techniques.json` index (`{id, title, description}`, sorted by id).
+
+- Promote a technique when the same `why` keeps recurring across recipes (monter au
+  beurre, blanch-and-shock) — write the page once, then recipes stay lean.
+- `usedIn` ids must exist (validator enforces); update it when a new recipe uses the
+  technique.
+- Technique JSON is content — network-first, no SW bump needed.
+
 ## Photos
 
 - Files live at `site/photos/<recipe-id>.jpg` — JPEG, max ~1600px wide (aim under

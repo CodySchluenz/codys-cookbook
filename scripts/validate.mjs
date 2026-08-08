@@ -96,9 +96,37 @@ try {
   if (norm(index) !== norm(expected)) fail('index.json', 'out of sync with site/recipes — regenerate entries to match');
 } catch (e) { fail('index.json', `unreadable: ${e.message}`); }
 
+try {
+  const tFiles = (await readdir('site/techniques')).filter((f) => f.endsWith('.json')).sort();
+  const techniques = new Map();
+  for (const file of tFiles) {
+    let t;
+    try { t = JSON.parse(await readFile(`site/techniques/${file}`, 'utf8')); }
+    catch (e) { fail(`techniques/${file}`, `not valid JSON: ${e.message}`); continue; }
+    if (!isStr(t.id)) fail(`techniques/${file}`, 'missing/invalid id');
+    else if (`${t.id}.json` !== file) fail(`techniques/${file}`, `id "${t.id}" does not match filename`);
+    for (const k of ['title', 'description']) if (!isStr(t[k])) fail(`techniques/${file}`, `missing/invalid ${k}`);
+    if (!Array.isArray(t.steps) || t.steps.length === 0) fail(`techniques/${file}`, 'steps required');
+    else for (const [i, s] of t.steps.entries()) {
+      if (!isStr(s.text)) fail(`techniques/${file}`, `step ${i}: missing text`);
+      if (s.why !== undefined && !isStr(s.why)) fail(`techniques/${file}`, `step ${i}: why must be a string`);
+    }
+    if (!Array.isArray(t.usedIn) || !t.usedIn.every(isStr)) fail(`techniques/${file}`, 'usedIn must be a string array');
+    else for (const rid of t.usedIn) {
+      if (!recipes.has(rid)) fail(`techniques/${file}`, `usedIn references unknown recipe "${rid}"`);
+    }
+    if (isStr(t.id)) techniques.set(t.id, t);
+  }
+  const tIndex = JSON.parse(await readFile('site/techniques.json', 'utf8'));
+  const tExpected = tFiles.map((f) => techniques.get(f.replace(/\.json$/, ''))).filter(Boolean)
+    .map((t) => ({ id: t.id, title: t.title, description: t.description }));
+  const tNorm = (x) => JSON.stringify([...x].sort((a, b) => String(a.id).localeCompare(String(b.id))));
+  if (tNorm(tIndex) !== tNorm(tExpected)) fail('techniques.json', 'out of sync with site/techniques');
+} catch (e) { fail('techniques', `unreadable: ${e.message}`); }
+
 if (problems.length) {
   console.error(`✗ ${problems.length} problem(s):`);
   for (const p of problems) console.error('  - ' + p);
   process.exit(1);
 }
-console.log(`✓ ${files.length} recipes valid, index.json in sync`);
+console.log(`✓ ${files.length} recipes valid, index.json in sync, techniques valid`);

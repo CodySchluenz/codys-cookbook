@@ -1,0 +1,14 @@
+{
+  "id": "blanch-and-shock",
+  "title": "Blanch and Shock",
+  "description": "A seconds-long boil followed by an ice bath — how green things stay GREEN.",
+  "steps": [
+    { "text": "Drop the greens into rapidly boiling water — 10 seconds for tender herbs, up to a minute for sturdy vegetables.",
+      "why": "The brief heat kills the enzymes that turn greens brown and muddy over time." },
+    { "text": "Transfer immediately to ice water.",
+      "why": "The shock stops the cooking at exactly the moment you chose and locks the chlorophyll at its brightest." },
+    { "text": "Squeeze or pat completely dry before using.",
+      "why": "Clinging water dilutes whatever the greens go into next — a basil oil goes cloudy, a sauté spits." }
+  ],
+  "usedIn": ["basil-oil"]
+}
