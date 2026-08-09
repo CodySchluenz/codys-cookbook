@@ -9,7 +9,7 @@ mid-task, the next one resumes from here. Git history is the fine-grained backup
 
 ## Current status: STABLE, nothing in flight
 
-All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v13):
+All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v14):
 search/tags · cooking mode (scaler, checklists, timers, wake lock) · shopping-list +
 component ingredient views · meal mode (basket, game plan, combined list) · teaching
 whys + technique pages · precise steps · equipment lists · elevations/pairings/links ·
@@ -45,9 +45,8 @@ appears in history) still pending — needs Cody's phone or the household key.
 See `docs/superpowers/plans/2026-08-08-cookbook.md` and reviewer notes in git history.
 Highlights: metric-text scan skips ingredient notes; changelog date regex is
 shape-only; app.js ~800 lines (split-by-screen refactor if it keeps growing);
-household 500s expose error detail to authed users; drawListSetup save always lands
-on the list even when reached from history (fix: call `route()` — fold into next
-app.js task); dateLabel omits the year (ambiguous once history spans >1yr).
+household 500s expose error detail to authed users. (Task 22's two cosmetic minors —
+join-from-history landing and year-less dateLabel — fixed in 6587c0b, SW v14.)
 **Queued follow-up (do soonish — hist record format is permanent, later = migration):**
 write `hist:` puts with `{metadata: entry}` so `/api/history` reads list pages
 instead of N+1 gets; defuses the KV ops-per-invocation ceiling (~3-5 yrs out).
