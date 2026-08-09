@@ -18,8 +18,9 @@ memory · print styles · household shopping list (first API: worker.js + KV, ho
 key set as Worker secret — value known to Cody, never written here) · **list history +
 trends** (Task 22: every add writes a permanent `hist:` KV record; `GET /api/history`;
 `#/list/history` trends screen — spec `docs/superpowers/specs/2026-08-08-list-history-design.md`).
-History starts 2026-08-08; deletes never touch it. Live end-to-end check (add on phone →
-appears in history) still pending — needs Cody's phone or the household key.
+History starts 2026-08-08; deletes never touch it. Live end-to-end check confirmed by
+Cody on his phone 2026-08-08: add → appears in history; tap bought → leaves list, stays
+in history.
 
 ## How this repo works (fresh-session crash course)
 
@@ -36,9 +37,6 @@ appears in history) still pending — needs Cody's phone or the household key.
 - Real ribeye recipe to replace the sample (`pan-seared-ribeye` still placeholder).
 - First photo (esquites suggested).
 - Zoe's phone onboards the household list (Cody's is done — his items are already on it; the list is in live use). Ask Cody for the key if needed; it is never written in this repo.
-- 30-second history live check (Task 22): add an item on the phone → it shows on
-  `#/list/history` (Trends + Recent); tap it bought → leaves the list, stays in history.
-  Deploy itself is verified (v13 live, /api/history 401s without key).
 
 ## Known punch list (accepted minors, fix opportunistically)
 
