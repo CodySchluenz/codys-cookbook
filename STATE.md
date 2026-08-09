@@ -5,17 +5,21 @@
 mid-task, the next one resumes from here. Git history is the fine-grained backup:
 `git log --oneline` tells the story; this file tells the headline.*
 
-**Last updated:** 2026-08-08, end of the build day (PC session; context cleared right after this commit — this file is the handoff)
+**Last updated:** 2026-08-08, evening (PC session — Task 22 shipped)
 
 ## Current status: STABLE, nothing in flight
 
-All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v12):
+All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v13):
 search/tags · cooking mode (scaler, checklists, timers, wake lock) · shopping-list +
 component ingredient views · meal mode (basket, game plan, combined list) · teaching
 whys + technique pages · precise steps · equipment lists · elevations/pairings/links ·
 revision history · cook notes (send-to-chef) · photos pipeline · made-it + scale
 memory · print styles · household shopping list (first API: worker.js + KV, household
-key set as Worker secret — value known to Cody, never written here).
+key set as Worker secret — value known to Cody, never written here) · **list history +
+trends** (Task 22: every add writes a permanent `hist:` KV record; `GET /api/history`;
+`#/list/history` trends screen — spec `docs/superpowers/specs/2026-08-08-list-history-design.md`).
+History starts 2026-08-08; deletes never touch it. Live end-to-end check (add on phone →
+appears in history) still pending — needs Cody's phone or the household key.
 
 ## How this repo works (fresh-session crash course)
 
@@ -32,10 +36,18 @@ key set as Worker secret — value known to Cody, never written here).
 - Real ribeye recipe to replace the sample (`pan-seared-ribeye` still placeholder).
 - First photo (esquites suggested).
 - Zoe's phone onboards the household list (Cody's is done — his items are already on it; the list is in live use). Ask Cody for the key if needed; it is never written in this repo.
+- 30-second history live check (Task 22): add an item on the phone → it shows on
+  `#/list/history` (Trends + Recent); tap it bought → leaves the list, stays in history.
+  Deploy itself is verified (v13 live, /api/history 401s without key).
 
 ## Known punch list (accepted minors, fix opportunistically)
 
 See `docs/superpowers/plans/2026-08-08-cookbook.md` and reviewer notes in git history.
 Highlights: metric-text scan skips ingredient notes; changelog date regex is
-shape-only; app.js ~700 lines (split-by-screen refactor if it keeps growing);
-household 500s expose error detail to authed users.
+shape-only; app.js ~800 lines (split-by-screen refactor if it keeps growing);
+household 500s expose error detail to authed users; drawListSetup save always lands
+on the list even when reached from history (fix: call `route()` — fold into next
+app.js task); dateLabel omits the year (ambiguous once history spans >1yr).
+**Queued follow-up (do soonish — hist record format is permanent, later = migration):**
+write `hist:` puts with `{metadata: entry}` so `/api/history` reads list pages
+instead of N+1 gets; defuses the KV ops-per-invocation ceiling (~3-5 yrs out).
