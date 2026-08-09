@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeName, groupHistory, recentAdds } from '../site/js/history.js';
+import { normalizeName, groupHistory, recentAdds, dateLabel } from '../site/js/history.js';
 
 const e = (item, addedAt) => ({ item, addedAt });
 
@@ -97,4 +97,22 @@ test('recentAdds returns newest first and respects the limit', () => {
     e('b', '2026-08-02T00:00:00Z'),
   ], 2);
   assert.deepEqual(r.map((x) => x.item), ['c', 'b']);
+});
+
+test('dateLabel omits the year for current-year dates', () => {
+  const now = new Date('2026-08-08T12:00:00Z');
+  const label = dateLabel('2026-08-05T10:00:00Z', now);
+  assert.ok(label.length > 0);
+  assert.ok(!label.includes('2026'));
+});
+
+test('dateLabel includes the year for other-year dates', () => {
+  const now = new Date('2026-08-08T12:00:00Z');
+  assert.ok(dateLabel('2025-12-20T10:00:00Z', now).includes('2025'));
+});
+
+test('dateLabel returns empty string for malformed dates', () => {
+  const now = new Date('2026-08-08T12:00:00Z');
+  assert.equal(dateLabel('not-a-date', now), '');
+  assert.equal(dateLabel(null, now), '');
 });

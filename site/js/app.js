@@ -1,7 +1,7 @@
 // Cody's Cookbook — hash router + rendering. No framework, no build.
 // Screens: home (#/) and recipe (#/recipe/<id> — full version in Task 4).
 import { scaleQty, formatQty, shoppingList, combinedShopping } from './scale.js';
-import { groupHistory, recentAdds } from './history.js';
+import { groupHistory, recentAdds, dateLabel } from './history.js';
 
 const state = {
   index: null,          // parsed index.json, cached for the session
@@ -449,7 +449,7 @@ function drawListSetup(wasBad) {
     if (!k) return;
     localStorage.setItem('hkey', k);
     if (n) localStorage.setItem('hname', n);
-    renderList();
+    route();   // not renderList(): joining from #/list/history should land on history
   });
 }
 
@@ -521,11 +521,6 @@ function listRowHtml(it) {
     <span class="ing-qty">${esc(it.addedBy || '')}${it.addedBy ? ' · ' : ''}${esc(whenLabel(it.addedAt))}</span>
   </button>`;
 }
-
-const dateLabel = (iso) => {
-  const t = Date.parse(iso ?? '');
-  return Number.isNaN(t) ? '' : new Date(t).toLocaleDateString([], { month: 'short', day: 'numeric' });
-};
 
 async function renderListHistory() {
   releaseWakeLock();

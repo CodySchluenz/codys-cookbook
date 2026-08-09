@@ -44,3 +44,14 @@ export function recentAdds(entries, n = 20) {
     .sort((a, b) => (Date.parse(b?.addedAt ?? '') || 0) - (Date.parse(a?.addedAt ?? '') || 0))
     .slice(0, n);
 }
+
+// "Aug 5" this year, "Aug 5, 2025" otherwise — a bare month+day is ambiguous once
+// history spans more than a year.
+export function dateLabel(iso, now = new Date()) {
+  const t = Date.parse(iso ?? '');
+  if (Number.isNaN(t)) return '';
+  const d = new Date(t);
+  const opts = { month: 'short', day: 'numeric' };
+  if (d.getFullYear() !== now.getFullYear()) opts.year = 'numeric';
+  return d.toLocaleDateString([], opts);
+}
