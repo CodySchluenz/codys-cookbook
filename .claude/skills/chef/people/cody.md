@@ -7,5 +7,5 @@
 - **Allergies:** (not yet recorded)
 - **Spice tolerance:** (not yet recorded)
 - **Portioning:** (not yet recorded)
-- **Cooking level & ambitions:** (not yet recorded)
+- **Cooking level & ambitions:** comfortable with technique-heavy French classics on a weeknight (made Robuchon pommes purée + beurre blanc unprompted, 2026-09-07) — don't dumb recipes down; assume competence with emulsions, ricing, multi-component timing
 - **Signature touches to suggest:** (not yet recorded)
