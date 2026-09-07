@@ -2,7 +2,7 @@
 
 *Seeded by the chef's interview — update whenever a preference shows itself.*
 
-- **Likes:** (not yet recorded)
+- **Likes:** whole artichokes with a butter dipping sauce (chose it as the centerpiece of a no-protein night, 2026-09-07)
 - **Dislikes / never serve:** cilantro — has the cilantro gene (reads as soap). Rule for the household: cilantro goes on per-portion, never into the shared dish; Zoe's portions get it generously, Cody's never.
 - **Allergies:** (not yet recorded)
 - **Spice tolerance:** (not yet recorded)
