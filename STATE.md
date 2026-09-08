@@ -5,7 +5,16 @@
 mid-task, the next one resumes from here. Git history is the fine-grained backup:
 `git log --oneline` tells the story; this file tells the headline.*
 
-**Last updated:** 2026-08-08, evening (PC session — Task 22 shipped)
+**Last updated:** 2026-09-07 (PC session — artichoke-night recipes published)
+
+**Content:** 7 recipes. Newest (2026-09-07, from the cooked-live artichoke night):
+`garlic-cream-pommes-puree` (Robuchon-style, garlic cream integrated) and
+`steamed-artichokes-garlic-cream` (microwave steam is the primary method) — cross-linked
+to each other, purée ↔ ribeye linked, both added to monter-au-beurre's usedIn.
+Chef knowledge grew the same night: Cody cooks technique-heavy French on weeknights,
+likes whole artichokes + butter dip, kitchen has a microwave (all committed to
+`.claude/skills/chef/`). Awaiting Cody's cook notes on both new recipes — fold in
+via the usual "Cook notes for <id>" flow when they arrive.
 
 ## Current status: STABLE, nothing in flight
 

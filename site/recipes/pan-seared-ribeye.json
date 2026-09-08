@@ -11,7 +11,8 @@
   "source": "Sample recipe — replace with the real version from a starred chat",
   "equipment": ["heavy skillet (cast iron or stainless)", "instant-read thermometer"],
   "changelog": [
-    { "date": "2026-08-08", "note": "Sample recipe — awaiting Cody's real version from a starred chat." }
+    { "date": "2026-08-08", "note": "Sample recipe — awaiting Cody's real version from a starred chat." },
+    { "date": "2026-09-07", "note": "Cross-linked to the garlic-cream pommes purée — steak over that purée is the obvious play." }
   ],
   "ingredientGroups": [
     {
@@ -48,6 +49,6 @@
     "Two-minute pan sauce: pour off the fat, deglaze with stock, swirl in a cold knob of butter."
   ],
   "pairings": ["Charred broccolini", "A big Zinfandel or Cabernet"],
-  "pairsWith": ["esquites"],
+  "pairsWith": ["esquites", "garlic-cream-pommes-puree"],
   "variations": []
 }

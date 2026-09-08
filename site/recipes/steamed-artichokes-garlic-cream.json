@@ -1,0 +1,66 @@
+{
+  "id": "steamed-artichokes-garlic-cream",
+  "title": "Steamed Artichokes with Garlic Cream Dip",
+  "description": "Microwave-steamed whole artichokes, leaf-by-leaf through a punchy garlic cream — the pile of spent leaves is part of the theater.",
+  "tags": ["vegetarian", "side", "snack", "microwave", "weeknight"],
+  "servings": 2,
+  "activeMinutes": 15,
+  "totalMinutes": 30,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Developed with the chef, cooked 2026-09-07 (artichoke night)",
+  "equipment": ["microwave"],
+  "changelog": [
+    { "date": "2026-09-07", "note": "First publish — microwave steam replaced the boil mid-cook and earned the primary spot: faster, one less pot, off the critical path." }
+  ],
+  "ingredientGroups": [
+    {
+      "name": "Artichokes",
+      "items": [
+        { "qty": 2, "unit": null, "item": "globe artichokes" },
+        { "qty": null, "unit": null, "item": "fine salt" },
+        { "qty": null, "unit": null, "item": "flaky salt", "note": "for the table" }
+      ]
+    },
+    {
+      "name": "Garlic cream dip",
+      "items": [
+        { "qty": 4, "unit": null, "item": "garlic cloves", "note": "smashed and peeled" },
+        { "qty": 0.75, "unit": "cup", "item": "heavy cream" },
+        { "qty": 1, "unit": "tbsp", "item": "butter", "note": "cold" },
+        { "qty": null, "unit": null, "item": "black pepper", "note": "a real grind" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Trim the 2 artichokes: cut each stem flush so it sits upright, slice the top inch off, snip the thorn tips with scissors. Work fast and get them to the steam — cut artichoke grays in minutes.",
+      "why": "The graying is oxidation and purely cosmetic; lemon-rubbing prevents it, but speed works nearly as well and needs nothing." },
+    { "text": "Start the dip: put the 4 smashed garlic cloves and ¾ cup heavy cream at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream, lid on, off heat.", "minutes": 12,
+      "why": "Steeping mellows the garlic from sharp to sweet — raw garlic in cream never loses its bite." },
+    { "text": "Rinse the artichokes and leave them dripping wet. Set them upside down in a microwave-safe bowl with ½ cup water, a pinch of fine salt scattered into the wet leaves.",
+      "why": "Upside down puts the dense base in the hottest zone, and the clinging rinse water becomes steam inside the leaves." },
+    { "text": "Cover tightly — a plate on top, or plastic wrap with one corner vented — and microwave on high 8 minutes. Knife-test the stem base: no grip means done. Not yet? Continue in 2-minute rounds; two big globes can take 12 to 14 total.", "minutes": 8 },
+    { "text": "Leave covered 5 minutes after the microwave stops, then uncover away from your face.", "minutes": 5,
+      "why": "The covered rest lets carryover steam finish the centers evenly — and the trapped cloud when you uncover is genuinely dangerous to lean over." },
+    { "text": "Drain the artichokes upside down in a colander 5 minutes.",
+      "why": "The leaves hold hot water like shingles, and every trapped spoonful thins your dip leaf by leaf." },
+    { "text": "Finish the dip: return the garlic cream to medium-low and simmer gently 2 to 3 minutes, until it coats the back of a spoon and a finger-swipe holds its track. Off heat, whisk in the 1 tbsp cold butter. Season LOUDER than the rest of the plate: fine salt confidently, plus a real grind of black pepper.", "minutes": 3,
+      "why": "A dip meets each bite for only a second, so it needs more seasoning than a sauce that coats — quiet dips disappear." },
+    { "text": "Serve immediately: dip each leaf fat-end first and scrape between your teeth. When the leaves go thin and papery, spoon out the fuzzy choke — everything beneath it is the heart. Quarter it and drag it through what's left." }
+  ],
+  "notes": [
+    { "title": "No boiling pot, on purpose", "body": "Microwave steaming takes the artichokes off the stovetop's critical path, cooks in a third of the time, and skips a pot. If you'd rather boil: 30–40 minutes in salted, lemony water, weighted down with a small lid so they stay submerged." },
+    { "title": "Doneness is two tests", "body": "An outer leaf pulls free with zero fight AND a knife slides into the stem base like butter. Use both — leaves can loosen before the heart is done." }
+  ],
+  "plating": "Upright on the flat-cut base, dip in a warm ramekin at sharing distance, flaky salt over the artichoke last. An empty bowl on the table for spent leaves — the growing pile is part of the fun.",
+  "elevations": [
+    "½ tsp Dijon whisked into the finished dip — tang the plate is otherwise missing.",
+    "A few drops of lemon juice in the dip if the house has one.",
+    "Grated Parmesan into the hot dip for a salty, nutty depth."
+  ],
+  "pairings": ["A crisp white wine", "Crusty bread for the leftover dip"],
+  "pairsWith": ["garlic-cream-pommes-puree"],
+  "variations": [
+    "Making the purée too? Steep once for both: 14 cloves in 2 cups cream, reserve ½ cup for the dip before the purée gets the rest."
+  ]
+}

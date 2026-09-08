@@ -30,6 +30,16 @@
     "ingredients": ["ears fresh corn", "neutral oil", "butter", "jalapeño", "garlic cloves", "salt", "Sir Kensington's lime crema", "mayonnaise", "cotija", "lime", "Tajín", "cilantro"]
   },
   {
+    "id": "garlic-cream-pommes-puree",
+    "title": "Garlic-Cream Pommes Purée",
+    "description": "Robuchon-style mashed potatoes with garlic-steeped cream beaten in — the purée IS the sauce.",
+    "tags": ["french", "potato", "side", "vegetarian", "stovetop"],
+    "totalMinutes": 50,
+    "difficulty": "medium",
+    "photo": null,
+    "ingredients": ["garlic cloves", "heavy cream", "Yukon Gold potatoes", "butter", "fine salt", "white pepper", "nutmeg"]
+  },
+  {
     "id": "pan-seared-ribeye",
     "title": "Pan-Seared Ribeye",
     "description": "Butter-basted, dry-brined the night before, rested properly.",
@@ -38,6 +48,16 @@
     "difficulty": "medium",
     "photo": null,
     "ingredients": ["ribeye", "neutral oil", "butter", "thyme sprigs", "garlic cloves", "kosher salt", "flaky salt"]
+  },
+  {
+    "id": "steamed-artichokes-garlic-cream",
+    "title": "Steamed Artichokes with Garlic Cream Dip",
+    "description": "Microwave-steamed whole artichokes, leaf-by-leaf through a punchy garlic cream — the pile of spent leaves is part of the theater.",
+    "tags": ["vegetarian", "side", "snack", "microwave", "weeknight"],
+    "totalMinutes": 30,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": ["globe artichokes", "fine salt", "flaky salt", "garlic cloves", "heavy cream", "butter", "black pepper"]
   },
   {
     "id": "tomato-soup",

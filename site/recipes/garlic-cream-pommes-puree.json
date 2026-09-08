@@ -1,0 +1,66 @@
+{
+  "id": "garlic-cream-pommes-puree",
+  "title": "Garlic-Cream Pommes Purée",
+  "description": "Robuchon-style mashed potatoes with garlic-steeped cream beaten in — the purée IS the sauce.",
+  "tags": ["french", "potato", "side", "vegetarian", "stovetop"],
+  "servings": 4,
+  "activeMinutes": 35,
+  "totalMinutes": 50,
+  "difficulty": "medium",
+  "photo": null,
+  "source": "Developed with the chef, cooked 2026-09-07 (artichoke night)",
+  "equipment": ["potato ricer"],
+  "changelog": [
+    { "date": "2026-09-07", "note": "First publish — from the no-protein artichoke night. Cooked peeled that night; skins-on is the canonical method, rescue note included." }
+  ],
+  "ingredientGroups": [
+    {
+      "name": "Garlic cream",
+      "items": [
+        { "qty": 12, "unit": null, "item": "garlic cloves", "note": "smashed and peeled" },
+        { "qty": 1.5, "unit": "cup", "item": "heavy cream" }
+      ]
+    },
+    {
+      "name": "Purée",
+      "items": [
+        { "qty": 2.5, "unit": "lb", "item": "Yukon Gold potatoes", "note": "similar size, skins on" },
+        { "qty": 16, "unit": "tbsp", "item": "butter", "note": "2 sticks — cubed, kept COLD" },
+        { "qty": null, "unit": null, "item": "fine salt" },
+        { "qty": null, "unit": null, "item": "white pepper", "note": "optional whisper" },
+        { "qty": null, "unit": null, "item": "nutmeg", "note": "fresh-grated, optional whisper" }
+      ]
+    }
+  ],
+  "steps": [
+    { "text": "Put the 2½ lb potatoes — whole, skins on — in cold, well-salted water. Bring to a gentle boil and cook about 25 minutes, until a knife slides out with no grip.", "minutes": 25,
+      "why": "The skins keep water out of the flesh while it cooks. Dry potato is what makes room for a stick of butter — waterlogged potato rejects it and turns gluey." },
+    { "text": "While they boil: put the 12 smashed garlic cloves and 1½ cups heavy cream at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream right in the pot, lid on, off heat.", "minutes": 12,
+      "why": "Steeping mellows the garlic from sharp to sweet, and the cream carries it evenly through the purée instead of in hot pockets." },
+    { "text": "Cube the 2 sticks of butter and put them back in the fridge until needed.",
+      "why": "Cold butter absorbs in stages and emulsifies; soft butter just melts into a grease slick. Cold is not optional." },
+    { "text": "Drain the potatoes and peel them scorching hot — towel in one hand, paring knife in the other; the skins slip right off. Rice them back into the dry, empty pot." },
+    { "text": "Stir the riced potatoes over low heat 2 to 3 minutes to steam off surface moisture.", "minutes": 3,
+      "why": "This drying pass is what saves the texture — every bit of water driven off now is room for fat later." },
+    { "text": "On the lowest heat, beat in the 16 tbsp of cold butter in 4 to 5 additions, each fully absorbed before the next. The mixture must never come close to a simmer." },
+    { "text": "Beat in the warm garlic cream in stages, by feel — stop when the purée slumps slowly off a spoon like thick paint. You may not need all 1½ cups. Taste, then season with fine salt, and the white pepper and nutmeg whisper if you like." },
+    { "text": "Hold on the lowest flame with the lid on, stirring occasionally, up to 20 minutes.",
+      "why": "A deep mass of purée catches on the pot floor sooner than you expect — the occasional stir is cheap insurance." }
+  ],
+  "notes": [
+    { "title": "If you peeled first", "body": "Recoverable. Drop the boil to a gentle simmer (a hard boil batters and waterlogs bare potatoes), stretch the drying pass to a full 4–5 minutes — until the steam slows and the mass films the pot floor — add the cream more cautiously, and taste before salting: peeled potatoes drink salt from the water." },
+    { "title": "The one rule", "body": "Nothing above a simmer once butter is in. Gluey purée and broken sauce live at the same temperature — low and slow is the whole religion." },
+    { "title": "Leftovers", "body": "Reheats over low heat with a splash of cream, good as new the next day." }
+  ],
+  "plating": "Warm shallow bowls, a big spoonful swooshed off-center with the back of the spoon — it should hold the swoosh. Whatever it accompanies leans against it.",
+  "elevations": [
+    "A few drops of lemon juice at the end — fat mutes, acid restores.",
+    "Snipped chives over the top for color and bite.",
+    "Full Robuchon: push the butter toward 3 sticks and pass the purée through a fine sieve for silk."
+  ],
+  "pairings": ["Anything seared with a pan sauce", "Roast chicken"],
+  "pairsWith": ["steamed-artichokes-garlic-cream", "pan-seared-ribeye"],
+  "variations": [
+    "Making the steamed artichokes too? Steep once for both: 14 cloves in 2 cups cream, reserve ½ cup for the dip before the purée gets the rest."
+  ]
+}
