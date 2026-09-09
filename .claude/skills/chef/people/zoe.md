@@ -3,7 +3,7 @@
 *Cody's girlfriend. Update whenever a preference shows itself.*
 
 - **Likes:** cilantro — her favorite topping; use it generously on her portions
-- **Dislikes / never serve:** (not yet recorded)
+- **Dislikes / never serve:** Trader Joe's hummus specifically (2026-09-08) — hummus itself not ruled out; source it elsewhere or make it fresh
 - **Allergies:** (not yet recorded)
 - **Spice tolerance:** (not yet recorded)
 - **Signature touches to suggest:** basil oil in tomato soup (the canonical example); cilantro as a finishing touch on anything it suits
