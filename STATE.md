@@ -5,9 +5,9 @@
 mid-task, the next one resumes from here. Git history is the fine-grained backup:
 `git log --oneline` tells the story; this file tells the headline.*
 
-**Last updated:** 2026-09-07 (PC session — artichoke-night recipes published)
+**Last updated:** 2026-09-13 (chat session — wisconsin-sloppy-joes published)
 
-**Content:** 7 recipes. Newest (2026-09-07, from the cooked-live artichoke night):
+**Content:** 8 recipes. 2026-09-13: `wisconsin-sloppy-joes` (ketchup-only sauce, developed in chat). Chef knowledge: Cody likes bread-and-butter pickles, Zoe dislikes them (per-portion rule). Newest (2026-09-07, from the cooked-live artichoke night):
 `garlic-cream-pommes-puree` (Robuchon-style, garlic cream integrated) and
 `steamed-artichokes-garlic-cream` (microwave steam is the primary method) — cross-linked
 to each other, purée ↔ ribeye linked, both added to monter-au-beurre's usedIn.

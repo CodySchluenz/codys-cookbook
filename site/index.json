@@ -3,70 +3,203 @@
     "id": "basil-oil",
     "title": "Basil Oil",
     "description": "Her signature — jewel-green finishing oil for tomato soup, eggs, burrata, anything.",
-    "tags": ["component", "vegetarian"],
+    "tags": [
+      "component",
+      "vegetarian"
+    ],
     "totalMinutes": 10,
     "difficulty": "easy",
     "photo": null,
-    "ingredients": ["basil leaves", "neutral oil", "fine salt"]
+    "ingredients": [
+      "basil leaves",
+      "neutral oil",
+      "fine salt"
+    ]
   },
   {
     "id": "croque-monsieur",
     "title": "Croque Monsieur",
     "description": "Mornay-crowned, pan-crisped, broiler-finished — the proper one, with the layering that matters.",
-    "tags": ["sandwich", "stovetop", "oven"],
+    "tags": [
+      "sandwich",
+      "stovetop",
+      "oven"
+    ],
     "totalMinutes": 50,
     "difficulty": "medium",
     "photo": null,
-    "ingredients": ["butter", "all-purpose flour", "whole milk", "Gruyère", "Parmesan", "nutmeg", "salt and white pepper", "pain de mie or good white bread", "butter", "ham", "Gruyère", "Dijon mustard"]
+    "ingredients": [
+      "butter",
+      "all-purpose flour",
+      "whole milk",
+      "Gruyère",
+      "Parmesan",
+      "nutmeg",
+      "salt and white pepper",
+      "pain de mie or good white bread",
+      "butter",
+      "ham",
+      "Gruyère",
+      "Dijon mustard"
+    ]
   },
   {
     "id": "esquites",
     "title": "Esquites",
     "description": "Charred street-corn cups — creamy, sweet, hot, sour, in that order.",
-    "tags": ["mexican", "corn", "stovetop", "snack", "side", "vegetarian", "weeknight"],
+    "tags": [
+      "mexican",
+      "corn",
+      "stovetop",
+      "snack",
+      "side",
+      "vegetarian",
+      "weeknight"
+    ],
     "totalMinutes": 25,
     "difficulty": "easy",
     "photo": null,
-    "ingredients": ["ears fresh corn", "neutral oil", "butter", "jalapeño", "garlic cloves", "salt", "Sir Kensington's lime crema", "mayonnaise", "cotija", "lime", "Tajín", "cilantro"]
+    "ingredients": [
+      "ears fresh corn",
+      "neutral oil",
+      "butter",
+      "jalapeño",
+      "garlic cloves",
+      "salt",
+      "Sir Kensington's lime crema",
+      "mayonnaise",
+      "cotija",
+      "lime",
+      "Tajín",
+      "cilantro"
+    ]
   },
   {
     "id": "garlic-cream-pommes-puree",
     "title": "Garlic-Cream Pommes Purée",
     "description": "Robuchon-style mashed potatoes with garlic-steeped cream beaten in — the purée IS the sauce.",
-    "tags": ["french", "potato", "side", "vegetarian", "stovetop"],
+    "tags": [
+      "french",
+      "potato",
+      "side",
+      "vegetarian",
+      "stovetop"
+    ],
     "totalMinutes": 50,
     "difficulty": "medium",
     "photo": null,
-    "ingredients": ["garlic cloves", "heavy cream", "Yukon Gold potatoes", "butter", "fine salt", "white pepper", "nutmeg"]
+    "ingredients": [
+      "garlic cloves",
+      "heavy cream",
+      "Yukon Gold potatoes",
+      "butter",
+      "fine salt",
+      "white pepper",
+      "nutmeg"
+    ]
   },
   {
     "id": "pan-seared-ribeye",
     "title": "Pan-Seared Ribeye",
     "description": "Butter-basted, dry-brined the night before, rested properly.",
-    "tags": ["beef", "stovetop", "weeknight"],
+    "tags": [
+      "beef",
+      "stovetop",
+      "weeknight"
+    ],
     "totalMinutes": 45,
     "difficulty": "medium",
     "photo": null,
-    "ingredients": ["ribeye", "neutral oil", "butter", "thyme sprigs", "garlic cloves", "kosher salt", "flaky salt"]
+    "ingredients": [
+      "ribeye",
+      "neutral oil",
+      "butter",
+      "thyme sprigs",
+      "garlic cloves",
+      "kosher salt",
+      "flaky salt"
+    ]
   },
   {
     "id": "steamed-artichokes-garlic-cream",
     "title": "Steamed Artichokes with Garlic Cream Dip",
     "description": "Microwave-steamed whole artichokes, leaf-by-leaf through a punchy garlic cream — the pile of spent leaves is part of the theater.",
-    "tags": ["vegetarian", "side", "snack", "microwave", "weeknight"],
+    "tags": [
+      "vegetarian",
+      "side",
+      "snack",
+      "microwave",
+      "weeknight"
+    ],
     "totalMinutes": 30,
     "difficulty": "easy",
     "photo": null,
-    "ingredients": ["globe artichokes", "fine salt", "flaky salt", "garlic cloves", "heavy cream", "butter", "black pepper"]
+    "ingredients": [
+      "globe artichokes",
+      "fine salt",
+      "flaky salt",
+      "garlic cloves",
+      "heavy cream",
+      "butter",
+      "black pepper"
+    ]
   },
   {
     "id": "tomato-soup",
     "title": "Tomato Soup",
     "description": "San Marzano tomato soup with bloomed spices and a monter au beurre finish.",
-    "tags": ["soup", "stovetop", "weeknight"],
+    "tags": [
+      "soup",
+      "stovetop",
+      "weeknight"
+    ],
     "totalMinutes": 60,
     "difficulty": "easy",
     "photo": null,
-    "ingredients": ["butter", "butter", "yellow onion", "garlic cloves", "tomato paste", "dried basil", "dried oregano", "smoked paprika", "San Marzano whole peeled tomatoes", "chicken broth", "heavy cream", "sugar", "salt and black pepper", "red pepper flakes", "basil oil"]
+    "ingredients": [
+      "butter",
+      "butter",
+      "yellow onion",
+      "garlic cloves",
+      "tomato paste",
+      "dried basil",
+      "dried oregano",
+      "smoked paprika",
+      "San Marzano whole peeled tomatoes",
+      "chicken broth",
+      "heavy cream",
+      "sugar",
+      "salt and black pepper",
+      "red pepper flakes",
+      "basil oil"
+    ]
+  },
+  {
+    "id": "wisconsin-sloppy-joes",
+    "title": "Wisconsin Sloppy Joes",
+    "description": "Ketchup, brown sugar, yellow mustard, onion. Nothing else in the sauce.",
+    "tags": [
+      "sandwich",
+      "beef",
+      "stovetop",
+      "weeknight",
+      "midwest"
+    ],
+    "totalMinutes": 30,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": [
+      "ground beef",
+      "butter",
+      "yellow onion",
+      "salt",
+      "ketchup",
+      "brown sugar",
+      "yellow mustard",
+      "garlic powder",
+      "black pepper",
+      "soft hamburger buns",
+      "butter"
+    ]
   }
 ]
