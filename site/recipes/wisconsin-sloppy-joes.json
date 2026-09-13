@@ -2,57 +2,143 @@
   "id": "wisconsin-sloppy-joes",
   "title": "Wisconsin Sloppy Joes",
   "description": "Ketchup, brown sugar, yellow mustard, onion. Nothing else in the sauce.",
-  "tags": ["sandwich", "beef", "stovetop", "weeknight", "midwest"],
+  "tags": [
+    "sandwich",
+    "beef",
+    "stovetop",
+    "weeknight",
+    "midwest"
+  ],
   "servings": 4,
   "activeMinutes": 25,
   "totalMinutes": 30,
   "difficulty": "easy",
   "photo": null,
   "source": "Developed with the chef in chat, 2026-09-13",
-  "equipment": ["large skillet"],
+  "equipment": [
+    "large skillet"
+  ],
   "changelog": [
-    { "date": "2026-09-13", "note": "First publish: ketchup-only sauce, no vinegar, Worcestershire, tomato soup, or water." }
+    {
+      "date": "2026-09-13",
+      "note": "First publish: ketchup-only sauce, no vinegar, Worcestershire, tomato soup, or water."
+    },
+    {
+      "date": "2026-09-13",
+      "note": "Kettle chips dropped from pairings; coleslaw in. Both diners hate kettle chips."
+    }
   ],
   "ingredientGroups": [
     {
       "name": "Meat",
       "items": [
-        { "qty": 1, "unit": "lb", "item": "ground beef", "note": "80/20" },
-        { "qty": 1, "unit": "tbsp", "item": "butter" },
-        { "qty": 1, "unit": null, "item": "yellow onion", "note": "medium, finely diced" },
-        { "qty": 0.5, "unit": "tsp", "item": "salt" },
-        { "qty": 0.75, "unit": "cup", "item": "ketchup" },
-        { "qty": 1, "unit": "tbsp", "item": "brown sugar" },
-        { "qty": 2, "unit": "tsp", "item": "yellow mustard" },
-        { "qty": 0.5, "unit": "tsp", "item": "garlic powder" },
-        { "qty": 0.25, "unit": "tsp", "item": "black pepper" }
+        {
+          "qty": 1,
+          "unit": "lb",
+          "item": "ground beef",
+          "note": "80/20"
+        },
+        {
+          "qty": 1,
+          "unit": "tbsp",
+          "item": "butter"
+        },
+        {
+          "qty": 1,
+          "unit": null,
+          "item": "yellow onion",
+          "note": "medium, finely diced"
+        },
+        {
+          "qty": 0.5,
+          "unit": "tsp",
+          "item": "salt"
+        },
+        {
+          "qty": 0.75,
+          "unit": "cup",
+          "item": "ketchup"
+        },
+        {
+          "qty": 1,
+          "unit": "tbsp",
+          "item": "brown sugar"
+        },
+        {
+          "qty": 2,
+          "unit": "tsp",
+          "item": "yellow mustard"
+        },
+        {
+          "qty": 0.5,
+          "unit": "tsp",
+          "item": "garlic powder"
+        },
+        {
+          "qty": 0.25,
+          "unit": "tsp",
+          "item": "black pepper"
+        }
       ]
     },
     {
       "name": "Buns",
       "items": [
-        { "qty": 4, "unit": null, "item": "soft hamburger buns" },
-        { "qty": 2, "unit": "tbsp", "item": "butter", "note": "softened" }
+        {
+          "qty": 4,
+          "unit": null,
+          "item": "soft hamburger buns"
+        },
+        {
+          "qty": 2,
+          "unit": "tbsp",
+          "item": "butter",
+          "note": "softened"
+        }
       ]
     }
   ],
   "steps": [
-    { "text": "Melt the 1 tbsp butter in a large skillet over medium heat. Add the 1 finely diced onion with the ½ tsp salt and cook until soft and translucent, 5-6 minutes. Do not let it brown.", "minutes": 6,
-      "why": "Onion cooked with the beef stays crunchy in the finished sauce. Sweating it first in butter with salt pulls its water out and softens it fully, and its sweetness becomes part of the sauce instead of a texture." },
-    { "text": "Push the onion to one side, raise the heat to medium-high, and add the 1 lb ground beef. Break it into small crumbles and cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.", "minutes": 8,
-      "why": "Small crumbles are the point of a sloppy joe: more surface area to hold sauce. The browning on the pan bottom is flavor you scrape back in at the next step." },
-    { "text": "Tilt the pan and spoon off all but about 1 tbsp of fat, scraping up the browned bits with the spoon as you go.",
-      "why": "Ketchup will not emulsify a pool of fat; leave too much and the sauce goes greasy and slides off the bun. One tablespoon keeps the meat moist." },
-    { "text": "Reduce the heat to low. Stir in the ¾ cup ketchup, 1 tbsp brown sugar, 2 tsp yellow mustard, ½ tsp garlic powder, and ¼ tsp black pepper until every crumble is coated." },
-    { "text": "Simmer uncovered, stirring often, until the sauce clings to the meat rather than pooling, 6-8 minutes.", "minutes": 7,
-      "why": "Ketchup is mostly sugar and scorches fast with no water or stock to buffer it. Low heat and frequent stirring keep the sugar from catching on the pan while it thickens." },
-    { "text": "Spread the 2 tbsp softened butter on the cut faces of the 4 buns and toast face-down in a dry skillet until golden, about 2 minutes.", "minutes": 2,
-      "why": "A toasted face is a moisture barrier; untoasted buns go soggy before the second bite." },
-    { "text": "Taste the meat. If it reads one-note sweet, a pinch more salt or a squeeze more mustard fixes it faster than anything else. Pile the meat high on the bottom buns and serve immediately." }
+    {
+      "text": "Melt the 1 tbsp butter in a large skillet over medium heat. Add the 1 finely diced onion with the ½ tsp salt and cook until soft and translucent, 5-6 minutes. Do not let it brown.",
+      "minutes": 6,
+      "why": "Onion cooked with the beef stays crunchy in the finished sauce. Sweating it first in butter with salt pulls its water out and softens it fully, and its sweetness becomes part of the sauce instead of a texture."
+    },
+    {
+      "text": "Push the onion to one side, raise the heat to medium-high, and add the 1 lb ground beef. Break it into small crumbles and cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.",
+      "minutes": 8,
+      "why": "Small crumbles are the point of a sloppy joe: more surface area to hold sauce. The browning on the pan bottom is flavor you scrape back in at the next step."
+    },
+    {
+      "text": "Tilt the pan and spoon off all but about 1 tbsp of fat, scraping up the browned bits with the spoon as you go.",
+      "why": "Ketchup will not emulsify a pool of fat; leave too much and the sauce goes greasy and slides off the bun. One tablespoon keeps the meat moist."
+    },
+    {
+      "text": "Reduce the heat to low. Stir in the ¾ cup ketchup, 1 tbsp brown sugar, 2 tsp yellow mustard, ½ tsp garlic powder, and ¼ tsp black pepper until every crumble is coated."
+    },
+    {
+      "text": "Simmer uncovered, stirring often, until the sauce clings to the meat rather than pooling, 6-8 minutes.",
+      "minutes": 7,
+      "why": "Ketchup is mostly sugar and scorches fast with no water or stock to buffer it. Low heat and frequent stirring keep the sugar from catching on the pan while it thickens."
+    },
+    {
+      "text": "Spread the 2 tbsp softened butter on the cut faces of the 4 buns and toast face-down in a dry skillet until golden, about 2 minutes.",
+      "minutes": 2,
+      "why": "A toasted face is a moisture barrier; untoasted buns go soggy before the second bite."
+    },
+    {
+      "text": "Taste the meat. If it reads one-note sweet, a pinch more salt or a squeeze more mustard fixes it faster than anything else. Pile the meat high on the bottom buns and serve immediately."
+    }
   ],
   "notes": [
-    { "title": "Why salt before sugar", "body": "With nothing acidic in the sauce beyond ketchup and mustard, the balance is salt against sugar. If it tastes flat, it almost always wants salt, not more sugar." },
-    { "title": "Next day", "body": "The meat is better reheated the next day once the onion has fully dissolved into the sauce. Reheat low with a splash of water." }
+    {
+      "title": "Why salt before sugar",
+      "body": "With nothing acidic in the sauce beyond ketchup and mustard, the balance is salt against sugar. If it tastes flat, it almost always wants salt, not more sugar."
+    },
+    {
+      "title": "Next day",
+      "body": "The meat is better reheated the next day once the onion has fully dissolved into the sauce. Reheat low with a splash of water."
+    }
   ],
   "plating": "Bottom bun, meat piled tall and slightly overflowing, top bun set at an angle so the filling shows. Pickles go on per-portion, never into the pan.",
   "elevations": [
@@ -60,7 +146,10 @@
     "Bread-and-butter pickle chips on Cody's; Zoe's stays plain or gets dill.",
     "Toast the buns in the drained beef fat instead of butter."
   ],
-  "pairings": ["Kettle chips", "Sweet corn on the cob in season"],
+  "pairings": [
+    "Sweet corn on the cob in season",
+    "Coleslaw"
+  ],
   "pairsWith": [],
   "variations": []
 }
