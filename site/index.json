@@ -121,6 +121,38 @@
     ]
   },
   {
+    "id": "shakshuka",
+    "title": "Shakshuka",
+    "description": "Eggs poached in a cumin-and-smoked-paprika tomato sauce, finished with feta and herbs. Garlic-rubbed sourdough for dipping.",
+    "tags": [
+      "eggs",
+      "breakfast",
+      "vegetarian",
+      "one-pan",
+      "weeknight"
+    ],
+    "totalMinutes": 35,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": [
+      "olive oil",
+      "medium onion",
+      "red bell pepper",
+      "garlic cloves",
+      "ground cumin",
+      "smoked paprika",
+      "ground coriander",
+      "cayenne or red pepper flakes",
+      "crushed tomatoes",
+      "sugar",
+      "eggs",
+      "feta",
+      "small bunch cilantro or parsley",
+      "thick slices sourdough",
+      "garlic clove"
+    ]
+  },
+  {
     "id": "steamed-artichokes-garlic-cream",
     "title": "Steamed Artichokes with Garlic Cream Dip",
     "description": "Microwave-steamed whole artichokes, leaf-by-leaf through a punchy garlic cream — the pile of spent leaves is part of the theater.",
