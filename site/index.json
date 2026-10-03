@@ -209,7 +209,7 @@
   {
     "id": "wisconsin-sloppy-joes",
     "title": "Wisconsin Sloppy Joes",
-    "description": "Ketchup, brown sugar, yellow mustard, onion. Nothing else in the sauce.",
+    "description": "Ketchup, brown sugar, yellow mustard. Nothing else in the sauce.",
     "tags": [
       "sandwich",
       "beef",
@@ -217,13 +217,11 @@
       "weeknight",
       "midwest"
     ],
-    "totalMinutes": 30,
+    "totalMinutes": 25,
     "difficulty": "easy",
     "photo": null,
     "ingredients": [
       "ground beef",
-      "butter",
-      "yellow onion",
       "salt",
       "ketchup",
       "brown sugar",

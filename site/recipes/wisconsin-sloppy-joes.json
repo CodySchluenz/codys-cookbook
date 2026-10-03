@@ -1,7 +1,7 @@
 {
   "id": "wisconsin-sloppy-joes",
   "title": "Wisconsin Sloppy Joes",
-  "description": "Ketchup, brown sugar, yellow mustard, onion. Nothing else in the sauce.",
+  "description": "Ketchup, brown sugar, yellow mustard. Nothing else in the sauce.",
   "tags": [
     "sandwich",
     "beef",
@@ -10,8 +10,8 @@
     "midwest"
   ],
   "servings": 4,
-  "activeMinutes": 25,
-  "totalMinutes": 30,
+  "activeMinutes": 20,
+  "totalMinutes": 25,
   "difficulty": "easy",
   "photo": null,
   "source": "Developed with the chef in chat, 2026-09-13",
@@ -26,6 +26,10 @@
     {
       "date": "2026-09-13",
       "note": "Kettle chips dropped from pairings; coleslaw in. Both diners hate kettle chips."
+    },
+    {
+      "date": "2026-10-03",
+      "note": "Onion removed per Cody. Butter sweat step dropped; salt now seasons the beef directly."
     }
   ],
   "ingredientGroups": [
@@ -37,17 +41,6 @@
           "unit": "lb",
           "item": "ground beef",
           "note": "80/20"
-        },
-        {
-          "qty": 1,
-          "unit": "tbsp",
-          "item": "butter"
-        },
-        {
-          "qty": 1,
-          "unit": null,
-          "item": "yellow onion",
-          "note": "medium, finely diced"
         },
         {
           "qty": 0.5,
@@ -100,12 +93,7 @@
   ],
   "steps": [
     {
-      "text": "Melt the 1 tbsp butter in a large skillet over medium heat. Add the 1 finely diced onion with the ½ tsp salt and cook until soft and translucent, 5-6 minutes. Do not let it brown.",
-      "minutes": 6,
-      "why": "Onion cooked with the beef stays crunchy in the finished sauce. Sweating it first in butter with salt pulls its water out and softens it fully, and its sweetness becomes part of the sauce instead of a texture."
-    },
-    {
-      "text": "Push the onion to one side, raise the heat to medium-high, and add the 1 lb ground beef. Break it into small crumbles and cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.",
+      "text": "Heat a large skillet over medium-high. Add the 1 lb ground beef, season with the ½ tsp salt, and break it into small crumbles. Cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.",
       "minutes": 8,
       "why": "Small crumbles are the point of a sloppy joe: more surface area to hold sauce. The browning on the pan bottom is flavor you scrape back in at the next step."
     },
@@ -137,7 +125,7 @@
     },
     {
       "title": "Next day",
-      "body": "The meat is better reheated the next day once the onion has fully dissolved into the sauce. Reheat low with a splash of water."
+      "body": "Still good reheated the next day. Reheat low with a splash of water."
     }
   ],
   "plating": "Bottom bun, meat piled tall and slightly overflowing, top bun set at an angle so the filling shows. Pickles go on per-portion, never into the pan.",
