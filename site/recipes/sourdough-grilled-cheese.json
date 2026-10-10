@@ -46,8 +46,9 @@
         {
           "qty": 2,
           "unit": "tbsp",
-          "item": "mayonnaise",
-          "id": "mayo"
+          "item": "butter",
+          "note": "softened, for the outsides",
+          "id": "soft-butter"
         },
         {
           "qty": 1,
@@ -72,8 +73,8 @@
       "why": "Grated cheese melts evenly before the bread burns, and mixing means both cheeses in every bite. Room-temp cheese is the difference between a molten center and a cold one."
     },
     {
-      "text": "Spread {mayo} edge to edge on one face of each slice, then press {parmesan}, finely grated, onto the mayo so it sticks in an even layer.",
-      "why": "Mayo browns deeper and more evenly than butter, and it's the glue: the Parmesan fries into a frico shell, crisp and salty, where plain bread would just toast."
+      "text": "Spread {soft-butter} edge to edge on one face of each slice, then press {parmesan} onto the butter so it sticks in an even layer.",
+      "why": "The softened butter is the glue and the browning fat: the Parmesan fries into a frico shell, crisp and salty, where plain bread would just toast. Edge to edge, or the bare rim burns first."
     },
     {
       "text": "Heat a skillet over medium-low (3-4 out of 10 on an aggressive pan) and melt {butter} in it.",
@@ -97,7 +98,7 @@
   "notes": [
     {
       "title": "Watch the Parmesan",
-      "body": "The parm crust colors faster than buttered bread. If it's browning ahead of the melt, drop the heat rather than pulling early."
+      "body": "The parm crust colors faster than plain buttered bread, and butter's milk solids brown quicker than mayo ever did. If the crust is running ahead of the melt, drop the heat rather than pulling early."
     },
     {
       "title": "Thick showpiece version",
@@ -130,6 +131,10 @@
     {
       "date": "2026-10-10",
       "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Mayo retired from the crust per Cody: softened butter now glues the Parmesan and browns the outside."
     }
   ]
 }
