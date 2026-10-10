@@ -153,6 +153,28 @@
     ]
   },
   {
+    "id": "sourdough-grilled-cheese",
+    "title": "Sourdough Grilled Cheese (Cheddar + Gruyère)",
+    "description": "Sharp cheddar for bite, Gruyère for stretch, fried inside a salty Parmesan crust.",
+    "tags": [
+      "sandwich",
+      "cheese",
+      "vegetarian",
+      "weeknight"
+    ],
+    "totalMinutes": 15,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": [
+      "slices sourdough",
+      "sharp cheddar",
+      "Gruyère",
+      "mayonnaise",
+      "Parmesan",
+      "butter"
+    ]
+  },
+  {
     "id": "steamed-artichokes-garlic-cream",
     "title": "Steamed Artichokes with Garlic Cream Dip",
     "description": "Microwave-steamed whole artichokes, leaf-by-leaf through a punchy garlic cream — the pile of spent leaves is part of the theater.",
