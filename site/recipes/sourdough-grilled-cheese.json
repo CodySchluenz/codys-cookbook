@@ -28,13 +28,15 @@
           "qty": 3,
           "unit": "oz",
           "item": "sharp cheddar",
-          "note": "grated"
+          "note": "grated",
+          "id": "cheddar"
         },
         {
           "qty": 3,
           "unit": "oz",
           "item": "Gruyère",
-          "note": "grated"
+          "note": "grated",
+          "id": "gruyere"
         }
       ]
     },
@@ -44,34 +46,37 @@
         {
           "qty": 2,
           "unit": "tbsp",
-          "item": "mayonnaise"
+          "item": "mayonnaise",
+          "id": "mayo"
         },
         {
           "qty": 1,
           "unit": "oz",
           "item": "Parmesan",
-          "note": "finely grated"
+          "note": "finely grated",
+          "id": "parmesan"
         },
         {
           "qty": 1,
           "unit": "tbsp",
           "item": "butter",
-          "note": "for the pan"
+          "note": "for the pan",
+          "id": "butter"
         }
       ]
     }
   ],
   "steps": [
     {
-      "text": "Grate the cheddar and Gruyère, toss them together, and let the pile sit out while you prep.",
+      "text": "Grate {cheddar} and {gruyere}, toss them together, and let the pile sit out while you prep.",
       "why": "Grated cheese melts evenly before the bread burns, and mixing means both cheeses in every bite. Room-temp cheese is the difference between a molten center and a cold one."
     },
     {
-      "text": "Spread mayonnaise edge to edge on one face of each slice, then press the grated Parmesan onto the mayo so it sticks in an even layer.",
+      "text": "Spread {mayo} edge to edge on one face of each slice, then press {parmesan}, finely grated, onto the mayo so it sticks in an even layer.",
       "why": "Mayo browns deeper and more evenly than butter, and it's the glue: the Parmesan fries into a frico shell, crisp and salty, where plain bread would just toast."
     },
     {
-      "text": "Heat a skillet over medium-low (3-4 out of 10 on an aggressive pan) and melt the butter in it.",
+      "text": "Heat a skillet over medium-low (3-4 out of 10 on an aggressive pan) and melt {butter} in it.",
       "why": "Thick sourdough with this much cheese needs time, not heat. Too hot means a burnt crust over a cold core, and the Parmesan browns faster than plain bread."
     },
     {
@@ -121,6 +126,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ]
 }

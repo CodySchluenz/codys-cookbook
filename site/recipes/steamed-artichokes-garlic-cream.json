@@ -26,6 +26,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -35,7 +39,8 @@
         {
           "qty": 2,
           "unit": null,
-          "item": "globe artichokes"
+          "item": "globe artichokes",
+          "id": "artichokes"
         },
         {
           "qty": null,
@@ -57,18 +62,21 @@
           "qty": 4,
           "unit": null,
           "item": "garlic cloves",
-          "note": "smashed and peeled"
+          "note": "smashed and peeled",
+          "id": "garlic"
         },
         {
           "qty": 0.75,
           "unit": "cup",
-          "item": "heavy cream"
+          "item": "heavy cream",
+          "id": "cream"
         },
         {
           "qty": 1,
           "unit": "tbsp",
           "item": "butter",
-          "note": "cold"
+          "note": "cold",
+          "id": "cold-butter"
         },
         {
           "qty": null,
@@ -81,11 +89,11 @@
   ],
   "steps": [
     {
-      "text": "Trim the 2 artichokes: cut each stem flush so it sits upright, slice the top inch off, snip the thorn tips with scissors. Work fast and get them to the steam — cut artichoke grays in minutes.",
+      "text": "Trim {artichokes}: cut each stem flush so it sits upright, slice the top inch off, snip the thorn tips with scissors. Work fast and get them to the steam — cut artichoke grays in minutes.",
       "why": "The graying is oxidation and purely cosmetic; lemon-rubbing prevents it, but speed works nearly as well and needs nothing."
     },
     {
-      "text": "Start the dip: put the smashed garlic cloves and heavy cream at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream, lid on, off heat.",
+      "text": "Start the dip: put {garlic}, smashed, and {cream} at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream, lid on, off heat.",
       "minutes": 12,
       "why": "Steeping mellows the garlic from sharp to sweet — raw garlic in cream never loses its bite."
     },
@@ -107,7 +115,7 @@
       "why": "The leaves hold hot water like shingles, and every trapped spoonful thins your dip leaf by leaf."
     },
     {
-      "text": "Finish the dip: return the garlic cream to medium-low and simmer gently 2 to 3 minutes, until it coats the back of a spoon and a finger-swipe holds its track. Off heat, whisk in the cold butter. Season LOUDER than the rest of the plate: fine salt confidently, plus a real grind of black pepper.",
+      "text": "Finish the dip: return the garlic cream to medium-low and simmer gently 2 to 3 minutes, until it coats the back of a spoon and a finger-swipe holds its track. Off heat, whisk in {cold-butter}, cold,. Season LOUDER than the rest of the plate: fine salt confidently, plus a real grind of black pepper.",
       "minutes": 3,
       "why": "A dip meets each bite for only a second, so it needs more seasoning than a sauce that coats — quiet dips disappear."
     },

@@ -13,6 +13,7 @@ const isStr = (v) => typeof v === 'string' && v.length > 0;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 
 function checkRecipe(file, r) {
+  const ingIds = new Set();
   if (!isStr(r.id)) fail(file, 'missing/invalid id');
   else {
     if (`${r.id}.json` !== file) fail(file, `id "${r.id}" does not match filename`);
@@ -35,6 +36,11 @@ function checkRecipe(file, r) {
       if (isStr(it.unit) && !UNITS.has(it.unit)) fail(file, `item ${gi}:${ii}: unit "${it.unit}" not in imperial allowlist (extend UNITS in scripts/validate.mjs if legit)`);
       if (it.note !== undefined && !isStr(it.note)) fail(file, `item ${gi}:${ii}: note must be a string`);
       if (!isStr(it.item)) fail(file, `item ${gi}:${ii}: missing item name`);
+      if (it.id !== undefined) {
+        if (!isStr(it.id) || !/^[a-z0-9-]+$/.test(it.id)) fail(file, `item ${gi}:${ii}: id must be kebab-case`);
+        else if (ingIds.has(it.id)) fail(file, `item ${gi}:${ii}: duplicate ingredient id "${it.id}"`);
+        else ingIds.add(it.id);
+      }
     }
   }
   if (!Array.isArray(r.steps) || r.steps.length === 0) fail(file, 'steps required');
@@ -42,6 +48,12 @@ function checkRecipe(file, r) {
     if (!isStr(s.text)) fail(file, `step ${i}: missing text`);
     if (s.minutes !== undefined && (!isNum(s.minutes) || s.minutes <= 0)) fail(file, `step ${i}: minutes must be a positive number`);
     if (s.why !== undefined && !isStr(s.why)) fail(file, `step ${i}: why must be a string`);
+    for (const t of [s.text, s.why]) {
+      if (!isStr(t)) continue;
+      for (const m of t.matchAll(/\{([a-z0-9-]+)\}/g)) {
+        if (!ingIds.has(m[1])) fail(file, `step ${i}: token {${m[1]}} does not match any ingredient id`);
+      }
+    }
   }
   if (r.notes !== undefined && (!Array.isArray(r.notes) || !r.notes.every((n) => isStr(n?.title) && isStr(n?.body))))
     fail(file, 'notes must be an array of {title, body}');

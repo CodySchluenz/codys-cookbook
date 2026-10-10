@@ -2,7 +2,13 @@
   "id": "shakshuka",
   "title": "Shakshuka",
   "description": "Eggs poached in a cumin-and-smoked-paprika tomato sauce, finished with feta and herbs. Garlic-rubbed sourdough for dipping.",
-  "tags": ["eggs", "breakfast", "vegetarian", "one-pan", "weeknight"],
+  "tags": [
+    "eggs",
+    "breakfast",
+    "vegetarian",
+    "one-pan",
+    "weeknight"
+  ],
   "servings": 3,
   "activeMinutes": 30,
   "totalMinutes": 35,
@@ -13,57 +19,155 @@
     {
       "name": "Sauce",
       "items": [
-        { "qty": 2, "unit": "tbsp", "item": "olive oil" },
-        { "qty": 1, "unit": null, "item": "medium onion", "note": "diced" },
-        { "qty": 1, "unit": null, "item": "red bell pepper", "note": "diced" },
-        { "qty": 4, "unit": null, "item": "garlic cloves", "note": "minced" },
-        { "qty": 1, "unit": "tsp", "item": "ground cumin" },
-        { "qty": 1, "unit": "tsp", "item": "smoked paprika" },
-        { "qty": 0.5, "unit": "tsp", "item": "ground coriander" },
-        { "qty": 0.25, "unit": "tsp", "item": "cayenne or red pepper flakes", "note": "to taste" },
-        { "qty": 28, "unit": "oz", "item": "crushed tomatoes", "note": "one can" },
-        { "qty": 1, "unit": "tsp", "item": "sugar", "note": "optional, balances acidity" }
+        {
+          "qty": 2,
+          "unit": "tbsp",
+          "item": "olive oil",
+          "id": "oil"
+        },
+        {
+          "qty": 1,
+          "unit": null,
+          "item": "medium onion",
+          "note": "diced",
+          "id": "onion"
+        },
+        {
+          "qty": 1,
+          "unit": null,
+          "item": "red bell pepper",
+          "note": "diced",
+          "id": "pepper"
+        },
+        {
+          "qty": 4,
+          "unit": null,
+          "item": "garlic cloves",
+          "note": "minced",
+          "id": "garlic"
+        },
+        {
+          "qty": 1,
+          "unit": "tsp",
+          "item": "ground cumin",
+          "id": "cumin"
+        },
+        {
+          "qty": 1,
+          "unit": "tsp",
+          "item": "smoked paprika",
+          "id": "paprika"
+        },
+        {
+          "qty": 0.5,
+          "unit": "tsp",
+          "item": "ground coriander",
+          "id": "coriander"
+        },
+        {
+          "qty": 0.25,
+          "unit": "tsp",
+          "item": "cayenne or red pepper flakes",
+          "note": "to taste",
+          "id": "cayenne"
+        },
+        {
+          "qty": 28,
+          "unit": "oz",
+          "item": "crushed tomatoes",
+          "note": "one can",
+          "id": "tomatoes"
+        },
+        {
+          "qty": 1,
+          "unit": "tsp",
+          "item": "sugar",
+          "note": "optional, balances acidity",
+          "id": "sugar"
+        }
       ]
     },
     {
       "name": "Eggs and finish",
       "items": [
-        { "qty": 6, "unit": null, "item": "eggs" },
-        { "qty": 3, "unit": "oz", "item": "feta", "note": "crumbled" },
-        { "qty": 1, "unit": null, "item": "small bunch cilantro or parsley", "note": "chopped" }
+        {
+          "qty": 6,
+          "unit": null,
+          "item": "eggs"
+        },
+        {
+          "qty": 3,
+          "unit": "oz",
+          "item": "feta",
+          "note": "crumbled",
+          "id": "feta"
+        },
+        {
+          "qty": 1,
+          "unit": null,
+          "item": "small bunch cilantro or parsley",
+          "note": "chopped"
+        }
       ]
     },
     {
       "name": "Bread",
       "items": [
-        { "qty": 6, "unit": null, "item": "thick slices sourdough" },
-        { "qty": 1, "unit": null, "item": "garlic clove", "note": "cut, for rubbing" }
+        {
+          "qty": 6,
+          "unit": null,
+          "item": "thick slices sourdough",
+          "id": "bread"
+        },
+        {
+          "qty": 1,
+          "unit": null,
+          "item": "garlic clove",
+          "note": "cut, for rubbing"
+        }
       ]
     }
   ],
   "steps": [
-    { "text": "Heat the oil in a 10 to 12 inch skillet over medium. Add onion and bell pepper and cook 5 to 7 minutes until soft and starting to brown.",
+    {
+      "text": "Heat {oil} in a 10 to 12 inch skillet over medium. Add {onion} and {pepper}, diced, and cook 5 to 7 minutes until soft and starting to brown.",
       "minutes": 7,
-      "why": "Caramelization is the flavor base of the whole dish — rushed pale onions make a flat sauce." },
-    { "text": "Add the garlic and cook 1 to 2 minutes until fragrant, not browned.",
-      "minutes": 2 },
-    { "text": "Add cumin, paprika, coriander, and cayenne. Stir 30 seconds in the hot pan.",
+      "why": "Caramelization is the flavor base of the whole dish — rushed pale onions make a flat sauce."
+    },
+    {
+      "text": "Add {garlic}, minced, and cook 1 to 2 minutes until fragrant, not browned.",
+      "minutes": 2
+    },
+    {
+      "text": "Add {cumin}, {paprika}, {coriander}, and {cayenne}. Stir 30 seconds in the hot pan.",
       "minutes": 1,
-      "why": "Blooming spices in hot oil releases their aromatic oils — raw spices dumped into liquid stay dusty and muted." },
-    { "text": "Pour in the tomatoes, add the sugar, season with salt and pepper, and simmer 10 to 15 minutes until slightly thickened. Taste and correct.",
+      "why": "Blooming spices in hot oil releases their aromatic oils — raw spices dumped into liquid stay dusty and muted."
+    },
+    {
+      "text": "Pour in {tomatoes}, add {sugar}, season with salt and pepper, and simmer 10 to 15 minutes until slightly thickened. Taste and correct.",
       "minutes": 12,
-      "why": "The sauce must be fully seasoned before the eggs go in — there's no fixing it after." },
-    { "text": "Drop the heat to low. Make wells in the sauce, crack each egg into a cup, and slide into a well. Cover and cook 7 to 10 minutes until whites are set and yolks still runny.",
+      "why": "The sauce must be fully seasoned before the eggs go in — there's no fixing it after."
+    },
+    {
+      "text": "Drop the heat to low. Make wells in the sauce, crack each egg into a cup, and slide into a well. Cover and cook 7 to 10 minutes until whites are set and yolks still runny.",
       "minutes": 8,
-      "why": "Low heat and a lid set the whites gently with trapped steam — hard simmering makes rubbery whites and blown-out yolks." },
-    { "text": "Meanwhile, toast the sourdough at 400°F for 5 to 7 minutes, rub with the cut garlic clove while hot, drizzle with olive oil and salt.",
+      "why": "Low heat and a lid set the whites gently with trapped steam — hard simmering makes rubbery whites and blown-out yolks."
+    },
+    {
+      "text": "Meanwhile, toast {bread} at 400°F for 5 to 7 minutes, rub with the cut garlic clove while hot, drizzle with olive oil and salt.",
       "minutes": 6,
-      "why": "Hot bread absorbs the garlic's flavor from a single swipe — cold toast just gets scratched." },
-    { "text": "Scatter feta and herbs over the pan and bring it to the table on a trivet. Serve immediately.",
-      "why": "The eggs keep cooking in the hot sauce — every minute of waiting costs runny yolk." }
+      "why": "Hot bread absorbs the garlic's flavor from a single swipe — cold toast just gets scratched."
+    },
+    {
+      "text": "Scatter {feta} and the herbs over the pan and bring it to the table on a trivet. Serve immediately.",
+      "why": "The eggs keep cooking in the hot sauce — every minute of waiting costs runny yolk."
+    }
   ],
   "notes": [
-    { "title": "Make-ahead", "body": "The sauce alone keeps 3 to 4 days refrigerated. Reheat and poach fresh eggs in it each time — cooked eggs reheat with hard yolks." }
+    {
+      "title": "Make-ahead",
+      "body": "The sauce alone keeps 3 to 4 days refrigerated. Reheat and poach fresh eggs in it each time — cooked eggs reheat with hard yolks."
+    }
   ],
   "plating": "Straight from the pan on a trivet. Scoop egg, sauce, and toppings onto plates; tear and dip the sourdough — runny yolk mixing with tomato sauce into the bread is the whole dish.",
   "elevations": [
@@ -71,7 +175,12 @@
     "A spoon of harissa in the sauce for depth and heat.",
     "Chickpeas or wilted spinach folded in before the eggs."
   ],
-  "pairings": ["dry rosé", "fresh orange juice"],
+  "pairings": [
+    "dry rosé",
+    "fresh orange juice"
+  ],
   "pairsWith": [],
-  "variations": ["Za'atar butter on the bread instead of the garlic rub."]
+  "variations": [
+    "Za'atar butter on the bread instead of the garlic rub."
+  ]
 }

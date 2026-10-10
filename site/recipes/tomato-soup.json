@@ -29,6 +29,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -38,67 +42,79 @@
         {
           "qty": 3,
           "unit": "tbsp",
-          "item": "butter"
+          "item": "butter",
+          "id": "butter"
         },
         {
           "qty": 2,
           "unit": "tbsp",
           "item": "butter",
-          "note": "cold, cubed — for finishing"
+          "note": "cold, cubed — for finishing",
+          "id": "cold-butter"
         },
         {
           "qty": 1,
           "unit": null,
           "item": "yellow onion",
-          "note": "large, diced"
+          "note": "large, diced",
+          "id": "onion"
         },
         {
           "qty": 3,
           "unit": null,
           "item": "garlic cloves",
-          "note": "minced"
+          "note": "minced",
+          "id": "garlic"
         },
         {
           "qty": 3,
           "unit": "tbsp",
-          "item": "tomato paste"
+          "item": "tomato paste",
+          "id": "paste"
         },
         {
           "qty": 1,
           "unit": "tsp",
-          "item": "dried basil"
+          "item": "dried basil",
+          "id": "basil"
         },
         {
           "qty": 1,
           "unit": "tsp",
-          "item": "dried oregano"
+          "item": "dried oregano",
+          "id": "oregano"
         },
         {
           "qty": 0.5,
           "unit": "tsp",
-          "item": "smoked paprika"
+          "item": "smoked paprika",
+          "id": "paprika"
         },
         {
           "qty": 2,
           "unit": "cans",
           "item": "San Marzano whole peeled tomatoes",
-          "note": "28 oz each, with their juice"
+          "note": "28 oz each, with their juice",
+          "id": "tomatoes"
         },
         {
           "qty": 2,
           "unit": "cups",
-          "item": "chicken broth"
+          "item": "chicken broth",
+          "id": "broth"
         },
         {
           "qty": 1,
           "unit": "cups",
-          "item": "heavy cream"
+          "item": "heavy cream",
+          "id": "cream"
         },
         {
           "qty": 1,
           "unit": "tbsp",
           "item": "sugar",
-          "note": "adjust to taste"
+          "note": "adjust to taste",
+          "id": "sugar"
         },
         {
           "qty": null,
@@ -123,24 +139,24 @@
   ],
   "steps": [
     {
-      "text": "Melt the butter in a large pot over medium heat. Add the diced onion and cook until soft and translucent, 8-10 minutes.",
+      "text": "Melt {butter} in a large pot over medium heat. Add {onion}, diced, and cook until soft and translucent, 8-10 minutes.",
       "minutes": 10,
       "why": "Sweating — not browning — breaks the onion down sweet and mellow. Browned edges would muddy the tomato's brightness."
     },
     {
-      "text": "Add the 3 minced garlic cloves and cook 1 minute until fragrant."
+      "text": "Add {garlic}, minced, and cook 1 minute until fragrant."
     },
     {
-      "text": "Add the tomato paste and cook, stirring constantly, 3-4 minutes until it darkens to brick red. It should smell sweet and caramelized, not raw.",
+      "text": "Add {paste} and cook, stirring constantly, 3-4 minutes until it darkens to brick red. It should smell sweet and caramelized, not raw.",
       "minutes": 4,
       "why": "Raw paste tastes tinny. Toasting caramelizes its sugars and browns it into the deep savory-sweet backbone of the whole pot."
     },
     {
-      "text": "Add the dried basil, oregano, and smoked paprika straight into the paste. Stir 30-60 seconds until fragrant.",
+      "text": "Add {basil}, {oregano}, and {paprika} straight into the paste. Stir 30-60 seconds until fragrant.",
       "why": "Dried-herb flavors are fat-soluble. Blooming them in hot fat releases what a watery simmer never would."
     },
     {
-      "text": "Add the canned tomatoes with their juice, breaking them up with a spoon, then the chicken broth, the sugar, and a pinch of red pepper flakes if using. Boil, then drop to a simmer for 20-25 minutes.",
+      "text": "Add {tomatoes} with their juice, breaking them up with a spoon, then {broth}, {sugar}, and a pinch of red pepper flakes if using. Boil, then drop to a simmer for 20-25 minutes.",
       "minutes": 25,
       "why": "The simmer melds and concentrates everything. Taste before all the sugar goes in — San Marzanos are naturally sweet."
     },
@@ -149,12 +165,12 @@
       "why": "Hot liquid in a sealed blender builds steam pressure and erupts. Venting lets it escape."
     },
     {
-      "text": "Reduce the heat to low, stir in the heavy cream, and simmer gently 5 minutes. Do not let it boil again.",
+      "text": "Reduce the heat to low, stir in {cream}, and simmer gently 5 minutes. Do not let it boil again.",
       "minutes": 5,
       "why": "A boil curdles dairy — the proteins clump past a bare simmer. Low and slow keeps it silky."
     },
     {
-      "text": "Off the heat: whisk in the cold butter one cube at a time until the soup turns glossy (monter au beurre).",
+      "text": "Off the heat: whisk in {cold-butter}, cold and cubed, one cube at a time until the soup turns glossy (monter au beurre).",
       "why": "Cold butter whisked in off-heat emulsifies instead of melting out — suspended fat is what gives the velvet texture and professional sheen. Too much heat and it breaks to grease."
     },
     {

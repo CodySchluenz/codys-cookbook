@@ -29,6 +29,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -45,23 +49,27 @@
           "qty": 2,
           "unit": "tbsp",
           "item": "neutral oil",
-          "note": "high smoke point"
+          "note": "high smoke point",
+          "id": "oil"
         },
         {
           "qty": 3,
           "unit": "tbsp",
-          "item": "butter"
+          "item": "butter",
+          "id": "butter"
         },
         {
           "qty": 3,
           "unit": null,
-          "item": "thyme sprigs"
+          "item": "thyme sprigs",
+          "id": "thyme"
         },
         {
           "qty": 2,
           "unit": null,
           "item": "garlic cloves",
-          "note": "smashed, skin on"
+          "note": "smashed, skin on",
+          "id": "garlic"
         },
         {
           "qty": null,
@@ -88,7 +96,7 @@
       "minutes": 45
     },
     {
-      "text": "Heat the oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.",
+      "text": "Heat {oil} in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.",
       "minutes": 3
     },
     {
@@ -97,7 +105,7 @@
       "why": "Once each face has color, frequent flipping cooks the interior more evenly than one long sear per side — the temperature gradient stays shallow, so less gray band under the crust."
     },
     {
-      "text": "Drop to medium. Add the butter, the thyme sprigs, and the smashed garlic cloves; tilt the pan and baste continuously until 125°F internal for medium-rare.",
+      "text": "Drop to medium. Add {butter}, {thyme}, and {garlic}, smashed,; tilt the pan and baste continuously until 125°F internal for medium-rare.",
       "minutes": 4,
       "why": "Basting bathes the top in hot aromatic fat so the steak cooks from both sides at once, and the browning milk solids season the crust."
     },

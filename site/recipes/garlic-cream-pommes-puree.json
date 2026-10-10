@@ -26,6 +26,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -36,12 +40,14 @@
           "qty": 12,
           "unit": null,
           "item": "garlic cloves",
-          "note": "smashed and peeled"
+          "note": "smashed and peeled",
+          "id": "garlic"
         },
         {
           "qty": 1.5,
           "unit": "cup",
-          "item": "heavy cream"
+          "item": "heavy cream",
+          "id": "cream"
         }
       ]
     },
@@ -52,13 +58,15 @@
           "qty": 2.5,
           "unit": "lb",
           "item": "Yukon Gold potatoes",
-          "note": "similar size, skins on"
+          "note": "similar size, skins on",
+          "id": "potatoes"
         },
         {
           "qty": 16,
           "unit": "tbsp",
           "item": "butter",
-          "note": "2 sticks — cubed, kept COLD"
+          "note": "2 sticks — cubed, kept COLD",
+          "id": "butter"
         },
         {
           "qty": null,
@@ -82,17 +90,17 @@
   ],
   "steps": [
     {
-      "text": "Put the potatoes — whole, skins on — in cold, well-salted water. Bring to a gentle boil and cook about 25 minutes, until a knife slides out with no grip.",
+      "text": "Put {potatoes}, whole, skins on, in cold, well-salted water. Bring to a gentle boil and cook about 25 minutes, until a knife slides out with no grip.",
       "minutes": 25,
       "why": "The skins keep water out of the flesh while it cooks. Dry potato is what makes room for a stick of butter — waterlogged potato rejects it and turns gluey."
     },
     {
-      "text": "While they boil: put the smashed garlic cloves and heavy cream at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream right in the pot, lid on, off heat.",
+      "text": "While they boil: put {garlic}, smashed, and {cream} at the barest simmer for 12 minutes, until a clove mashes against the pan wall with no resistance. Mash them all into the cream right in the pot, lid on, off heat.",
       "minutes": 12,
       "why": "Steeping mellows the garlic from sharp to sweet, and the cream carries it evenly through the purée instead of in hot pockets."
     },
     {
-      "text": "Cube the 2 sticks of butter and put them back in the fridge until needed.",
+      "text": "Cube {butter} and put it back in the fridge until needed.",
       "why": "Cold butter absorbs in stages and emulsifies; soft butter just melts into a grease slick. Cold is not optional."
     },
     {
@@ -104,7 +112,7 @@
       "why": "This drying pass is what saves the texture — every bit of water driven off now is room for fat later."
     },
     {
-      "text": "On the lowest heat, beat in the cold butter in 4 to 5 additions, each fully absorbed before the next. The mixture must never come close to a simmer."
+      "text": "On the lowest heat, beat in the cold butter ({butter} total) in 4 to 5 additions, each fully absorbed before the next. The mixture must never come close to a simmer."
     },
     {
       "text": "Beat in the warm garlic cream in stages, by feel — stop when the purée slumps slowly off a spoon like thick paint. You may not need all of it. Taste, then season with fine salt, and the white pepper and nutmeg whisper if you like."

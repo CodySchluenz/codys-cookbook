@@ -34,6 +34,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -44,37 +48,44 @@
           "qty": 1,
           "unit": "lb",
           "item": "ground beef",
-          "note": "80/20"
+          "note": "80/20",
+          "id": "beef"
         },
         {
           "qty": 0.5,
           "unit": "tsp",
-          "item": "salt"
+          "item": "salt",
+          "id": "salt"
         },
         {
           "qty": 0.75,
           "unit": "cup",
-          "item": "ketchup"
+          "item": "ketchup",
+          "id": "ketchup"
         },
         {
           "qty": 1,
           "unit": "tbsp",
-          "item": "brown sugar"
+          "item": "brown sugar",
+          "id": "brown-sugar"
         },
         {
           "qty": 2,
           "unit": "tsp",
-          "item": "yellow mustard"
+          "item": "yellow mustard",
+          "id": "mustard"
         },
         {
           "qty": 0.5,
           "unit": "tsp",
-          "item": "garlic powder"
+          "item": "garlic powder",
+          "id": "garlic-powder"
         },
         {
           "qty": 0.25,
           "unit": "tsp",
-          "item": "black pepper"
+          "item": "black pepper",
+          "id": "pepper"
         }
       ]
     },
@@ -84,20 +95,22 @@
         {
           "qty": 4,
           "unit": null,
-          "item": "soft hamburger buns"
+          "item": "soft hamburger buns",
+          "id": "buns"
         },
         {
           "qty": 2,
           "unit": "tbsp",
           "item": "butter",
-          "note": "softened"
+          "note": "softened",
+          "id": "butter"
         }
       ]
     }
   ],
   "steps": [
     {
-      "text": "Heat a large skillet over medium-high. Add the ground beef, season with the salt, and break it into small crumbles. Cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.",
+      "text": "Heat a large skillet over medium-high. Add {beef}, season with {salt}, and break it into small crumbles. Cook until no pink remains and the pan bottom starts to brown, 6-8 minutes.",
       "minutes": 8,
       "why": "Small crumbles are the point of a sloppy joe: more surface area to hold sauce. The browning on the pan bottom is flavor you scrape back in at the next step."
     },
@@ -106,7 +119,7 @@
       "why": "Ketchup will not emulsify a pool of fat; leave too much and the sauce goes greasy and slides off the bun. One tablespoon keeps the meat moist."
     },
     {
-      "text": "Reduce the heat to low. Stir in the ketchup, brown sugar, yellow mustard, garlic powder, and black pepper until every crumble is coated."
+      "text": "Reduce the heat to low. Stir in {ketchup}, {brown-sugar}, {mustard}, {garlic-powder}, and {pepper} until every crumble is coated."
     },
     {
       "text": "Simmer uncovered, stirring often, until the sauce clings to the meat rather than pooling, 6-8 minutes.",
@@ -114,7 +127,7 @@
       "why": "Ketchup is mostly sugar and scorches fast with no water or stock to buffer it. Low heat and frequent stirring keep the sugar from catching on the pan while it thickens."
     },
     {
-      "text": "Spread the softened butter on the cut faces of the buns and toast face-down in a dry skillet until golden, about 2 minutes.",
+      "text": "Spread {butter}, softened, on the cut faces of {buns} and toast face-down in a dry skillet until golden, about 2 minutes.",
       "minutes": 2,
       "why": "A toasted face is a moisture barrier; untoasted buns go soggy before the second bite."
     },

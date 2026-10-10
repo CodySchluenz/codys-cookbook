@@ -68,3 +68,15 @@ export function combinedShopping(recipeEntries) {
   }
   return [...map.values()].map(({ item, entries }) => foldEntries(item, entries));
 }
+
+// Unit agreement with the scaled quantity: "2 cans" but "1 can" and "½ cup".
+const PLURALS = { cup: 'cups', can: 'cans', slice: 'slices', sprig: 'sprigs',
+  stick: 'sticks', clove: 'cloves', quart: 'quarts', pint: 'pints', gallon: 'gallons' };
+const SINGULARS = Object.fromEntries(Object.entries(PLURALS).map(([s, p]) => [p, s]));
+
+export function unitFor(unit, scaledQty) {
+  if (!unit) return unit ?? null;
+  if (scaledQty === null || scaledQty === undefined) return unit;
+  if (scaledQty <= 1) return SINGULARS[unit] ?? unit;
+  return PLURALS[unit] ?? unit;
+}

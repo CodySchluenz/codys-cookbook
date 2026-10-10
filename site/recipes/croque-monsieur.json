@@ -32,6 +32,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -41,30 +45,35 @@
         {
           "qty": 6,
           "unit": "tbsp",
-          "item": "butter"
+          "item": "butter",
+          "id": "mornay-butter"
         },
         {
           "qty": 6,
           "unit": "tbsp",
-          "item": "all-purpose flour"
+          "item": "all-purpose flour",
+          "id": "flour"
         },
         {
           "qty": 3,
           "unit": "cups",
           "item": "whole milk",
-          "note": "warmed"
+          "note": "warmed",
+          "id": "milk"
         },
         {
           "qty": 1.5,
           "unit": "cups",
           "item": "Gruyère",
-          "note": "grated"
+          "note": "grated",
+          "id": "mornay-gruyere"
         },
         {
           "qty": 6,
           "unit": "tbsp",
           "item": "Parmesan",
-          "note": "grated"
+          "note": "grated",
+          "id": "parmesan"
         },
         {
           "qty": null,
@@ -92,7 +101,8 @@
           "qty": 6,
           "unit": "tbsp",
           "item": "butter",
-          "note": "softened, for the outsides"
+          "note": "softened, for the outsides",
+          "id": "soft-butter"
         },
         {
           "qty": 12,
@@ -104,25 +114,27 @@
           "qty": 3,
           "unit": "cups",
           "item": "Gruyère",
-          "note": "grated, divided"
+          "note": "grated, divided",
+          "id": "gruyere"
         },
         {
           "qty": 6,
           "unit": "tsp",
           "item": "Dijon mustard",
-          "note": "optional but recommended"
+          "note": "optional but recommended",
+          "id": "dijon"
         }
       ]
     }
   ],
   "steps": [
     {
-      "text": "Melt the Mornay butter in a saucepan over medium heat. Add the flour and whisk constantly 1-2 minutes without letting it color.",
+      "text": "Melt the Mornay group's butter ({mornay-butter}) in a saucepan over medium heat. Add {flour} and whisk constantly 1-2 minutes without letting it color.",
       "minutes": 2,
       "why": "This cooks off the raw flour taste while keeping the roux blond — a browned roux tastes great but loses thickening power and stains the sauce."
     },
     {
-      "text": "Add the warm milk gradually, whisking the whole time to keep it lump-free.",
+      "text": "Add {milk}, warmed, gradually, whisking the whole time to keep it lump-free.",
       "why": "Warm milk added slowly to a hot roux disperses smoothly. Cold milk dumped in shocks the starch into clumps you can never fully whisk out."
     },
     {
@@ -131,14 +143,14 @@
       "why": "The starch needs a gentle simmer to fully burst and thicken. Coat-the-spoon (nappe) is the checkpoint — it must be thick enough to sit on top of a sandwich."
     },
     {
-      "text": "Off the heat: stir in the Mornay group's Gruyère and Parmesan until melted. Season with a pinch of nutmeg, salt, and white pepper. Set aside.",
+      "text": "Off the heat: stir in {mornay-gruyere} and {parmesan} until melted. Season with a pinch of nutmeg, salt, and white pepper. Set aside.",
       "why": "Off the heat, the cheese melts creamy. On the heat, its proteins seize and the sauce turns oily and stringy."
     },
     {
-      "text": "Heat the oven to 400°F. Butter one side of every bread slice with the softened butter (about ½ tbsp per slice) — these are the OUTSIDES."
+      "text": "Heat the oven to 400°F. Butter one side of every bread slice with {soft-butter}, softened (about ½ tbsp per slice) — these are the OUTSIDES."
     },
     {
-      "text": "Build each sandwich on an unbuttered face: a thin layer of Dijon, a thin swipe of Mornay if you like, a generous handful of Gruyère, 2-3 folded ham slices, another handful of Gruyère — the interiors use about two-thirds of the sandwich group's Gruyère; save the rest for the tops. Cap with the second slice, buttered side facing out.",
+      "text": "Build each sandwich on an unbuttered face: a thin layer of Dijon ({dijon} across the batch), a thin swipe of Mornay if you like, a generous handful of Gruyère, 2-3 folded ham slices, another handful of Gruyère — the interiors use about two-thirds of the sandwich group's {gruyere}; save the rest for the tops. Cap with the second slice, buttered side facing out.",
       "why": "Cheese on both sides of the ham glues the sandwich shut and shields the bread from the ham's moisture. Butter on the outside is what fries."
     },
     {

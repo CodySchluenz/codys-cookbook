@@ -32,6 +32,10 @@
     {
       "date": "2026-10-03",
       "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    },
+    {
+      "date": "2026-10-10",
+      "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
     }
   ],
   "ingredientGroups": [
@@ -42,29 +46,34 @@
           "qty": 4,
           "unit": null,
           "item": "ears fresh corn",
-          "note": "kernels cut off — about 3 cups"
+          "note": "kernels cut off — about 3 cups",
+          "id": "corn"
         },
         {
           "qty": 1,
           "unit": "tbsp",
-          "item": "neutral oil"
+          "item": "neutral oil",
+          "id": "oil"
         },
         {
           "qty": 1,
           "unit": "tbsp",
-          "item": "butter"
+          "item": "butter",
+          "id": "butter"
         },
         {
           "qty": 1,
           "unit": null,
           "item": "jalapeño",
-          "note": "minced — seeds out for mild, in for real"
+          "note": "minced — seeds out for mild, in for real",
+          "id": "jalapeno"
         },
         {
           "qty": 2,
           "unit": null,
           "item": "garlic cloves",
-          "note": "minced"
+          "note": "minced",
+          "id": "garlic"
         },
         {
           "qty": null,
@@ -80,18 +89,21 @@
           "qty": 0.25,
           "unit": "cups",
           "item": "Sir Kensington's lime crema",
-          "note": "Whole Foods — the only place that carries it"
+          "note": "Whole Foods — the only place that carries it",
+          "id": "crema"
         },
         {
           "qty": 2,
           "unit": "tbsp",
-          "item": "mayonnaise"
+          "item": "mayonnaise",
+          "id": "mayo"
         },
         {
           "qty": 0.5,
           "unit": "cups",
           "item": "cotija",
-          "note": "crumbled, plus a heavy snowfall for the top"
+          "note": "crumbled, plus a heavy snowfall for the top",
+          "id": "cotija"
         },
         {
           "qty": 1,
@@ -116,7 +128,7 @@
   ],
   "steps": [
     {
-      "text": "Heat the oil in a stainless skillet over medium-high until it shimmers hard, then add the butter, then all the corn in as close to a single layer as you can manage.",
+      "text": "Heat {oil} in a stainless skillet over medium-high until it shimmers hard, then add {butter}, then all the corn ({corn}, kernels off) in as close to a single layer as you can manage.",
       "why": "Corn is full of sugar; real contact with hot steel is what gets blackened, nutty spots instead of steamed kernels. The oil raises the butter's smoke point so it browns instead of burns."
     },
     {
@@ -129,7 +141,7 @@
       "minutes": 3
     },
     {
-      "text": "Add the minced jalapeño and the 2 minced garlic cloves and cook 60 seconds, just until fragrant.",
+      "text": "Add {jalapeno} and {garlic}, both minced, and cook 60 seconds, just until fragrant.",
       "why": "Garlic added earlier burns bitter at char temperatures. It only needs a minute to sweeten."
     },
     {
@@ -138,7 +150,7 @@
       "why": "Dressing a screaming-hot pan breaks the crema and mayo to grease. Two minutes is enough."
     },
     {
-      "text": "Fold in the lime crema, the mayonnaise, the cotija, and the juice of half the lime."
+      "text": "Fold in {crema}, {mayo}, {cotija}, and the juice of half the lime."
     },
     {
       "text": "Taste. It should hit creamy, then sweet, then hot, then sour — in that order. Adjust lime and salt until it does."

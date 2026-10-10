@@ -1,6 +1,6 @@
 // Cody's Cookbook — hash router + rendering. No framework, no build.
 // Screens: home (#/) and recipe (#/recipe/<id> — full version in Task 4).
-import { scaleQty, formatQty, shoppingList, combinedShopping } from './scale.js';
+import { scaleQty, formatQty, unitFor, shoppingList, combinedShopping } from './scale.js';
 import { groupHistory, recentAdds, dateLabel } from './history.js';
 
 const state = {
@@ -234,9 +234,11 @@ function groupsHtml(r, done, f) {
     ${g.name ? `<h3 class="group-title">${esc(g.name)}</h3>` : ''}
     ${g.items.map((it, ii) => {
       const key = `${gi}:${ii}`;
-      const qty = formatQty(scaleQty(it.qty, f));
+      const scaled = scaleQty(it.qty, f);
+      const qty = formatQty(scaled);
+      const unit = unitFor(it.unit, scaled);
       return `<button class="ing ${done.ing.includes(key) ? 'done' : ''}" data-key="${key}">
-        <span class="ing-qty">${qty}${it.unit ? ' ' + esc(it.unit) : ''}</span>
+        <span class="ing-qty">${qty}${unit ? ' ' + esc(unit) : ''}</span>
         <span class="ing-name">${esc(it.item)}${it.note ? ` <em>· ${esc(it.note)}</em>` : ''}</span>
       </button>`;
     }).join('')}`).join('');
@@ -246,7 +248,8 @@ function shoppingHtml(r, done, f) {
   return shoppingList(r.ingredientGroups).map((row) => {
     const key = row.item.trim().toLowerCase();
     const qty = row.parts
-      .map((p) => `${formatQty(scaleQty(p.qty, f))}${p.unit ? ' ' + esc(p.unit) : ''}`)
+      .map((p) => { const sq = scaleQty(p.qty, f); const u = unitFor(p.unit, sq);
+        return `${formatQty(sq)}${u ? ' ' + esc(u) : ''}`; })
       .join(' + ');
     return `<button class="ing ${done.shop.includes(key) ? 'done' : ''}" data-shop="${esc(key)}">
       <span class="ing-qty">${qty}</span>
@@ -255,15 +258,37 @@ function shoppingHtml(r, done, f) {
   }).join('');
 }
 
+function ingById(r) {
+  const m = new Map();
+  for (const g of r.ingredientGroups) for (const it of g.items) if (it.id) m.set(it.id, it);
+  return m;
+}
+
+// Replace {ingredient-id} tokens with the scaled amount + name, so step wording
+// stays correct at any serving scale. Unknown tokens render literally (validator
+// guarantees they don't ship).
+function stepHtml(text, byId, f) {
+  return esc(text).replace(/\{([a-z0-9-]+)\}/g, (m, id) => {
+    const it = byId.get(id);
+    if (!it) return m;
+    const scaled = scaleQty(it.qty, f);
+    const qty = formatQty(scaled);
+    const unit = unitFor(it.unit, scaled);
+    const bits = [qty, unit ? esc(unit) : '', esc(it.item)].filter(Boolean).join(' ');
+    return `<span class="step-amt">${bits}</span>`;
+  });
+}
+
 function drawRecipe(r) {
   document.title = r.title;
   const done = readCook(r.id);
   const f = state.factor;
+  const byId = ingById(r);
   const ings = state.ingView === 'shopping' ? shoppingHtml(r, done, f) : groupsHtml(r, done, f);
   const steps = r.steps.map((s, i) => `
     <li class="step ${done.steps.includes(i) ? 'done' : ''}" data-step="${i}">
-      <button class="step-text">${esc(s.text)}</button>
-      ${s.why ? `<p class="step-why">${esc(s.why)}</p>` : ''}
+      <button class="step-text">${stepHtml(s.text, byId, f)}</button>
+      ${s.why ? `<p class="step-why">${stepHtml(s.why, byId, f)}</p>` : ''}
       ${s.minutes ? `<button class="step-timer" data-step="${i}" data-minutes="${s.minutes}">⏱ ${s.minutes} min</button>` : ''}
     </li>`).join('');
   app.innerHTML = `
