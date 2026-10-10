@@ -2,7 +2,12 @@
   "id": "sourdough-grilled-cheese",
   "title": "Sourdough Grilled Cheese (Cheddar + Gruyère)",
   "description": "Sharp cheddar for bite, Gruyère for stretch, fried inside a salty Parmesan crust.",
-  "tags": ["sandwich", "cheese", "vegetarian", "weeknight"],
+  "tags": [
+    "sandwich",
+    "cheese",
+    "vegetarian",
+    "weeknight"
+  ],
   "servings": 2,
   "activeMinutes": 15,
   "totalMinutes": 15,
@@ -13,39 +18,86 @@
     {
       "name": "Sandwich",
       "items": [
-        { "qty": 4, "unit": null, "item": "slices sourdough", "note": "about 1/2 inch thick" },
-        { "qty": 3, "unit": "oz", "item": "sharp cheddar", "note": "grated" },
-        { "qty": 3, "unit": "oz", "item": "Gruyère", "note": "grated" }
+        {
+          "qty": 4,
+          "unit": null,
+          "item": "slices sourdough",
+          "note": "about 1/2 inch thick"
+        },
+        {
+          "qty": 3,
+          "unit": "oz",
+          "item": "sharp cheddar",
+          "note": "grated"
+        },
+        {
+          "qty": 3,
+          "unit": "oz",
+          "item": "Gruyère",
+          "note": "grated"
+        }
       ]
     },
     {
       "name": "Crust",
       "items": [
-        { "qty": 2, "unit": "tbsp", "item": "mayonnaise" },
-        { "qty": 1, "unit": "oz", "item": "Parmesan", "note": "finely grated" },
-        { "qty": 1, "unit": "tbsp", "item": "butter", "note": "for the pan" }
+        {
+          "qty": 2,
+          "unit": "tbsp",
+          "item": "mayonnaise"
+        },
+        {
+          "qty": 1,
+          "unit": "oz",
+          "item": "Parmesan",
+          "note": "finely grated"
+        },
+        {
+          "qty": 1,
+          "unit": "tbsp",
+          "item": "butter",
+          "note": "for the pan"
+        }
       ]
     }
   ],
   "steps": [
-    { "text": "Grate the cheddar and Gruyère, toss them together, and let the pile sit out while you prep.",
-      "why": "Grated cheese melts evenly before the bread burns, and mixing means both cheeses in every bite. Room-temp cheese is the difference between a molten center and a cold one." },
-    { "text": "Spread mayonnaise edge to edge on one face of each slice, then press the grated Parmesan onto the mayo so it sticks in an even layer.",
-      "why": "Mayo browns deeper and more evenly than butter, and it's the glue: the Parmesan fries into a frico shell, crisp and salty, where plain bread would just toast." },
-    { "text": "Heat a skillet over medium-low (3-4 out of 10 on an aggressive pan) and melt the butter in it.",
-      "why": "Thick sourdough with this much cheese needs time, not heat. Too hot means a burnt crust over a cold core, and the Parmesan browns faster than plain bread." },
-    { "text": "Lay 2 slices parm-side down, divide the cheese between them, cap with the other slices parm-side up. Cook 3 to 4 minutes, checking a corner at 3: the crust should be deep golden and lacy.",
-      "minutes": 3 },
-    { "text": "Flip, cover the pan with a lid, and cook 3 minutes more.",
+    {
+      "text": "Grate the cheddar and Gruyère, toss them together, and let the pile sit out while you prep.",
+      "why": "Grated cheese melts evenly before the bread burns, and mixing means both cheeses in every bite. Room-temp cheese is the difference between a molten center and a cold one."
+    },
+    {
+      "text": "Spread mayonnaise edge to edge on one face of each slice, then press the grated Parmesan onto the mayo so it sticks in an even layer.",
+      "why": "Mayo browns deeper and more evenly than butter, and it's the glue: the Parmesan fries into a frico shell, crisp and salty, where plain bread would just toast."
+    },
+    {
+      "text": "Heat a skillet over medium-low (3-4 out of 10 on an aggressive pan) and melt the butter in it.",
+      "why": "Thick sourdough with this much cheese needs time, not heat. Too hot means a burnt crust over a cold core, and the Parmesan browns faster than plain bread."
+    },
+    {
+      "text": "Lay half the slices parm-side down, divide the cheese between them, cap with the other slices parm-side up. Cook 3 to 4 minutes, checking a corner at 3: the crust should be deep golden and lacy.",
+      "minutes": 3
+    },
+    {
+      "text": "Flip, cover the pan with a lid, and cook 3 minutes more.",
       "minutes": 3,
-      "why": "The trapped heat melts the center fully while the second crust sets." },
-    { "text": "Rest 1 minute on a rack or board, then cut on the diagonal.",
+      "why": "The trapped heat melts the center fully while the second crust sets."
+    },
+    {
+      "text": "Rest 1 minute on a rack or board, then cut on the diagonal.",
       "minutes": 1,
-      "why": "Straight from the pan the cheese runs out; one minute and it pulls instead." }
+      "why": "Straight from the pan the cheese runs out; one minute and it pulls instead."
+    }
   ],
   "notes": [
-    { "title": "Watch the Parmesan", "body": "The parm crust colors faster than buttered bread. If it's browning ahead of the melt, drop the heat rather than pulling early." },
-    { "title": "Thick showpiece version", "body": "For extra-thick slices, sear both sides on the stovetop, then finish 4 minutes in a 350°F oven. Crust stays put, core melts completely." }
+    {
+      "title": "Watch the Parmesan",
+      "body": "The parm crust colors faster than buttered bread. If it's browning ahead of the melt, drop the heat rather than pulling early."
+    },
+    {
+      "title": "Thick showpiece version",
+      "body": "For extra-thick slices, sear both sides on the stovetop, then finish 4 minutes in a 350°F oven. Crust stays put, core melts completely."
+    }
   ],
   "plating": "Cut on the diagonal, stack the halves offset so the pull shows. Tomato soup alongside is the law.",
   "elevations": [
@@ -53,10 +105,22 @@
     "A thin smear of Dijon on the inside faces: acid against all that richness. Apple or Dijon, not both - two acids argue.",
     "Add 1 oz low-moisture mozzarella to the blend: it contributes nothing but stretch, which turns a good pull into a photo."
   ],
-  "pairings": ["tomato soup", "sharp green salad with vinaigrette"],
-  "pairsWith": ["tomato-soup"],
+  "pairings": [
+    "tomato soup",
+    "sharp green salad with vinaigrette"
+  ],
+  "pairsWith": [
+    "tomato-soup"
+  ],
   "variations": [],
   "changelog": [
-    { "date": "2026-10-03", "note": "Created from chat. Parmesan crust adopted into the core recipe; apple slices added as the lead elevation rather than core." }
+    {
+      "date": "2026-10-03",
+      "note": "Created from chat. Parmesan crust adopted into the core recipe; apple slices added as the lead elevation rather than core."
+    },
+    {
+      "date": "2026-10-03",
+      "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    }
   ]
 }

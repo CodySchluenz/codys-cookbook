@@ -2,53 +2,129 @@
   "id": "pan-seared-ribeye",
   "title": "Pan-Seared Ribeye",
   "description": "Butter-basted, dry-brined the night before, rested properly.",
-  "tags": ["beef", "stovetop", "weeknight"],
+  "tags": [
+    "beef",
+    "stovetop",
+    "weeknight"
+  ],
   "servings": 2,
   "activeMinutes": 20,
   "totalMinutes": 45,
   "difficulty": "medium",
   "photo": null,
   "source": "Sample recipe — replace with the real version from a starred chat",
-  "equipment": ["heavy skillet (cast iron or stainless)", "instant-read thermometer"],
+  "equipment": [
+    "heavy skillet (cast iron or stainless)",
+    "instant-read thermometer"
+  ],
   "changelog": [
-    { "date": "2026-08-08", "note": "Sample recipe — awaiting Cody's real version from a starred chat." },
-    { "date": "2026-09-07", "note": "Cross-linked to the garlic-cream pommes purée — steak over that purée is the obvious play." }
+    {
+      "date": "2026-08-08",
+      "note": "Sample recipe — awaiting Cody's real version from a starred chat."
+    },
+    {
+      "date": "2026-09-07",
+      "note": "Cross-linked to the garlic-cream pommes purée — steak over that purée is the obvious play."
+    },
+    {
+      "date": "2026-10-03",
+      "note": "Steps de-quantified: amounts live in the ingredient list only, so instructions stay correct at any serving scale."
+    }
   ],
   "ingredientGroups": [
     {
       "name": null,
       "items": [
-        { "qty": 1, "unit": "lb", "item": "ribeye", "note": "one thick steak, about 1½ in" },
-        { "qty": 2, "unit": "tbsp", "item": "neutral oil", "note": "high smoke point" },
-        { "qty": 3, "unit": "tbsp", "item": "butter" },
-        { "qty": 3, "unit": null, "item": "thyme sprigs" },
-        { "qty": 2, "unit": null, "item": "garlic cloves", "note": "smashed, skin on" },
-        { "qty": null, "unit": null, "item": "kosher salt", "note": "the night before" },
-        { "qty": null, "unit": null, "item": "flaky salt", "note": "to finish" }
+        {
+          "qty": 1,
+          "unit": "lb",
+          "item": "ribeye",
+          "note": "one thick steak, about 1½ in"
+        },
+        {
+          "qty": 2,
+          "unit": "tbsp",
+          "item": "neutral oil",
+          "note": "high smoke point"
+        },
+        {
+          "qty": 3,
+          "unit": "tbsp",
+          "item": "butter"
+        },
+        {
+          "qty": 3,
+          "unit": null,
+          "item": "thyme sprigs"
+        },
+        {
+          "qty": 2,
+          "unit": null,
+          "item": "garlic cloves",
+          "note": "smashed, skin on"
+        },
+        {
+          "qty": null,
+          "unit": null,
+          "item": "kosher salt",
+          "note": "the night before"
+        },
+        {
+          "qty": null,
+          "unit": null,
+          "item": "flaky salt",
+          "note": "to finish"
+        }
       ]
     }
   ],
   "steps": [
-    { "text": "The night before: salt the steak generously on all sides and refrigerate uncovered on a rack.",
-      "why": "The salt pulls moisture out, dissolves, and gets reabsorbed overnight — seasoning deep instead of just the surface. The dry surface it leaves behind is what makes a real crust possible; wet steak steams." },
-    { "text": "Pull the steak 45 minutes before cooking so it loses the fridge chill.", "minutes": 45 },
-    { "text": "Heat the 2 tbsp oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.", "minutes": 3 },
-    { "text": "Flip. Sear the second side 3 minutes, then flip every minute for even crust.", "minutes": 3,
-      "why": "Once each face has color, frequent flipping cooks the interior more evenly than one long sear per side — the temperature gradient stays shallow, so less gray band under the crust." },
-    { "text": "Drop to medium. Add the 3 tbsp butter, the 3 thyme sprigs, and the 2 smashed garlic cloves; tilt the pan and baste continuously until 125°F internal for medium-rare.", "minutes": 4,
-      "why": "Basting bathes the top in hot aromatic fat so the steak cooks from both sides at once, and the browning milk solids season the crust." },
-    { "text": "Rest on a warm plate, loosely tented, 8 minutes.", "minutes": 8,
-      "why": "Resting lets the juices thicken and redistribute instead of flooding the cutting board, and carryover heat finishes the center." }
+    {
+      "text": "The night before: salt the steak generously on all sides and refrigerate uncovered on a rack.",
+      "why": "The salt pulls moisture out, dissolves, and gets reabsorbed overnight — seasoning deep instead of just the surface. The dry surface it leaves behind is what makes a real crust possible; wet steak steams."
+    },
+    {
+      "text": "Pull the steak 45 minutes before cooking so it loses the fridge chill.",
+      "minutes": 45
+    },
+    {
+      "text": "Heat the oil in a heavy skillet over high heat until it just smokes. Lay the steak away from you and sear undisturbed, 3 minutes.",
+      "minutes": 3
+    },
+    {
+      "text": "Flip. Sear the second side 3 minutes, then flip every minute for even crust.",
+      "minutes": 3,
+      "why": "Once each face has color, frequent flipping cooks the interior more evenly than one long sear per side — the temperature gradient stays shallow, so less gray band under the crust."
+    },
+    {
+      "text": "Drop to medium. Add the butter, the thyme sprigs, and the smashed garlic cloves; tilt the pan and baste continuously until 125°F internal for medium-rare.",
+      "minutes": 4,
+      "why": "Basting bathes the top in hot aromatic fat so the steak cooks from both sides at once, and the browning milk solids season the crust."
+    },
+    {
+      "text": "Rest on a warm plate, loosely tented, 8 minutes.",
+      "minutes": 8,
+      "why": "Resting lets the juices thicken and redistribute instead of flooding the cutting board, and carryover heat finishes the center."
+    }
   ],
   "notes": [
-    { "title": "Pan choice", "body": "Cast iron or heavy stainless only. A thin pan crashes in temperature the moment the steak lands, and you steam instead of sear." }
+    {
+      "title": "Pan choice",
+      "body": "Cast iron or heavy stainless only. A thin pan crashes in temperature the moment the steak lands, and you steam instead of sear."
+    }
   ],
   "plating": "Slice against the grain, fan on a warm plate, spoon over the thyme-garlic butter, finish with flaky salt.",
   "elevations": [
     "Scrape fresh horseradish over the resting butter.",
     "Two-minute pan sauce: pour off the fat, deglaze with stock, swirl in a cold knob of butter."
   ],
-  "pairings": ["Charred broccolini", "A big Zinfandel or Cabernet"],
-  "pairsWith": ["esquites", "garlic-cream-pommes-puree"],
+  "pairings": [
+    "Charred broccolini",
+    "A big Zinfandel or Cabernet"
+  ],
+  "pairsWith": [
+    "esquites",
+    "garlic-cream-pommes-puree"
+  ],
   "variations": []
 }
