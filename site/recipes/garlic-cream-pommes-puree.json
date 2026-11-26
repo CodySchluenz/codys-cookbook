@@ -33,7 +33,7 @@
     },
     {
       "date": "2026-11-25",
-      "note": "Switched from heavy cream to whole milk, Robuchon's original. Garlic now poached in the milk and riced with the potatoes. Added a minced-garlic swap. Shared-steep variation with the artichokes retired since the dip still needs cream."
+      "note": "Switched from heavy cream to whole milk, Robuchon's original. Garlic now poached in the milk and riced with the potatoes. Added a minced-garlic swap. Shared-steep variation with the artichokes retired since the dip still needs cream. Fine-sieve pass added as an optional step."
     }
   ],
   "ingredientGroups": [
@@ -124,6 +124,10 @@
       "why": "Milk is mostly water, so each pour loosens the purée faster than cream would. Small additions keep you from overshooting into soup."
     },
     {
+      "text": "Optional, for true Robuchon silk: push the purée through a fine-mesh sieve in small batches with a flexible scraper or the back of a ladle, scraping the underside back into the pot. Return it to the lowest heat and beat briefly to rewarm.",
+      "why": "The sieve catches the last specks of potato and garlic fiber the ricer let through, which is what separates very smooth from silk. Push straight through in one direction: working it back and forth across the mesh overworks the starch and turns it gluey."
+    },
+    {
       "text": "Hold on the lowest flame with the lid on, stirring occasionally, up to 20 minutes.",
       "why": "A deep mass of purée catches on the pot floor sooner than you expect — the occasional stir is cheap insurance."
     }
@@ -146,7 +150,7 @@
   "elevations": [
     "A few drops of lemon juice at the end — fat mutes, acid restores.",
     "Snipped chives over the top for color and bite.",
-    "Full Robuchon: push the butter toward 3 sticks and pass the purée through a fine sieve for silk."
+    "Full Robuchon: push the butter toward 3 sticks."
   ],
   "pairings": [
     "Anything seared with a pan sauce",
