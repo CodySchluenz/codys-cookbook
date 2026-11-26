@@ -1,7 +1,7 @@
 {
   "id": "garlic-cream-pommes-puree",
   "title": "Garlic Pommes Purée",
-  "description": "Robuchon-style mashed potatoes: whole milk and milk-poached garlic cloves riced right in. The purée IS the sauce.",
+  "description": "Robuchon-style purée built loud on garlic: in the potato water, poached in whole milk and riced in, then grated raw at the finish.",
   "tags": [
     "french",
     "potato",
@@ -10,8 +10,8 @@
     "stovetop"
   ],
   "servings": 4,
-  "activeMinutes": 35,
-  "totalMinutes": 50,
+  "activeMinutes": 40,
+  "totalMinutes": 55,
   "difficulty": "medium",
   "photo": null,
   "source": "Developed with the chef, cooked 2026-09-07 (artichoke night)",
@@ -34,17 +34,47 @@
     {
       "date": "2026-11-25",
       "note": "Switched from heavy cream to whole milk, Robuchon's original. Garlic now poached in the milk and riced with the potatoes. Added a minced-garlic swap. Shared-steep variation with the artichokes retired since the dip still needs cream. Fine-sieve pass added as an optional step."
+    },
+    {
+      "date": "2026-11-26",
+      "note": "Cooked it and it tasted like plain potato. Now: peeled potatoes cooked in salted, garlicky water; unsalted butter with a real salt amount; 20 poached cloves (up from 12) plus a raw grated clove at the finish; ½ tsp white pepper as a real ingredient."
     }
   ],
   "ingredientGroups": [
     {
+      "name": "Potatoes",
+      "items": [
+        {
+          "qty": 2.5,
+          "unit": "lb",
+          "item": "Yukon Gold potatoes",
+          "note": "peeled, cut into even 2-inch chunks",
+          "id": "potatoes"
+        },
+        {
+          "qty": 2,
+          "unit": "tbsp",
+          "item": "kosher salt",
+          "note": "for the cooking water (or 1 tbsp fine salt)",
+          "id": "water-salt"
+        },
+        {
+          "qty": 6,
+          "unit": null,
+          "item": "garlic cloves",
+          "note": "smashed and peeled, for the cooking water",
+          "id": "water-garlic"
+        }
+      ]
+    },
+    {
       "name": "Garlic milk",
       "items": [
         {
-          "qty": 12,
+          "qty": 20,
           "unit": null,
           "item": "garlic cloves",
-          "note": "smashed and peeled",
+          "note": "smashed and peeled (about 1½ heads)",
           "id": "garlic"
         },
         {
@@ -56,32 +86,34 @@
       ]
     },
     {
-      "name": "Purée",
+      "name": "Finish",
       "items": [
-        {
-          "qty": 2.5,
-          "unit": "lb",
-          "item": "Yukon Gold potatoes",
-          "note": "similar size, skins on",
-          "id": "potatoes"
-        },
         {
           "qty": 16,
           "unit": "tbsp",
-          "item": "butter",
-          "note": "2 sticks — cubed, kept COLD",
+          "item": "unsalted butter",
+          "note": "2 sticks, cubed, kept COLD",
           "id": "butter"
         },
         {
-          "qty": null,
-          "unit": null,
-          "item": "fine salt"
+          "qty": 1,
+          "unit": "tsp",
+          "item": "fine salt",
+          "note": "to start; adjust to taste",
+          "id": "salt"
         },
         {
-          "qty": null,
+          "qty": 0.5,
+          "unit": "tsp",
+          "item": "ground white pepper",
+          "id": "white-pepper"
+        },
+        {
+          "qty": 1,
           "unit": null,
-          "item": "white pepper",
-          "note": "optional whisper"
+          "item": "garlic clove",
+          "note": "raw, for grating at the end",
+          "id": "finish-garlic"
         },
         {
           "qty": null,
@@ -94,34 +126,51 @@
   ],
   "steps": [
     {
-      "text": "Put {potatoes}, whole, skins on, in cold, well-salted water. Bring to a gentle boil and cook about 25 minutes, until a knife slides out with no grip.",
-      "minutes": 25,
-      "why": "The skins keep water out of the flesh while it cooks. Dry potato is what makes room for a stick of butter — waterlogged potato rejects it and turns gluey."
+      "text": "Peel {potatoes}, cut into even 2-inch chunks, and rinse under cold water until it runs clear.",
+      "why": "Even chunks cook at the same rate, so none go waterlogged while the rest catch up. Rinsing washes off loose surface starch, the stuff that turns a purée gluey."
     },
     {
-      "text": "While they boil: put {garlic}, smashed, and {milk} in a small heavy saucepan over low heat. Hold it at a bare steam, never a simmer, stirring every few minutes, 15 to 20 minutes, until a clove mashes against the pan wall with no resistance. Lift the cloves out with a slotted spoon and set them aside. Cover the milk and keep it warm off the heat.",
-      "minutes": 15,
-      "why": "Milk scorches and curdles at temperatures cream shrugs off, so steam is the ceiling, and the stirring keeps a skin from forming. The slow poach turns raw garlic sweet and soft enough to go through the ricer, while the milk carries what the cloves give up."
+      "text": "Put the potatoes in a pot with cold water to cover by 1 inch, plus {water-salt} and {water-garlic}. Bring to a gentle simmer and cook 15 to 20 minutes, until a knife slides through a chunk with no grip.",
+      "minutes": 18,
+      "why": "Peeled potatoes absorb the water they cook in, so this is where the seasoning and the first layer of garlic go in, all the way to the center. Keep it at a simmer: a hard boil batters the edges and waterlogs them."
+    },
+    {
+      "text": "While they cook: put {garlic} and {milk} in a small heavy saucepan over low heat. Hold it at a bare steam, never a simmer, stirring every few minutes, 20 to 25 minutes, until the cloves mash with no resistance and the milk itself tastes strongly of garlic. Lift the cloves out with a slotted spoon, cover the milk, and keep it warm off the heat.",
+      "minutes": 20,
+      "why": "Taste the milk, not just the clock: it should taste unmistakably of garlic before you stop. Steam is the ceiling because milk scorches and curdles at temperatures cream shrugs off."
     },
     {
       "text": "Cube {butter} and put it back in the fridge until needed.",
       "why": "Cold butter absorbs in stages and emulsifies; soft butter just melts into a grease slick. Cold is not optional."
     },
     {
-      "text": "Drain the potatoes and peel them scorching hot: towel in one hand, paring knife in the other, and the skins slip right off. Rice them back into the dry, empty pot, feeding the poached garlic cloves through the ricer along with them.",
-      "why": "Ricing the cloves with the potatoes puts garlic into the body of the purée, not just the liquid, and the ricer leaves no fibers behind."
+      "text": "Drain the potatoes well, keeping the garlic cloves from the water with them. Let them sit in the colander 2 minutes to steam off.",
+      "minutes": 2,
+      "why": "Peeled chunks carry surface water. Letting the steam flash off now means less water fighting the butter later."
     },
     {
-      "text": "Stir the riced potatoes over low heat 2 to 3 minutes to steam off surface moisture.",
-      "minutes": 3,
-      "why": "This drying pass is what saves the texture — every bit of water driven off now is room for fat later."
+      "text": "Rice the potatoes back into the dry, empty pot, feeding every garlic clove through the ricer with them: the ones from the cooking water and the milk-poached ones.",
+      "why": "Riced garlic goes into the body of the purée, not just the liquid, and the ricer leaves no fibers behind."
+    },
+    {
+      "text": "Stir the riced potatoes over low heat 4 to 5 minutes, until the steam slows and a thin film forms on the pot floor.",
+      "minutes": 5,
+      "why": "Peeled potatoes hold more water than skin-on ones, so this drying pass runs longer. Every bit of water driven off now is room for butter."
     },
     {
       "text": "On the lowest heat, beat in the cold butter ({butter} total) in 4 to 5 additions, each fully absorbed before the next. The mixture must never come close to a simmer."
     },
     {
-      "text": "Beat in the warm garlic milk in small stages, by feel: stop when the purée slumps slowly off a spoon like thick paint. You may not need all of it. Taste, then season with fine salt, and the white pepper and nutmeg whisper if you like.",
-      "why": "Milk is mostly water, so each pour loosens the purée faster than cream would. Small additions keep you from overshooting into soup."
+      "text": "Beat in the warm garlic milk in small stages, by feel: stop when the purée slumps slowly off a spoon like thick paint. You may not need all of it.",
+      "why": "Milk is mostly water, so each pour loosens the purée fast. Small additions keep you from overshooting into soup."
+    },
+    {
+      "text": "Season with {salt} and {white-pepper}, beat well, and taste. Keep adding salt a pinch at a time until it tastes seasoned, not just like potato. Add a whisper of nutmeg if you like.",
+      "why": "With unsalted butter, every grain of salt is yours to add, and 2 sticks of butter plus a pile of potato swallow a lot of it. Under-salted purée tastes flat no matter how much garlic is in it. White pepper brings heat without black flecks."
+    },
+    {
+      "text": "Grate {finish-garlic} on a microplane directly into the purée and beat for 1 minute. Taste after a couple of minutes, and grate in another clove if you want it louder.",
+      "why": "Poached garlic is sweet and deep but quiet. A raw clove grated at the end brings the sharp, bright garlic you actually notice, and the warm purée softens its bite within minutes."
     },
     {
       "text": "Optional, for true Robuchon silk: push the purée through a fine-mesh sieve in small batches with a flexible scraper or the back of a ladle, scraping the underside back into the pot. Return it to the lowest heat and beat briefly to rewarm.",
@@ -129,17 +178,21 @@
     },
     {
       "text": "Hold on the lowest flame with the lid on, stirring occasionally, up to 20 minutes.",
-      "why": "A deep mass of purée catches on the pot floor sooner than you expect — the occasional stir is cheap insurance."
+      "why": "A deep mass of purée catches on the pot floor sooner than you expect, so the occasional stir is cheap insurance."
     }
   ],
   "notes": [
     {
-      "title": "If you peeled first",
-      "body": "Recoverable. Drop the boil to a gentle simmer (a hard boil batters and waterlogs bare potatoes), stretch the drying pass to a full 4–5 minutes — until the steam slows and the mass films the pot floor — add the milk more cautiously, and taste before salting: peeled potatoes drink salt from the water."
+      "title": "Three layers of garlic",
+      "body": "Each layer does a different job: the cooking water perfumes the potato from inside, the milk-poached cloves give sweet depth, and the raw grated clove at the end gives the sharp garlic bite. To dial it down, skip the raw clove first."
+    },
+    {
+      "title": "Seasoning",
+      "body": "The salted cooking water seasons the potatoes from inside; the final salt finishes the job. With unsalted butter, expect to land somewhere around 1 to 1½ tsp of fine salt at the end. Taste until it stops tasting like plain potato."
     },
     {
       "title": "The one rule",
-      "body": "Nothing above a simmer once butter is in. Gluey purée and broken sauce live at the same temperature — low and slow is the whole religion."
+      "body": "Nothing above a simmer once butter is in. Gluey purée and broken sauce live at the same temperature: low and slow is the whole religion."
     },
     {
       "title": "Leftovers",
@@ -161,6 +214,6 @@
     "pan-seared-ribeye"
   ],
   "variations": [
-    "Minced garlic instead of whole cloves: use ½ tsp minced garlic for each clove in the ingredient list (fresh-minced is best; jarred works but tastes flatter). Poach it in the milk at the same bare steam, but only 8 to 10 minutes, since minced garlic softens fast and turns bitter if pushed. It can't go through the ricer, so pour the milk through a fine sieve and press the softened garlic through with the back of a spoon, scraping the underside into the milk. Use that garlic milk in the final stage as normal."
+    "Minced garlic instead of whole cloves for the garlic milk: use ½ tsp minced garlic for each poaching clove (fresh-minced is best; jarred works but tastes flatter). Poach it in the milk at the same bare steam, but only 8 to 10 minutes, since minced garlic softens fast and turns bitter if pushed. It can't go through the ricer, so pour the milk through a fine sieve and press the softened garlic through with the back of a spoon, scraping the underside into the milk. Use that garlic milk in the final stage as normal."
   ]
 }

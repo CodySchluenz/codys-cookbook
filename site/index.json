@@ -100,7 +100,7 @@
   {
     "id": "garlic-cream-pommes-puree",
     "title": "Garlic Pommes Purée",
-    "description": "Robuchon-style mashed potatoes: whole milk and milk-poached garlic cloves riced right in. The purée IS the sauce.",
+    "description": "Robuchon-style purée built loud on garlic: in the potato water, poached in whole milk and riced in, then grated raw at the finish.",
     "tags": [
       "french",
       "potato",
@@ -108,16 +108,19 @@
       "vegetarian",
       "stovetop"
     ],
-    "totalMinutes": 50,
+    "totalMinutes": 55,
     "difficulty": "medium",
     "photo": null,
     "ingredients": [
+      "Yukon Gold potatoes",
+      "kosher salt",
+      "garlic cloves",
       "garlic cloves",
       "whole milk",
-      "Yukon Gold potatoes",
-      "butter",
+      "unsalted butter",
       "fine salt",
-      "white pepper",
+      "ground white pepper",
+      "garlic clove",
       "nutmeg"
     ]
   },
