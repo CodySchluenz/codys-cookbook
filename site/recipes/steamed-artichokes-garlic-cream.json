@@ -30,6 +30,10 @@
     {
       "date": "2026-10-10",
       "note": "Step amounts now render dynamically from the ingredient list via {id} tokens, scaling with the servings selector."
+    },
+    {
+      "date": "2026-11-25",
+      "note": "Shared garlic steep with the pommes purée retired: the purée now uses whole milk, and the dip still needs cream to reduce and coat."
     }
   ],
   "ingredientGroups": [
@@ -146,7 +150,5 @@
   "pairsWith": [
     "garlic-cream-pommes-puree"
   ],
-  "variations": [
-    "Making the purée too? Steep once for both: 14 cloves in 2 cups cream, reserve ½ cup for the dip before the purée gets the rest."
-  ]
+  "variations": []
 }
