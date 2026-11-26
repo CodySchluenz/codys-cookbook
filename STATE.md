@@ -5,20 +5,21 @@
 mid-task, the next one resumes from here. Git history is the fine-grained backup:
 `git log --oneline` tells the story; this file tells the headline.*
 
-**Last updated:** 2026-09-13 (chat session — wisconsin-sloppy-joes published)
+**Last updated:** 2026-11-25 (chat session: cranberry-whipped-cream published; pommes purée reworked)
 
-**Content:** 8 recipes. 2026-09-13: `wisconsin-sloppy-joes` (ketchup-only sauce, developed in chat). Chef knowledge: Cody likes bread-and-butter pickles, Zoe dislikes them (per-portion rule). Newest (2026-09-07, from the cooked-live artichoke night):
-`garlic-cream-pommes-puree` (Robuchon-style, garlic cream integrated) and
-`steamed-artichokes-garlic-cream` (microwave steam is the primary method) — cross-linked
-to each other, purée ↔ ribeye linked, both added to monter-au-beurre's usedIn.
-Chef knowledge grew the same night: Cody cooks technique-heavy French on weeknights,
-likes whole artichokes + butter dip, kitchen has a microwave (all committed to
-`.claude/skills/chef/`). Awaiting Cody's cook notes on both new recipes — fold in
-via the usual "Cook notes for <id>" flow when they arrive.
+**Content:** 11 recipes. Since 2026-09-13, from chat sessions: `shakshuka`, `sourdough-grilled-cheese`
+(Parmesan crust on softened butter, no mayo; apple as lead elevation), `cranberry-whipped-cream`.
+`wisconsin-sloppy-joes` lost its onion (per Cody). `garlic-cream-pommes-puree` now uses whole
+milk (Robuchon's original), garlic poached in the milk and riced with the potatoes, a
+minced-garlic variation, and an optional fine-sieve step; id kept for links, title is now
+"Garlic Pommes Purée". Its shared-steep variation with the artichokes was retired.
+**Step text convention (2026-10-10):** ingredients carry `id`s and steps reference them as
+`{id}` tokens, rendered with the scaled amount at draw time; never hardcode batch amounts in
+step text. `validate.mjs` rejects unknown tokens. Units pluralize with the scaled qty (`unitFor`).
 
 ## Current status: STABLE, nothing in flight
 
-All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v14):
+All shipped and verified live at https://codys-cookbook.codydps.workers.dev (SW cache v15):
 search/tags · cooking mode (scaler, checklists, timers, wake lock) · shopping-list +
 component ingredient views · meal mode (basket, game plan, combined list) · teaching
 whys + technique pages · precise steps · equipment lists · elevations/pairings/links ·

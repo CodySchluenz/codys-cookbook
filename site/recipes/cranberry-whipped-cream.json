@@ -1,0 +1,90 @@
+{
+  "id": "cranberry-whipped-cream",
+  "title": "Cranberry Whipped Cream",
+  "description": "Tart cranberry purée whipped into lightly sweet cream: blush pink, holiday-bright, and sturdy enough to make ahead.",
+  "tags": ["dessert", "topping", "holiday", "make-ahead"],
+  "servings": 8,
+  "activeMinutes": 20,
+  "totalMinutes": 90,
+  "difficulty": "easy",
+  "photo": null,
+  "source": "Cody's Claude chat, 2026-11-25",
+  "equipment": ["fine-mesh sieve", "hand mixer or a whisk"],
+  "ingredientGroups": [
+    {
+      "name": "Cranberry purée",
+      "items": [
+        { "qty": 1.5, "unit": "cups", "item": "fresh or frozen cranberries", "note": "about 6 oz; no need to thaw", "id": "cranberries" },
+        { "qty": 0.33, "unit": "cup", "item": "granulated sugar", "id": "sugar" },
+        { "qty": 3, "unit": "tbsp", "item": "orange juice", "note": "or water", "id": "juice" },
+        { "qty": null, "unit": null, "item": "salt", "note": "a pinch" }
+      ]
+    },
+    {
+      "name": "Whipped cream",
+      "items": [
+        { "qty": 1.5, "unit": "cups", "item": "heavy cream", "note": "very cold", "id": "cream" },
+        { "qty": 3, "unit": "tbsp", "item": "powdered sugar", "id": "powdered-sugar" },
+        { "qty": 0.5, "unit": "tsp", "item": "vanilla extract", "id": "vanilla" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Combine {cranberries}, {sugar}, {juice}, and a pinch of salt in a small saucepan over medium heat. Simmer, stirring and pressing the berries against the pan, until they've all burst and the mixture is thick and jammy, 8 to 10 minutes.",
+      "minutes": 10,
+      "why": "Cooking it down to jam is about driving off water. Every bit of liquid left in the purée is liquid the cream has to carry, and a thin purée deflates whipped cream."
+    },
+    {
+      "text": "Push the hot mixture through a fine-mesh sieve with a spatula, scraping the underside into a bowl. Discard the skins and seeds. You want a thick, glossy purée about the consistency of ketchup.",
+      "why": "Skins and seeds leave flecks and grit in something that should be silky. If the purée looks loose, return it to the pan and reduce a few more minutes."
+    },
+    {
+      "text": "Chill the purée completely, at least 1 hour in the fridge, or spread it thin on a plate and freeze 15 minutes.",
+      "minutes": 60,
+      "why": "Warm purée melts the fat in cold cream, and melted fat won't hold air. It must be fully cold before it meets the cream."
+    },
+    {
+      "text": "Chill the mixing bowl and beaters or whisk in the freezer for 10 minutes before whipping.",
+      "minutes": 10,
+      "why": "Cold equipment keeps the cream's fat firm, which is what traps the air. A warm bowl means slower whipping and a softer result."
+    },
+    {
+      "text": "Whip {cream}, {powdered-sugar}, and {vanilla} to soft peaks: the cream holds a shape that slumps over at the tip.",
+      "why": "Powdered sugar contains cornstarch, which helps stabilize the cream so it holds longer once the acidic purée goes in."
+    },
+    {
+      "text": "Add the cold cranberry purée and whip just until medium peaks form and the color is even blush pink. Stop the moment the tips stand up and curl slightly.",
+      "why": "Cranberry's acid tightens cream fast, so it goes from soft to stiff in seconds. Overwhipped cream turns grainy and starts heading toward butter."
+    },
+    {
+      "text": "Serve right away, or cover and refrigerate. Give it a few gentle strokes with a whisk before serving if it has loosened."
+    }
+  ],
+  "notes": [
+    {
+      "title": "Make-ahead",
+      "body": "The purée keeps 5 days refrigerated, so make it ahead and whip the cream the day you serve. The finished whipped cream holds 1 to 2 days covered in the fridge."
+    },
+    {
+      "title": "No sieve?",
+      "body": "Let the cooked cranberries cool to warm, then blend smooth in a blender. Never blend them hot in a sealed blender: steam pressure can blow the lid. Blended purée keeps a little more texture than sieved."
+    },
+    {
+      "title": "If it goes grainy",
+      "body": "Overwhipped cream can be rescued: gently whisk in a splash of cold heavy cream by hand until it smooths out again."
+    }
+  ],
+  "plating": "A generous spoonful on each slice, swooped with the back of the spoon so the pink catches the light. A few sugared cranberries or a pinch of orange zest on top if you want a finish.",
+  "elevations": [
+    "Finely grated orange zest whipped in with the purée: cranberry and orange are a natural pair.",
+    "A tablespoon of Grand Marnier or another orange liqueur with the vanilla.",
+    "A spoonful of freeze-dried cranberry powder for deeper color and flavor without adding any liquid."
+  ],
+  "pairings": ["pumpkin pie", "pecan pie", "gingerbread", "chocolate cake"],
+  "pairsWith": [],
+  "variations": [],
+  "changelog": [
+    { "date": "2026-11-25", "note": "Created from chat." }
+  ]
+}

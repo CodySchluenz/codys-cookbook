@@ -17,6 +17,29 @@
     ]
   },
   {
+    "id": "cranberry-whipped-cream",
+    "title": "Cranberry Whipped Cream",
+    "description": "Tart cranberry purée whipped into lightly sweet cream: blush pink, holiday-bright, and sturdy enough to make ahead.",
+    "tags": [
+      "dessert",
+      "topping",
+      "holiday",
+      "make-ahead"
+    ],
+    "totalMinutes": 90,
+    "difficulty": "easy",
+    "photo": null,
+    "ingredients": [
+      "fresh or frozen cranberries",
+      "granulated sugar",
+      "orange juice",
+      "salt",
+      "heavy cream",
+      "powdered sugar",
+      "vanilla extract"
+    ]
+  },
+  {
     "id": "croque-monsieur",
     "title": "Croque Monsieur",
     "description": "Mornay-crowned, pan-crisped, broiler-finished — the proper one, with the layering that matters.",
