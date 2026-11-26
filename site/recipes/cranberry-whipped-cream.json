@@ -1,7 +1,7 @@
 {
   "id": "cranberry-whipped-cream",
   "title": "Cranberry Whipped Cream",
-  "description": "Sweet cranberry purée whipped into cream: blush pink and made for eating with a spoon or scooping with cookies.",
+  "description": "Sweet cranberry purée blended, strained, and folded into billowy cream: uniform blush pink, silky and spoonable — made for eating plain or beside a cookie.",
   "tags": [
     "dessert",
     "snack",
@@ -16,6 +16,7 @@
   "source": "Cody's Claude chat, 2026-11-25",
   "equipment": [
     "blender",
+    "fine-mesh sieve",
     "hand mixer or a whisk"
   ],
   "ingredientGroups": [
@@ -81,9 +82,13 @@
       "why": "Cooking it down to jam drives off water. Every bit of liquid left in the purée is liquid the cream has to carry, and a thin purée deflates whipped cream."
     },
     {
-      "text": "Let the cranberries cool for 10 minutes until warm, not hot, then blend until completely smooth.",
-      "minutes": 10,
-      "why": "Never blend hot fruit in a sealed blender: steam builds pressure and can blow the lid off. Blending instead of straining keeps the skins, which add body and deepen the pink."
+      "text": "Let the cooked cranberries sit off heat 5 minutes, then blend smooth, 30 to 60 seconds. Crack the lid or pop out the center cap and cover with a towel so steam can escape.",
+      "minutes": 5,
+      "why": "A blender gets the purée silkier than mashing ever will. Never seal hot liquid in a blender — trapped steam pressure can blow the lid off."
+    },
+    {
+      "text": "Press the blended purée through a fine-mesh sieve with a spatula, scraping the underside into a bowl. Discard the skins. You want a thick, glossy purée about the consistency of ketchup.",
+      "why": "Even blended, the skins stay gritty and faintly bitter — straining is what turns it silky. If the purée looks loose, return it to the pan and reduce a few more minutes."
     },
     {
       "text": "Chill the purée completely, at least 1 hour in the fridge, or spread it thin on a plate and freeze 15 minutes.",
@@ -114,18 +119,18 @@
     },
     {
       "title": "Sweetness",
-      "body": "Taste the cream after the purée goes in. If you want it sweeter still, whip in more powdered sugar a spoonful at a time: it dissolves without any grit."
+      "body": "This is sweetened to eat on its own by the spoon — not a barely-there pie topper. If you're putting it on an already-sweet dessert, pull the purée sugar back to 1/3 cup and the powdered sugar to 3 tbsp."
     },
     {
       "title": "If it goes grainy",
       "body": "Overwhipped cream can be rescued: gently whisk in a splash of cold heavy cream by hand until it smooths out again."
     }
   ],
-  "plating": "Pile it into small glasses or bowls and eat it with a spoon, or set out a plate of cookies for scooping.",
+  "plating": "A generous spoonful in a small bowl or dolloped beside a cookie, swooped with the back of the spoon so the pink catches the light. A few sugared cranberries on top if you want a finish.",
   "elevations": [
-    "A spoonful of freeze-dried cranberry powder for deeper color and flavor without adding any liquid.",
-    "White chocolate shaved over the top.",
-    "Layer it in glasses with crushed cookies for a quick parfait."
+    "A few grinds of black pepper or a tiny pinch of cinnamon folded in at the end — warm spice against the tart berry, invisible but it lands.",
+    "Reserve a tablespoon of purée and swirl it (don't fold) across the top for a marbled finish.",
+    "A spoonful of freeze-dried cranberry powder for deeper color and flavor without adding any liquid."
   ],
   "pairings": [
     "sugar cookies",
@@ -143,6 +148,10 @@
     {
       "date": "2026-11-25",
       "note": "Sweeter, built to eat on its own or with cookies. Orange removed. Cranberries are blended instead of sieved, the way Cody made it."
+    },
+    {
+      "date": "2026-11-25",
+      "note": "Switched to blend-then-strain for a silky, grit-free purée; pepper/cinnamon and swirl finishes added."
     }
   ]
 }
